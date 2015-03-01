@@ -36,7 +36,11 @@ From now on you can select 'GDL' as the current language in the bottom right cor
 New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
 
 ## TO DO LIST
-+ nearly everything :D
++ syntax implemention for 
+	+ keywords for `REQUESTS`
+	+ `WIDO_*, LABEL_*, LIGHT_*, WALL_*, COLU_*, BEAM_*, SLAB_*, ROOF_*, FILL_*, MESH_*`
++ usable and beatiful template
 
-Roadmap is to implement the syntax first and then also distributing a beatiful custom theme so you can make the best out of the syntax.
-Goodies: Snippets, Tag completion
+Goodies: 
++ Snippets
++ Tag completion
