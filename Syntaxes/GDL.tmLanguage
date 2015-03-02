@@ -26,7 +26,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>".*"</string>
+			<string>("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')</string>
 			<key>name</key>
 			<string>string.gdl</string>
 		</dict>
@@ -38,7 +38,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)|(?&lt;=^|\s)(MOD|%|AND|&amp;|OR|\||EXOR|\@|NOT)(?=$|\s)</string>
+			<string>(?i)(\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)|(?&lt;=^|\s)(MOD|%|AND|&amp;|OR|\||EXOR|\@|NOT)(?=$|\s|\()</string>
 			<key>name</key>
 			<string>keyword.operator.gdl</string>
 		</dict>
@@ -50,13 +50,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(ADD[2XYZ]?|ROT[2XYZ]?|MUL[2XYZ]?|XFORM|DEL(\sTOP)?)(?=$|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s)(ADD[2XYZ]?|ROT[2XYZ]?|MUL[2XYZ]?|XFORM|DEL(\sTOP)?)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.transform</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[1-2]|DIM|BITTEST|BITSET|REQ(UEST)?(\{2\})?|IND|NTR|VARTYPE)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[1-2]|DIM|BITTEST|BITSET|REQ(UEST)?(\{2\})?|IND|NTR|VARTYPE)(?=$|\s|\()</string>
 			<key>name</key>
 			<string>keyword.other.special-method.gdl.functions</string>
 		</dict>
@@ -146,7 +146,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|MATERIAL|TEXTURE|STYLE(\{2\})?|PARAGRAPH|TEXTBLOCK|ADDITIONAL_DATA|SECT_(FILL|ATTRS))(?=$|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|MATERIAL|TEXTURE|STYLE(\{2\})?|PARAGRAPH|TEXTBLOCK|ADDITIONAL_DATA|SECT_(FILL|ATTRS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>support.type.gdl.attribute</string>
 		</dict>
@@ -176,43 +176,43 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(PRINT|OPEN|INPUT|OUTPUT|CLOSE|CALL|FILE_DEPENDENCE)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(PRINT|OPEN|INPUT|OUTPUT|CLOSE|CALL|FILE_DEPENDENCE)(?=$|\s|\()</string>
 			<key>name</key>
 			<string>keyword.gdl.extern</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(APPLICATION_QUERY|LIBRARYGLOBAL)(?=$|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(APPLICATION_QUERY|LIBRARYGLOBAL)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\()</string>
 			<key>name</key>
 			<string>keyword.gdl.request</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_(SCRIPT_TYPE|CONTEXT|SCALE|NORTH_DIR|DRAWING_BGD_PEN|MODPAR_NAME|WORLD_ORIGO_OFFSET_(X|Y)|FRAME_NR|(FIRST|LAST)_FRAME|(EYE|TARG)POS_(X|Y|Z)|SUN_A(ZIMUTH|LTITUDE)|UI_BUTTON_ID|CUTPLANES_INFO|STRUCTURE_DISPLAY))(?=$|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_(SCRIPT_TYPE|CONTEXT|SCALE|NORTH_DIR|DRAWING_BGD_PEN|MODPAR_NAME|WORLD_ORIGO_OFFSET_(X|Y)|FRAME_NR|(FIRST|LAST)_FRAME|(EYE|TARG)POS_(X|Y|Z)|SUN_A(ZIMUTH|LTITUDE)|UI_BUTTON_ID|CUTPLANES_INFO|STRUCTURE_DISPLAY))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.general</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_((H|C)STORY_(ELEV|HEIGHT)|CH_STORY_DIST))(?=$|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_((H|C)STORY_(ELEV|HEIGHT)|CH_STORY_DIST))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.story</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_(LAYER|ID|INTGUID|ELEVATION|ELEM_TYPE))(?=$|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_(LAYER|ID|INTGUID|ELEVATION|ELEM_TYPE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.elementparameters</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SYMB_(LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_(X|Y|Z)+|ROTANGLE|MIRRORED|(A|B|Z)+_SIZE)(?=$|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SYMB_(LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_(X|Y|Z)+|ROTANGLE|MIRRORED|(A|B|Z)+_SIZE)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.objectparameters</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_USER_([1-9]\b|[1][0-9]|20))(?=$|\s|\+|\-|\^|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_USER_([1-9]\b|[1][0-9]|20))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.user</string>
 		</dict>
