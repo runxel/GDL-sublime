@@ -5,6 +5,7 @@
 	<key>fileTypes</key>
 	<array>
 		<string>gsm</string>
+		<string>gdl</string>
 	</array>
 	<key>name</key>
 	<string>GDL</string>
@@ -146,9 +147,15 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|MATERIAL|TEXTURE|STYLE(\{2\})?|PARAGRAPH|TEXTBLOCK|ADDITIONAL_DATA|SECT_(FILL|ATTRS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)\b(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|MATERIAL|TEXTURE|STYLE(\{2\})?|PARAGRAPH|TEXTBLOCK|ADDITIONAL_DATA|SECT_(FILL|ATTRS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>support.type.gdl.attribute</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)\b(SOLID|SURFACE|WIRE)\b</string>
+			<key>name</key>
+			<string>support.other.variable.gdl</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -206,7 +213,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SYMB_(LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_(X|Y|Z)+|ROTANGLE|MIRRORED|(A|B|Z)+_SIZE)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SYMB_((LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_(X|Y|Z)+|ROTANGLE|MIRRORED|(A|B|Z)+_SIZE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.objectparameters</string>
 		</dict>
