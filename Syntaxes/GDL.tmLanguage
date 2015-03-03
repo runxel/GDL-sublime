@@ -155,7 +155,13 @@
 			<key>match</key>
 			<string>(?i)\b(SOLID|SURFACE|WIRE)\b</string>
 			<key>name</key>
-			<string>support.other.variable.gdl</string>
+			<string>support.other.variable.gdl.model</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=\s|,)(ON|OFF|AUTO)(?=$|\s|,)</string>
+			<key>name</key>
+			<string>support.other.variable.gdl.shadow</string>
 		</dict>
 		<dict>
 			<key>match</key>
