@@ -17,7 +17,7 @@ Note: There are still some uncovered GDL commands, see the [TO DO list](#to-do-l
 
 ### Using Sublime Package Control
 *recommended*  
-If you are using [Sublime Package Control](http://wbond.net/sublime_packages/package_control), you can easily install the Processing Bundle via the `Sublime Text -> Preferences -> Package Control: Install Package` menu item.
+If you are using [Sublime Package Control](http://wbond.net/sublime_packages/package_control), you can easily install the bundle via the `Sublime Text -> Preferences -> Package Control: Install Package` menu item.
 
 ### Using Git
 Alternatively you can install the bundle and keep up to date by cloning the repo directly into your `Packages` directory in the Sublime Text application settings area.
