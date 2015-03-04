@@ -33,7 +33,15 @@ Go to your Sublime Text `Packages` directory and clone the theme repository usin
   - OS X: `~/Library/Application Support/Sublime Text 2/Packages/GDL`
 
 ## Usage
-From now on you can select `GDL` as the current language in the bottom right corner of ST.
+From now on you can select `GDL` as the current language in the bottom right corner of ST.  
+But wait! There's more!
+Activate a well aligned color scheme by modifying the syntax specific preferences file, which you can find using the menu item `Preferences -> Settings - More -> Syntax Specific – User`, after you set the syntax to `GDL` for the current file.
+
+Copy this into the new file and save:
+`{  
+	"color_scheme": "Packages/GDL/GDL.tmTheme"  
+}`
+
 
 ## Getting Started With Sublime Text
 New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
