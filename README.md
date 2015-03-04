@@ -50,7 +50,6 @@ New to Sublime? Then I can recommend the excellent and free video tutorial by ne
 + syntax implemention:
 	+ keywords for `REQUESTS`
 	+ optional parameters
-	+ `WIDO_*, LABEL_*, LIGHT_*, WALL_*, COLU_*, BEAM_*, SLAB_*, ROOF_*, FILL_*, MESH_*`
 + Tag completion
 
 Goodies: 
