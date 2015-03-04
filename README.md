@@ -22,7 +22,7 @@ If you are using [Sublime Package Control](http://wbond.net/sublime_packages/pac
 ### Using Git
 Alternatively you can install the bundle and keep up to date by cloning the repo directly into your `Packages` directory in the Sublime Text application settings area.
 
-Go to your Sublime Text `Packages` directory and clone the theme repository using the command below:  
+Go to your Sublime Text `Packages` directory and clone the repository using the command below:  
 `git clone https://github.com/runxel/GDL-sublime "GDL"`
 
 ### Download Manually
