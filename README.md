@@ -9,12 +9,15 @@ Many users of ArchiCAD are making their own library parts or even publish them o
 But the rescue is here! _(at least something like that)_  
 The purpose of this package is to comfortably write code in the best editor of the galaxy – Sublime Text! ;)
 
-## Installation
-Note: It may still be buggy and that it is *not* complete, see the [TO DO list](#to-do-list).  
-Also it can look ugly on some Templates, but don't worry, you will get a beatiful template soon.
+At the moment this package just provides syntax highlighting together with a well aligned color scheme.
+Soon there will be auto-completion as well.
 
-### ~~Using Sublime Package Control~~
-_currently not available in your country. it will be later on_
+## Installation
+Note: There are still some uncovered GDL commands, see the [TO DO list](#to-do-list). They will appear unstyled! (and added soon, don't worry)
+
+### Using Sublime Package Control
+*recommended*  
+If you are using [Sublime Package Control](http://wbond.net/sublime_packages/package_control), you can easily install the Processing Bundle via the `Sublime Text -> Preferences -> Package Control: Install Package` menu item.
 
 ### Using Git
 Alternatively you can install the bundle and keep up to date by cloning the repo directly into your `Packages` directory in the Sublime Text application settings area.
@@ -36,12 +39,11 @@ From now on you can select `GDL` as the current language in the bottom right cor
 New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
 
 ## TO DO LIST
-+ usable and beatiful template
 + syntax implemention:
 	+ keywords for `REQUESTS`
 	+ optional parameters
 	+ `WIDO_*, LABEL_*, LIGHT_*, WALL_*, COLU_*, BEAM_*, SLAB_*, ROOF_*, FILL_*, MESH_*`
++ Tag completion
 
 Goodies: 
 + Snippets
-+ Tag completion
