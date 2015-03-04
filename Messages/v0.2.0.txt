@@ -1,14 +1,6 @@
 Thanks for installing the Sublime Text package for GDL!
 
 
-What's new ???
-===============
-
-• all global parameters should be recognized, thus styled in Sublime Text.
-	(note: optional parameters and REQUEST keywords are still not implemented. Don't worry, it will be soon!)
-
-
-
 How to use
 ===============
 
