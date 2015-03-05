@@ -13,7 +13,6 @@ At the moment this package just provides syntax highlighting together with a wel
 Soon there will be auto-completion as well.
 
 ## Installation
-Note: There are still some uncovered GDL commands, see the [TO DO list](#to-do-list). They will appear unstyled! (and added soon, don't worry)
 
 ### Using Sublime Package Control
 *recommended*  
@@ -47,9 +46,6 @@ Copy this into the new file and save:
 New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
 
 ## TO DO LIST
-+ syntax implemention:
-	+ keywords for `REQUESTS`
-	+ optional parameters
 + Tag completion
 
 Goodies: 

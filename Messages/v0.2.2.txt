@@ -5,7 +5,6 @@ What's new ???
 ===============
 
 • syntax is now complete!
-[if you think something's missing please open an issue on github]
 
 
 
