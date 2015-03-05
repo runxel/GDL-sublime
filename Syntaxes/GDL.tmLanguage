@@ -57,7 +57,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[1-2]|DIM|BITTEST|BITSET|REQ(UEST)?(\{2\})?|IND|NTR|VARTYPE)(?=$|\s|\()</string>
+			<string>(?i)(?&lt;=^|\s)(ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ(UEST)?(\{2\})?|IND|NTR|VARTYPE)(?=$|\s|\()</string>
 			<key>name</key>
 			<string>keyword.other.special-method.gdl.functions</string>
 		</dict>
@@ -87,7 +87,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{2\})?|(C|B)WALL_|XWALL_(\{2\})?|BEAM|MESH|POLYROOF)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{2\})?|[CB]WALL_|XWALL_(\{2\})?|BEAM|MESH|POLYROOF)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.complex</string>
 		</dict>
@@ -201,13 +201,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_(SCRIPT_TYPE|CONTEXT|SCALE|NORTH_DIR|DRAWING_BGD_PEN|MODPAR_NAME|WORLD_ORIGO_OFFSET_(X|Y)|FRAME_NR|(FIRST|LAST)_FRAME|(EYE|TARG)POS_(X|Y|Z)|SUN_A(ZIMUTH|LTITUDE)|UI_BUTTON_ID|CUTPLANES_INFO|STRUCTURE_DISPLAY))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_(SCRIPT_TYPE|CONTEXT|SCALE|NORTH_DIR|DRAWING_BGD_PEN|MODPAR_NAME|WORLD_ORIGO_OFFSET_[XY]|FRAME_NR|(FIRST|LAST)_FRAME|(EYE|TARG)POS_[XYZ]|SUN_A(ZIMUTH|LTITUDE)|UI_BUTTON_ID|CUTPLANES_INFO|STRUCTURE_DISPLAY))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.general</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_((H|C)STORY_(ELEV|HEIGHT)|CH_STORY_DIST))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_([HC]STORY_(ELEV|HEIGHT)|CH_STORY_DIST))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.story</string>
 		</dict>
@@ -219,7 +219,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SYMB_((LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_(X|Y|Z)+|ROTANGLE|MIRRORED|(A|B|Z)+_SIZE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SYMB_((LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_[XYZ]|ROTANGLE|MIRRORED|[ABZ]+_SIZE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.objectparameters</string>
 		</dict>
@@ -237,7 +237,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(WALL_(RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|COMPS_NAME|SKINS_(PARAMS|NUMBER)|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_(A|B)|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|(GROSS_)?VOLUME|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_(A|B))?|VOLUME)|(WINDS|DOORS)_WID))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(WALL_(RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|COMPS_NAME|SKINS_(PARAMS|NUMBER)|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB]|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|(GROSS_)?VOLUME|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.wall</string>
 		</dict>
@@ -288,6 +288,18 @@
 			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_USER_([1-9]\b|[1][0-9]|20))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.user</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=")((BLUE|RED|GREEN)_OF_(PEN|MATERIAL)|GDL_VERSION|MODEL_SIZE|PEN_OF_RGB|PROGRAM|SERIAL_NUMBER|ANCESTRY_INFO|(ANGULAR_(LENGTH_)?|AREA_|RADIAL_|SILL_HEIGHT_)DIMENSION|(ASSOCEL|MATCHING)_PROPERTIES|ASSOCLP_(NAME|PARVALUE)|CALC_(ANGLE|AREA|LENGTH|VOLUME)_UNIT|CLEAN_INTERSECTIONS|CONSTR_FILLS_DISPLAY|CUSTOM_AUTO_LABEL|DATETIME|DOOR_SHOW_DIM|(ELEVATION|LEVEL|LINEAR)_DIMENSION|FONTNAMES_LIST|HEIGHT_OF_STYLE|HOME(_STORY|DB_INFO)|ID_OF_MAIN|INTERNAL_ID|NAME_OF_(FILL|LINE_TYPE|LISTED|MACRO|MAIN|MATERIAL|PLAN|PROGRAM|STYLE)|REFERENCE_DATA_LEVEL|RGB_OF_(MATERIAL|PEN)|STORY(_INFO)?|(STYLE|TEXTBLOCK)_INFO|WINDOW_(DOOR_(DIMENSION|SHOW_DIM|ZONE_RELEV)|SHOW_DIM)|WORKING_(ANGLE|LENGTH)_UNIT|ZONE_(CATEGORY|COLUS_AREA|RELATIONS)|MATERIAL_INFO)(?="|\s)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.request</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s)([ABCDEFG]|ZZYZX|ac_\w+|ROOM_([a-z]|_)+)(?=$|\s|=)</string>
+			<key>name</key>
+			<string>keyword.gdl.optionalparameters</string>
 		</dict>
 		<dict>
 			<key>match</key>
