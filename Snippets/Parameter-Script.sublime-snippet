@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+! ---------------------------------------------------------------------- !
+! -------- P A R A M E T E R  -  S c r i p t --------------------------- !
+! ---------------------------------------------------------------------- !
+
+
+]]></content>
+	<tabTrigger>param</tabTrigger>
+	<description>Parameter script comment block</description>
+	<scope>source.gdl</scope>
+</snippet>

@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+! ---------------------------------------------------------------------- !
+! -------- M A S T E R  -  S c r i p t --------------------------------- !
+! ---------------------------------------------------------------------- !
+
+
+]]></content>
+	<tabTrigger>master</tabTrigger>
+	<description>Master script comment block</description>
+	<scope>source.gdl</scope>
+</snippet>

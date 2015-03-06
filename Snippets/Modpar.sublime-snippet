@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+IF GLOB_MODPAR_NAME = "${1:A}" THEN
+	${2}
+ENDIF
+
+]]></content>
+	<tabTrigger>modpar</tabTrigger>
+	<description>IF GLOB_MODPAR_NAME ...</description>
+	<scope>source.gdl</scope>
+</snippet>

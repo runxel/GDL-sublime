@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+
+RETURN
+
+! ---------------------------------------------------------------------- !
+! ---------------------------------------------------------------------- !
+
+
+]]></content>
+	<tabTrigger>return</tabTrigger>
+	<description>Return + comment line</description>
+	<scope>source.gdl</scope>
+</snippet>

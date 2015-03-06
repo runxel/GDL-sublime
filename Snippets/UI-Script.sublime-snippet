@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+! ---------------------------------------------------------------------- !
+! -------- U S E R   I N T E R F A C E  -  S c r i p t ----------------- !
+! ---------------------------------------------------------------------- !
+
+
+]]></content>
+	<tabTrigger>ui</tabTrigger>
+	<description>UI script comment block</description>
+	<scope>source.gdl</scope>
+</snippet>

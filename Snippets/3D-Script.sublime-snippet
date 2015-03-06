@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+! ---------------------------------------------------------------------- !
+! -------- 3 D  -  S c r i p t ----------------------------------------- !
+! ---------------------------------------------------------------------- !
+
+
+]]></content>
+	<tabTrigger>3d</tabTrigger>
+	<description>3D script comment block</description>
+	<scope>source.gdl</scope>
+</snippet>

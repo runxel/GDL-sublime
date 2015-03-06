@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+
+! ---------------------------- E N D ----------------------------------- !
+! ---------------------------- E N D ----------------------------------- !
+
+END  ! -- END -- END -- END -- END -- END -- END -- END -- END -- END -- !
+
+! ---------------------------- E N D ----------------------------------- !
+! ---------------------------- E N D ----------------------------------- !
+
+
+
+
+]]></content>
+	<tabTrigger>end</tabTrigger>
+	<description>Big endmarker</description>
+	<scope>source.gdl</scope>
+</snippet>

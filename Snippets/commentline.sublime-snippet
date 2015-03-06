@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+
+! ---------------------------------------------------------------------- !
+
+
+]]></content>
+	<tabTrigger>comline</tabTrigger>
+	<scope>source.gdl</scope>
+</snippet>
+

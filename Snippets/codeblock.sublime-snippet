@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+
+! ---------------------------------------------------------------------- !
+! ${1:A B S C H N I T T S B E G R E N Z U N G}
+! ---------------------------------------------------------------------- !
+
+! ------ C O D E B L O C K   0 0 1 --- >>
+
+	${2:!Hier steht der Codeblock!}
+
+! << --- C O D E B L O C K   0 0 1 --- 
+
+
+]]></content>
+	<tabTrigger>code</tabTrigger>
+	<scope>source.gdl</scope>
+</snippet>
