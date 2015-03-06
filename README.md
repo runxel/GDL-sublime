@@ -43,7 +43,8 @@ Copy this into the new file and save:
 
 
 ## Getting Started With Sublime Text
-New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
+New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).  
+Also a [nice overview](https://scotch.io/bar-talk/best-of-sublime-text-3-features-plugins-and-settings) (for ST 3).
 
 ## TO DO LIST
 + Tag completion
