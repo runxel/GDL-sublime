@@ -4,8 +4,8 @@ Thanks for installing the Sublime Text package for GDL!
 What's new ???
 ===============
 
-• we have auto completion now
-[you may have to force it with `ctrl + space`!]
+• syntax is now complete!
+[if you think something's missing please open an issue on github]
 
 
 
@@ -30,6 +30,4 @@ Copy this into the new file and save:
 GDL color scheme
 ----------------
 
-This color scheme is especially made for a comfortable working GDL coding environment in Sublime Text.  
-If you like it: I have a also a more complete color scheme aligned with a beatiful an minimal UI theme.
-You can find it here:	https://github.com/runxel/hitoshi
+This color scheme is especially made for a comfortable working GDL coding environment in Sublime Text.

@@ -9,8 +9,7 @@ Many users of ArchiCAD are making their own library parts or even publish them o
 But the rescue is here! _(at least something like that)_  
 The purpose of this package is to comfortably write code in the best editor of the galaxy – Sublime Text! ;)
 
-At the moment this package just provides syntax highlighting together with a well aligned color scheme.
-Soon there will be auto-completion as well.
+This package provides syntax highlighting together with a well aligned color and also auto completion. (Can be forced by pressing `ctrl + space`)
 
 ## Installation
 
@@ -32,7 +31,7 @@ Go to your Sublime Text `Packages` directory and clone the repository using the 
   - OS X: `~/Library/Application Support/Sublime Text 2/Packages/GDL`
 
 ## Usage
-From now on you can select `GDL` as the current language in the bottom right corner of ST.  
+From now on you can select `GDL` as the current language in the bottom right corner of ST and enjoy all the benefits ST brings.  
 But wait! There's more!
 Activate a well aligned color scheme by modifying the syntax specific preferences file, which you can find using the menu item `Preferences -> Settings - More -> Syntax Specific – User`, after you set the syntax to `GDL` for the current file.
 
@@ -43,11 +42,6 @@ Copy this into the new file and save:
 
 
 ## Getting Started With Sublime Text
-New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).  
-Also a [nice overview](https://scotch.io/bar-talk/best-of-sublime-text-3-features-plugins-and-settings) (for ST 3).
+New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
 
 ## TO DO LIST
-+ Tag completion
-
-Goodies: 
-+ Snippets
