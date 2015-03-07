@@ -40,6 +40,12 @@ Copy this into the new file and save:
 	"color_scheme": "Packages/GDL/GDL.tmTheme"  
 }`
 
+### Auto completion + Snippets
+You may have to force the auto completion via `ctrl + space`.  
+Also some Snippets are now on board. Try it out! Type in: `comline` and then press TAB.  
+Voilá! There's a divider.  
+`! ---------------------------------------------------------------------- !`
+
 
 ## Getting Started With Sublime Text
 New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
