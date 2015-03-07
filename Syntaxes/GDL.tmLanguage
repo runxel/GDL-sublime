@@ -13,7 +13,7 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>(?i)\b(\!NOCONTOUR|BAS|BOX|CONT|FILLA|FILTER|GDLBIN|HIP_ROOFS|LIN|LINE|NOD|NODE|ORIGO|PARS|PAUSE|PLOTMAKER|PLOTTER|RECT_|SFLINE|TET|TETRA|TRI|UI_CANCEL|UI_OK|VOCA|WALL_)\b</string>
+			<string>(?i)\b(\!NOCONTOUR|BAS|BOX|CONT|FILLA|FILTER|GDLBIN|HIP_ROOFS|(LIN|NOD)(E)?|ORIGO|PARS|PAUSE|PLOTMAKER|PLOTTER|RECT_|SFLINE|TET(RA)?|TRI|UI_(CANCEL|OK)|VOCA|WALL_)\b</string>
 			<key>name</key>
 			<string>invalid.deprecated.gdl</string>
 		</dict>
@@ -87,7 +87,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{2\})?|[CB]WALL_|XWALL_(\{2\})?|BEAM|MESH|POLYROOF)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{[23]\})?|[CB]WALL_|XWALL_(\{[23]\})?|BEAM|MESH|POLYROOF(\{[23]\})?)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.complex</string>
 		</dict>
@@ -99,7 +99,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(PYRAMID|RULED(\{2\})?|EXTRUDE|SWEEP|TUBE[A]?|MASS|COONS|REVOLVE(\{2\})?|EXTRUDEDSHELL|REVOLVEDSHELL|REVOLVEDSHELLANGULAR|RULEDSHELL)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(PRISM_?|[BFH]PRISM_|[CS]PRISM_(\{[23]\})?)(?=$|\s)</string>
+			<key>name</key>
+			<string>keyword.gdl.shape.3D.prisms</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s)(PYRAMID|RULED(\{2\})?|EXTRUDE|SWEEP|TUBE[A]?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{2\})?|REVOLVEDSHELLANGULAR(\{2\})?)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.poly</string>
 		</dict>
@@ -177,7 +183,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(UI_(DIALOG|PAGE|CURRENT_PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT|STYLE|OUTFIELD|INFIELD(\{[2-3]\})?|RADIOBUTTON|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?))(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT|STYLE|OUTFIELD|INFIELD(\{[2-3]\})?|RADIOBUTTON|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?))(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.nongeo.ui</string>
 		</dict>
