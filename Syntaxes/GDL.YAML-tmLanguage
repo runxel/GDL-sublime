@@ -1,93 +1,165 @@
-fileTypes: [gsm, gdl]
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
 name: GDL
-patterns:
-- {match: '(?i)\b(\!NOCONTOUR|BAS|BOX|CONT|FILLA|FILTER|GDLBIN|HIP_ROOFS|(LIN|NOD)(E)?|ORIGO|PARS|PAUSE|PLOTMAKER|PLOTTER|RECT_|SFLINE|TET(RA)?|TRI|UI_(CANCEL|OK)|VOCA|WALL_)\b',
-  name: invalid.deprecated.gdl}
-- {begin: '!', end: $, name: comment.line.gdl}
-- {match: '("(?:[^"\\]|\\.)*"|''(?:[^''\\]|\\.)*'')', name: string.gdl}
-- {match: '(?i)(\b[0-9]*:)(?=$|\s)', name: entity.name.function.gdl}
-- {match: '(?i)(\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)|(?<=^|\s)(MOD|%|AND|&|OR|\||EXOR|\@|NOT)(?=$|\s|\()',
-  name: keyword.operator.gdl}
-- {match: '(?i)(?<=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|ENDWHILE|REPEAT|UNTIL|IF|THEN|ELSE|ENDIF|GOTO|GOSUB|RETURN|END|EXIT|BREAKPOINT)(?=$|\s)',
-  name: keyword.control.flow.gdl}
-- {match: '(?i)(?<=^|\s)(ADD[2XYZ]?|ROT[2XYZ]?|MUL[2XYZ]?|XFORM|DEL(\sTOP)?)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.transform}
-- {match: '(?i)(?<=^|\s)(ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(?=$|\s|\()',
-  name: keyword.other.special-method.gdl.functions}
-- {match: '(?i)(?<=^|\s)((LINE|RECT|ARC|CIRCLE|WALLINE|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-5]\})?)?))(?=$|\s)',
-  name: keyword.gdl.shape.2D}
-- {match: '(?i)(?<=^|\s)(?<=^|\s)((TEXT|RICHTEXT)2)(?=$|\s)', name: keyword.gdl.text.2D.text}
-- {match: '(?i)(?<=^|\s)(BLOCK|CYLIND|CONE|SPHERE|ELLIPS|ELBOW|ARMC|ARME)(?=$|\s)',
-  name: keyword.gdl.shape.3D.basic}
-- {match: '(?i)(?<=^|\s)((PLANE|POLY)(_?)|ARC|CIRCLE|LIN_|RECT)(?=$|\s)', name: keyword.gdl.shape.3D.planar}
-- {match: '(?i)(?<=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{[23]\})?|[CB]WALL_|XWALL_(\{[23]\})?|BEAM|MESH|POLYROOF(\{[23]\})?)(?=$|\s)',
-  name: keyword.gdl.shape.3D.complex}
-- {match: '(?i)(?<=^|\s)(BASE|BODY|COOR|EDGE|PGON|PIPG|TEVE|VECT|VERT)(?=$|\s)', name: keyword.gdl.shape.3D.primitive}
-- {match: '(?i)(?<=^|\s)(PRISM_?|[BFH]PRISM_|[CS]PRISM_(\{[23]\})?)(?=$|\s)', name: keyword.gdl.shape.3D.prisms}
-- {match: '(?i)(?<=^|\s)(PYRAMID|RULED(\{2\})?|EXTRUDE|SWEEP|TUBE[A]?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{2\})?|REVOLVEDSHELLANGULAR(\{2\})?)(?=$|\s)',
-  name: keyword.gdl.shape.3D.poly}
-- {match: '(?i)(?<=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM|SHAPE)|WALL(HOLE|NICHE))(?=$|\s)',
-  name: keyword.gdl.shape.3D.cut}
-- {match: '(?i)(?<=^|\s)((ADD|ISECT|SUB|PLACE|KILL)?(GROUP)|SWEEPGROUP(\{2\})?|ISECTLINES|CREATE_GROUP_MAT)(?=$|\s)',
-  name: keyword.gdl.shape.3D.seo}
-- {match: '(?i)(?<=^|\s)(TEXT|RICHTEXT)(?=$|\s)', name: keyword.gdl.shape.3D.text}
-- {match: '(?i)(?<=^|\s)(LIGHT|PICTURE|BINARY)(?=$|\s)', name: keyword.gdl.shape.3D.other}
-- {match: '(?i)(?<=^|\s)(FRAGMENT[2]?|PROJECT2(\{[2-3]\})?|DRAWING(2|3(\{[2-3]\})?))(?=$|\s)',
-  name: keyword.gdl.symbol}
-- {match: '(?i)(?<=^|\s)(HOTSPOT[2]?|HOTLINE[2]?|HOTARC[2]?)(?=$|\s)', name: keyword.gdl.hotedits}
-- {match: '(?i)(?<=^|\s)(DEFINE|SET|BASED_ON)(?=\s)', name: storage.type.function.gdl}
-- {match: '(?i)\b(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|MATERIAL|TEXTURE|STYLE(\{2\})?|PARAGRAPH|TEXTBLOCK|ADDITIONAL_DATA|SECT_(FILL|ATTRS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: support.type.gdl.attribute}
-- {match: '(?i)\b(SOLID|SURFACE|WIRE)\b', name: support.other.variable.gdl.model}
-- {match: '(?i)(?<=\s|,)(ON|OFF|AUTO)(?=$|\s|,)', name: support.other.variable.gdl.shadow}
-- {match: '(?i)(?<=^|\s)(VALUES(\{2\})?|PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)',
-  name: keyword.gdl.nongeo.parameters}
-- {match: '(?i)(?<=^|\s)(COMPONENT|DESCRIPTOR|BINARYPROP|DATABASE_SET|POSITION|REF_(COMPONENT|DESCRIPTOR)|(SURFACE|VOLUME)3D|DRAWING[2]?)(?=$|\s)',
-  name: keyword.gdl.nongeo.properties}
-- {match: '(?i)(?<=^|\s)(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT|STYLE|OUTFIELD|INFIELD(\{[2-3]\})?|RADIOBUTTON|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?))(?=$|\s)',
-  name: keyword.gdl.nongeo.ui}
-- {match: '(?!)(?<=^|\s)(MIGRATIONWARNING|NEWPARAMETER|SETMIGRATIONGUID|DELETED_PAR_VALUE|STORED_PAR_VALUE)',
-  name: keyword.gdl.nongeo.migration}
-- {match: '(?i)(?<=^|\s)(PRINT|OPEN|INPUT|OUTPUT|CLOSE|CALL|FILE_DEPENDENCE)(?=$|\s|\()',
-  name: keyword.gdl.extern}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(APPLICATION_QUERY|LIBRARYGLOBAL)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#|\()',
-  name: keyword.gdl.request}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(GLOB_(SCRIPT_TYPE|CONTEXT|SCALE|NORTH_DIR|DRAWING_BGD_PEN|MODPAR_NAME|WORLD_ORIGO_OFFSET_[XY]|FRAME_NR|(FIRST|LAST)_FRAME|(EYE|TARG)POS_[XYZ]|SUN_A(ZIMUTH|LTITUDE)|UI_BUTTON_ID|CUTPLANES_INFO|STRUCTURE_DISPLAY))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.general}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(GLOB_([HC]STORY_(ELEV|HEIGHT)|CH_STORY_DIST))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.story}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(GLOB_(LAYER|ID|INTGUID|ELEVATION|ELEM_TYPE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.elementparameters}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(SYMB_((LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_[XYZ]|ROTANGLE|MIRRORED|[ABZ]+_SIZE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.objectparameters}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(WIDO_(REVEAL_(ON|SIDE)|SILL(_HEIGHT)?|(R|OPR)SIDE_SILL_HEIGHT|(RIGHT|LEFT)_JAMB|(THRES|HEAD)_DEPTH|((R|OPR)SIDE_)?HEAD_HEIGHT|(FRAME|SUBFL)_THICKNESS|POSITION|ORIENTATION|MARKER_TXT|PREFIX|CUSTOM_MARKER|ORIG_DIST|PWALL_INSET|(N_)?(R|OPR)SIDE_(WIDTH|HEIGHT|SURF)|VOLUME|GROSS_(SURFACE|VOLUME)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.window}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(LABEL_(POSITION|CUSTOM_ARROW|ARROW_PEN|FONT_(NAME|STYLE)|TEXT_(SIZE|PEN|ALIGN|LEADING|WIDTH_FACT)|FRAME_ON|ANCHOR_POS|ROTANGLE|CHARSPACE_FACT))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.label}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(WALL_(RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|COMPS_NAME|SKINS_(PARAMS|NUMBER)|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB]|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|(GROSS_)?VOLUME|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.wall}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(COLU_(CORE(_(X|Y|FILL(_PEN)?|FBGD_PEN|((GROSS|TOP|BOT)_)?SURF|(GROSS_)?VOL|GROSS_TOPBOT_SURF))?|(VENEER_(FILL(_PEN)?|FBGD_PEN|WIDTH|SURF|VOL|(TOP|BOT)_SURF|GROSS_((TOPBOT_)?SURF|VOL)))|((MIN|MAX)_)?HEIGHT|DIM[12]|MAT|LINETYPE|(SECT|VIEW)_PEN|PERIMETER|AREA|(GROSS_)?VOLUME))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.column}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(BEAM_(THICKNESS|HEIGHT|REFLINE_OFFSET|PRIORITY|MAT_(RIGHT|LEFT|TOP|BOTTOM|END)|(OUTLINE|AXES)_LINETYPE|FILL(_PEN)?|(SECT|FBGD)_PEN|DIRECTION|POSITION|LENGTH_(RIGHT|LEFT)|(RIGHT|LEFT|TOP|BOTTOM|END)_SURF|VOLUME|HOLE(S_(NR|SURF|VOLUME)|_EDGE_SURF)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.beam}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(SLAB_(THICKNESS|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS)|(GROSS_)?(TOP|BOT|EDGE)_SURF|PERIMETER|(GROSS_)?VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.slab}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(ROOF_(THICKNESS|ANGLE|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS)|(GROSS_)?(TOP|BOTTOM|EDGE)_SURF|PERIMETER|(GROSS_)?VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.roof}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(FILL_(LINETYPE|FILL(_PEN)?|PEN|FBGD_PEN|SURF|PERIMETER|SEGMENT_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.fill}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(MESH_((LINE)?TYPE|BASE_OFFSET|(USEREDGE|TRIEDGE|SECT|VIEW)_PEN|MAT_(TOP|EDGE|BOTT)|FILL(_PEN)?|FBGD_PEN|(TOP|EDGE|BOTTOM)_SURF|PERIMETER|VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.mesh}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(LIGHT_(ON|RED|GREEN|BLUE|INTENSITY))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.light}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)((GLOB_((ISSUE|CHANGE)_SCHEME))|LAYOUT_((REVISION|CHANGE)_HISTORY|CURRENTVERSION_OPEN))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.layout}
-- {match: '(?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(GLOB_USER_([1-9]\b|[1][0-9]|20))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)',
-  name: keyword.gdl.globals.user}
-- {match: '(?i)(?<=")((BLUE|RED|GREEN)_OF_(PEN|MATERIAL)|GDL_VERSION|MODEL_SIZE|PEN_OF_RGB|PROGRAM|SERIAL_NUMBER|ANCESTRY_INFO|(ANGULAR_(LENGTH_)?|AREA_|RADIAL_|SILL_HEIGHT_)DIMENSION|(ASSOCEL|MATCHING)_PROPERTIES|ASSOCLP_(NAME|PARVALUE)|CALC_(ANGLE|AREA|LENGTH|VOLUME)_UNIT|CLEAN_INTERSECTIONS|CONSTR_FILLS_DISPLAY|CUSTOM_AUTO_LABEL|DATETIME|DOOR_SHOW_DIM|(ELEVATION|LEVEL|LINEAR)_DIMENSION|FONTNAMES_LIST|HEIGHT_OF_STYLE|HOME(_STORY|DB_INFO)|ID_OF_MAIN|INTERNAL_ID|NAME_OF_(FILL|LINE_TYPE|LISTED|MACRO|MAIN|MATERIAL|PLAN|PROGRAM|STYLE)|REFERENCE_DATA_LEVEL|RGB_OF_(MATERIAL|PEN)|STORY(_INFO)?|(STYLE|TEXTBLOCK)_INFO|WINDOW_(DOOR_(DIMENSION|SHOW_DIM|ZONE_RELEV)|SHOW_DIM)|WORKING_(ANGLE|LENGTH)_UNIT|ZONE_(CATEGORY|COLUS_AREA|RELATIONS)|MATERIAL_INFO)(?="|\s)',
-  name: keyword.gdl.globals.request}
-- {match: '(?i)(?<=^|\s)([ABCDEFG]|ZZYZX|ac_\w+|ROOM_([a-z]|_)+)(?=$|\s|=)', name: keyword.gdl.optionalparameters}
-- {match: '(?i)(\btrue\b)', name: constant.language.boolean.true.gdl}
-- {match: '(?i)(\bfalse\b)', name: constant.language.boolean.false.gdl}
 scopeName: source.gdl
+fileTypes: [gsm, gdl]
 uuid: 3e79e12f-e30e-467c-9c74-2e92e2a183cd
+
+patterns:
+- match: (?i)\b(\!NOCONTOUR|BAS|BOX|CONT|FILLA|FILTER|GDLBIN|HIP_ROOFS|(LIN|NOD)(E)?|ORIGO|PARS|PAUSE|PLOTMAKER|PLOTTER|RECT_|SFLINE|TET(RA)?|TRI|UI_(CANCEL|OK)|VOCA|WALL_)\b
+  name: invalid.deprecated.gdl
+
+- begin: '!'
+  end: $
+  name: comment.line.gdl
+
+- match: ("(?:[^"\\]|\\.)*"|''(?:[^''\\]|\\.)*'')
+  name: string.gdl
+
+- match: (?i)(\b[0-9]*:)(?=$|\s)
+  name: entity.name.function.gdl
+
+- match: (?i)(\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)|(?<=^|\s)(MOD|%|AND|&|OR|\||EXOR|\@|NOT)(?=$|\s|\()
+  name: keyword.operator.gdl
+
+- match: (?i)(?<=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|ENDWHILE|REPEAT|UNTIL|IF|THEN|ELSE|ENDIF|GOTO|GOSUB|RETURN|END|EXIT|BREAKPOINT)(?=$|\s)
+  name: keyword.control.flow.gdl
+
+- match: (?i)(?<=^|\s)(ADD[2XYZ]?|ROT[2XYZ]?|MUL[2XYZ]?|XFORM|DEL(\sTOP)?)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.transform
+
+- match: (?i)(?<=^|\s)(ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(?=$|\s|\()
+  name: keyword.other.special-method.gdl.functions
+
+- match: (?i)(?<=^|\s)((LINE|RECT|ARC|CIRCLE|WALLINE|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-5]\})?)?))(?=$|\s)
+  name: keyword.gdl.shape.2D
+
+- match: (?i)(?<=^|\s)(?<=^|\s)((TEXT|RICHTEXT)2)(?=$|\s)
+  name: keyword.gdl.text.2D.text
+
+- match: (?i)(?<=^|\s)(BLOCK|CYLIND|CONE|SPHERE|ELLIPS|ELBOW|ARMC|ARME)(?=$|\s)
+  name: keyword.gdl.shape.3D.basic
+
+- match: (?i)(?<=^|\s)((PLANE|POLY)(_?)|ARC|CIRCLE|LIN_|RECT)(?=$|\s)
+  name: keyword.gdl.shape.3D.planar
+
+- match: (?i)(?<=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{[23]\})?|[CB]WALL_|XWALL_(\{[23]\})?|BEAM|MESH|POLYROOF(\{[23]\})?)(?=$|\s)
+  name: keyword.gdl.shape.3D.complex
+
+- match: (?i)(?<=^|\s)(BASE|BODY|COOR|EDGE|PGON|PIPG|TEVE|VECT|VERT)(?=$|\s)
+  name: keyword.gdl.shape.3D.primitive
+
+- match: (?i)(?<=^|\s)(PRISM_?|[BFH]PRISM_|[CS]PRISM_(\{[23]\})?)(?=$|\s)
+  name: keyword.gdl.shape.3D.prisms
+
+- match: (?i)(?<=^|\s)(PYRAMID|RULED(\{2\})?|EXTRUDE|SWEEP|TUBE[A]?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{2\})?|REVOLVEDSHELLANGULAR(\{2\})?)(?=$|\s)
+  name: keyword.gdl.shape.3D.poly
+
+- match: (?i)(?<=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM|SHAPE)|WALL(HOLE|NICHE))(?=$|\s)
+  name: keyword.gdl.shape.3D.cut
+
+- match: (?i)(?<=^|\s)((ADD|ISECT|SUB|PLACE|KILL)?(GROUP)|SWEEPGROUP(\{2\})?|ISECTLINES|CREATE_GROUP_MAT)(?=$|\s)
+  name: keyword.gdl.shape.3D.seo
+
+- match: (?i)(?<=^|\s)(TEXT|RICHTEXT)(?=$|\s)
+  name: keyword.gdl.shape.3D.text
+
+- match: (?i)(?<=^|\s)(LIGHT|PICTURE|BINARY)(?=$|\s)
+  name: keyword.gdl.shape.3D.other
+
+- match: (?i)(?<=^|\s)(FRAGMENT[2]?|PROJECT2(\{[2-3]\})?|DRAWING(2|3(\{[2-3]\})?))(?=$|\s)
+  name: keyword.gdl.symbol
+
+- match: (?i)(?<=^|\s)(HOTSPOT[2]?|HOTLINE[2]?|HOTARC[2]?)(?=$|\s)
+  name: keyword.gdl.hotedits
+
+- match: (?i)(?<=^|\s)(DEFINE|SET|BASED_ON)(?=\s)
+  name: storage.type.function.gdl
+
+- match: (?i)\b(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|MATERIAL|TEXTURE|STYLE(\{2\})?|PARAGRAPH|TEXTBLOCK|ADDITIONAL_DATA|SECT_(FILL|ATTRS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: support.type.gdl.attribute
+
+- match: (?i)\b(SOLID|SURFACE|WIRE)\b
+  name: support.other.variable.gdl.model
+
+- match: (?i)(?<=\s|,)(ON|OFF|AUTO)(?=$|\s|,)
+  name: support.other.variable.gdl.shadow
+
+- match: (?i)(?<=^|\s)(VALUES(\{2\})?|PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)
+  name: keyword.gdl.nongeo.parameters
+
+- match: (?i)(?<=^|\s)(COMPONENT|DESCRIPTOR|BINARYPROP|DATABASE_SET|POSITION|REF_(COMPONENT|DESCRIPTOR)|(SURFACE|VOLUME)3D|DRAWING[2]?)(?=$|\s)
+  name: keyword.gdl.nongeo.properties
+
+- match: (?i)(?<=^|\s)(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT|STYLE|OUTFIELD|INFIELD(\{[2-3]\})?|RADIOBUTTON|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?))(?=$|\s)
+  name: keyword.gdl.nongeo.ui
+
+- match: (?!)(?<=^|\s)(MIGRATIONWARNING|NEWPARAMETER|SETMIGRATIONGUID|DELETED_PAR_VALUE|STORED_PAR_VALUE)
+  name: keyword.gdl.nongeo.migration
+
+- match: (?i)(?<=^|\s)(PRINT|OPEN|INPUT|OUTPUT|CLOSE|CALL|FILE_DEPENDENCE)(?=$|\s|\()
+  name: keyword.gdl.extern
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(APPLICATION_QUERY|LIBRARYGLOBAL)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#|\()
+  name: keyword.gdl.request
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(GLOB_(SCRIPT_TYPE|CONTEXT|SCALE|NORTH_DIR|DRAWING_BGD_PEN|MODPAR_NAME|WORLD_ORIGO_OFFSET_[XY]|FRAME_NR|(FIRST|LAST)_FRAME|(EYE|TARG)POS_[XYZ]|SUN_A(ZIMUTH|LTITUDE)|UI_BUTTON_ID|CUTPLANES_INFO|STRUCTURE_DISPLAY))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.general
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(GLOB_([HC]STORY_(ELEV|HEIGHT)|CH_STORY_DIST))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.story
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(GLOB_(LAYER|ID|INTGUID|ELEVATION|ELEM_TYPE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.elementparameters
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(SYMB_((LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_[XYZ]|ROTANGLE|MIRRORED|[ABZ]+_SIZE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.objectparameters
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(WIDO_(REVEAL_(ON|SIDE)|SILL(_HEIGHT)?|(R|OPR)SIDE_SILL_HEIGHT|(RIGHT|LEFT)_JAMB|(THRES|HEAD)_DEPTH|((R|OPR)SIDE_)?HEAD_HEIGHT|(FRAME|SUBFL)_THICKNESS|POSITION|ORIENTATION|MARKER_TXT|PREFIX|CUSTOM_MARKER|ORIG_DIST|PWALL_INSET|(N_)?(R|OPR)SIDE_(WIDTH|HEIGHT|SURF)|VOLUME|GROSS_(SURFACE|VOLUME)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.window
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(LABEL_(POSITION|CUSTOM_ARROW|ARROW_PEN|FONT_(NAME|STYLE)|TEXT_(SIZE|PEN|ALIGN|LEADING|WIDTH_FACT)|FRAME_ON|ANCHOR_POS|ROTANGLE|CHARSPACE_FACT))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.label
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(WALL_(RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|COMPS_NAME|SKINS_(PARAMS|NUMBER)|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB]|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|(GROSS_)?VOLUME|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.wall
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(COLU_(CORE(_(X|Y|FILL(_PEN)?|FBGD_PEN|((GROSS|TOP|BOT)_)?SURF|(GROSS_)?VOL|GROSS_TOPBOT_SURF))?|(VENEER_(FILL(_PEN)?|FBGD_PEN|WIDTH|SURF|VOL|(TOP|BOT)_SURF|GROSS_((TOPBOT_)?SURF|VOL)))|((MIN|MAX)_)?HEIGHT|DIM[12]|MAT|LINETYPE|(SECT|VIEW)_PEN|PERIMETER|AREA|(GROSS_)?VOLUME))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.column
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(BEAM_(THICKNESS|HEIGHT|REFLINE_OFFSET|PRIORITY|MAT_(RIGHT|LEFT|TOP|BOTTOM|END)|(OUTLINE|AXES)_LINETYPE|FILL(_PEN)?|(SECT|FBGD)_PEN|DIRECTION|POSITION|LENGTH_(RIGHT|LEFT)|(RIGHT|LEFT|TOP|BOTTOM|END)_SURF|VOLUME|HOLE(S_(NR|SURF|VOLUME)|_EDGE_SURF)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.beam
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(SLAB_(THICKNESS|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS)|(GROSS_)?(TOP|BOT|EDGE)_SURF|PERIMETER|(GROSS_)?VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.slab
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(ROOF_(THICKNESS|ANGLE|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS)|(GROSS_)?(TOP|BOTTOM|EDGE)_SURF|PERIMETER|(GROSS_)?VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.roof
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(FILL_(LINETYPE|FILL(_PEN)?|PEN|FBGD_PEN|SURF|PERIMETER|SEGMENT_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.fill
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(MESH_((LINE)?TYPE|BASE_OFFSET|(USEREDGE|TRIEDGE|SECT|VIEW)_PEN|MAT_(TOP|EDGE|BOTT)|FILL(_PEN)?|FBGD_PEN|(TOP|EDGE|BOTTOM)_SURF|PERIMETER|VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.mesh
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(LIGHT_(ON|RED|GREEN|BLUE|INTENSITY))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.light
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)((GLOB_((ISSUE|CHANGE)_SCHEME))|LAYOUT_((REVISION|CHANGE)_HISTORY|CURRENTVERSION_OPEN))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.layout
+
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(GLOB_USER_([1-9]\b|[1][0-9]|20))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+  name: keyword.gdl.globals.user
+
+- match: (?i)(?<=")((BLUE|RED|GREEN)_OF_(PEN|MATERIAL)|GDL_VERSION|MODEL_SIZE|PEN_OF_RGB|PROGRAM|SERIAL_NUMBER|ANCESTRY_INFO|(ANGULAR_(LENGTH_)?|AREA_|RADIAL_|SILL_HEIGHT_)DIMENSION|(ASSOCEL|MATCHING)_PROPERTIES|ASSOCLP_(NAME|PARVALUE)|CALC_(ANGLE|AREA|LENGTH|VOLUME)_UNIT|CLEAN_INTERSECTIONS|CONSTR_FILLS_DISPLAY|CUSTOM_AUTO_LABEL|DATETIME|DOOR_SHOW_DIM|(ELEVATION|LEVEL|LINEAR)_DIMENSION|FONTNAMES_LIST|HEIGHT_OF_STYLE|HOME(_STORY|DB_INFO)|ID_OF_MAIN|INTERNAL_ID|NAME_OF_(FILL|LINE_TYPE|LISTED|MACRO|MAIN|MATERIAL|PLAN|PROGRAM|STYLE)|REFERENCE_DATA_LEVEL|RGB_OF_(MATERIAL|PEN)|STORY(_INFO)?|(STYLE|TEXTBLOCK)_INFO|WINDOW_(DOOR_(DIMENSION|SHOW_DIM|ZONE_RELEV)|SHOW_DIM)|WORKING_(ANGLE|LENGTH)_UNIT|ZONE_(CATEGORY|COLUS_AREA|RELATIONS)|MATERIAL_INFO)(?="|\s)
+  name: keyword.gdl.globals.request
+
+- match: (?i)(?<=^|\s)([ABCDEFG]|ZZYZX|ac_\w+|ROOM_([a-z]|_)+)(?=$|\s|=)
+  name: keyword.gdl.optionalparameters
+
+- match: (?i)(\btrue\b)
+  name: constant.language.boolean.true.gdl
+
+- match: (?i)(\bfalse\b)
+  name: constant.language.boolean.false.gdl
+
