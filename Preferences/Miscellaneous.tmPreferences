@@ -9,7 +9,7 @@
 	<key>settings</key>
 	<dict>
 		<key>decreaseIndentPattern</key>
-		<string>(?i)^\s*(ENDIF|RETURN|NEXT|ENDWHILE|UNTIL|ELSE)\s*.*</string>
+		<string>(?i)(^\s*(END|ENDIF|RETURN|NEXT|ENDWHILE|UNTIL))</string>
 		<key>increaseIndentPattern</key>
 		<string>(?i)(^\s*(IF)\b.*\sTHEN$)|(^\s*(ELSE)\s*$)|(^\s*(FOR|DO|WHILE|REPEAT)\b.*$)</string>
 		<key>shellVariables</key>
