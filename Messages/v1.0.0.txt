@@ -1,13 +1,15 @@
-Thanks for installing the GDL Sublime Text package!
+Thanks for installing the Sublime Text package for GDL!
 
 
 What's new ???
 ===============
 
-• BUGFIX for github issue #1 (*)
-Now everything should work fine again. Even on ST 2. (atleast here on my Windows machine)
+• we have auto completion now
+[you may have to force it with `ctrl + space`!]
 
-[(*) aka: the issue everyone expected... I'm sorry!]
+• we have snippets!
+[they are in the "Snippets" folder, just make your own aswell, or edit them :)]
+
 
 
 How to use
@@ -31,13 +33,11 @@ Copy this into the new file and save:
 GDL color scheme
 ----------------
 
-This color scheme is made especially for a comfortable GDL coding environment in Sublime Text.  
-If you like it: I have also a more complete color scheme aligned with a beatiful and minimal UI theme.
+This color scheme is especially made for a comfortable working GDL coding environment in Sublime Text.  
+If you like it: I have a also a more complete color scheme aligned with a beatiful an minimal UI theme.
 You can find it here:	https://github.com/runxel/hitoshi
-Give it a try!
 
 
 THANKS
 ---------------
 - to Jochen Suehlo for his help
-- to JS and Frank Beister for selfgdl.de [this project would not possible without this great resource!]
