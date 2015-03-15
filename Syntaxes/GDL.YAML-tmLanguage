@@ -13,7 +13,7 @@ patterns:
   end: $
   name: comment.line.gdl
 
-- match: ("(?:[^"\\]|\\.)*"|''(?:[^''\\]|\\.)*'')
+- match: ("(?:[^"\\]|\\.)*"|'(?:[^''\\]|\\.)*')
   name: string.gdl
 
 - match: (?i)(\b[0-9]*:)(?=$|\s)
