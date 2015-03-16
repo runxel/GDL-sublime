@@ -7,9 +7,9 @@ GDL means 'Geometric Description Language'. [ArchiCAD](http://www.graphisoft.com
 Many users of ArchiCAD are making their own library parts or even publish them on [BIMComponents](https://bimcomponents.com/). But they are all tied to the – unfortunately horrible – build-in object editor which is stuck in the 80's or so. It doesn't even have line numbers!
 
 But the rescue is here! _(at least something like that)_  
-The purpose of this package is to comfortably write code in the best editor of the galaxy – Sublime Text! ;)
+The purpose of this package is to give you the chance to comfortably write code in the best editor of the galaxy – Sublime Text!
 
-This package provides syntax highlighting together with a well aligned color and also auto completion. (Can be forced by pressing `ctrl + space`)
+This package provides **syntax highlighting** together with a well aligned **color scheme** and also **auto completion**. (Can be forced by pressing `ctrl + space`)
 
 ## Installation
 
@@ -46,8 +46,10 @@ Also some Snippets are now on board. Try it out! Type in: `comline` and then pre
 Voilá! There's a divider.  
 `! ---------------------------------------------------------------------- !`
 
+I hardly encourage you to either modify the snippets, so they will suit your needs; or to make new ones.
+
 
 ## Getting Started With Sublime Text
 New to Sublime? Then I can recommend the excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
 
-## TO DO LIST
+## ~~TO DO LIST~~
