@@ -171,6 +171,12 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>(?i)\b(UI_(NEXT|PREV))\b</string>
+			<key>name</key>
+			<string>support.other.variable.gdl.ui</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>(?i)(?&lt;=^|\s)(VALUES(\{2\})?|PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.nongeo.parameters</string>

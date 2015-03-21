@@ -85,6 +85,9 @@ patterns:
 - match: (?i)(?<=\s|,)(ON|OFF|AUTO)(?=$|\s|,)
   name: support.other.variable.gdl.shadow
 
+- match: (?i)\b(UI_(NEXT|PREV))\b
+  name: support.other.variable.gdl.ui
+
 - match: (?i)(?<=^|\s)(VALUES(\{2\})?|PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)
   name: keyword.gdl.nongeo.parameters
 
