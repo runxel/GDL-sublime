@@ -315,6 +315,12 @@
 		</dict>
 		<dict>
 			<key>match</key>
+			<string>(?i)(\b)(PUT|GET|USE|NSP)(\b)</string>
+			<key>name</key>
+			<string>keyword.gdl.buffer</string>
+		</dict>
+		<dict>
+			<key>match</key>
 			<string>(?i)(\btrue\b)</string>
 			<key>name</key>
 			<string>constant.language.boolean.true.gdl</string>

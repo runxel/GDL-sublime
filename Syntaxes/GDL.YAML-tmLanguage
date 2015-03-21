@@ -157,6 +157,9 @@ patterns:
 - match: (?i)(?<=^|\s)([ABCDEFG]|ZZYZX|ac_\w+|ROOM_([a-z]|_)+)(?=$|\s|=)
   name: keyword.gdl.optionalparameters
 
+- match: (?i)(\b)(PUT|GET|USE|NSP)(\b)
+  name: keyword.gdl.buffer
+
 - match: (?i)(\btrue\b)
   name: constant.language.boolean.true.gdl
 
