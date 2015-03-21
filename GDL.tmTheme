@@ -61,7 +61,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ea7979</string>
+				<string>#d2999a</string>
 			</dict>
 		</dict>
 		<dict>
@@ -146,7 +146,7 @@
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#d2999a</string>
+				<string>#ea7979</string>
 			</dict>
 		</dict>
 		<dict>
@@ -208,9 +208,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Entity</string>
+			<string>Globals</string>
 			<key>scope</key>
-			<string>entity.other.inherited-class</string>
+			<string>keyword.gdl.globals</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
