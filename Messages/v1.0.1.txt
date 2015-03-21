@@ -4,9 +4,10 @@ Thanks for installing the GDL Sublime Text package!
 What's new ???
 ===============
 
-• UI_NEXT and UI_PREV are now onboard
-• colors changed slightly
-• also functions in functions are styled correctly now
+• BUGFIX for github issue #1 (*)
+Now everything should work fine again. Even on ST 2. (atleast here on my Windows machine)
+
+[(*) aka: the issue everyone expected... I'm sorry!]
 
 
 How to use
@@ -39,4 +40,4 @@ Give it a try!
 THANKS
 ---------------
 - to Jochen Suehlo for his help
-- to JS and Frank Beister for selfgdl.de [this project would not be possible without this great resource!]
+- to JS and Frank Beister for selfgdl.de [this project would not possible without this great resource!]

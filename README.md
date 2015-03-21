@@ -14,7 +14,7 @@ This package provides **syntax highlighting** together with a well aligned **col
 ## Installation
 
 ### Using Sublime Package Control
-*recommended*  
+_recommended_  
 If you are using [Sublime Package Control](http://wbond.net/sublime_packages/package_control), you can easily install the bundle via the `Sublime Text -> Preferences -> Package Control: Install Package` menu item.
 
 ### Using Git
@@ -36,9 +36,11 @@ But wait! There's more!
 Activate a well aligned color scheme by modifying the syntax specific preferences file, which you can find using the menu item `Preferences -> Settings - More -> Syntax Specific – User`, after you set the syntax to `GDL` for the current file.
 
 Copy this into the new file and save:
-`{  
+```json
+{  
 	"color_scheme": "Packages/GDL/GDL.tmTheme"  
-}`
+}
+```
 
 ### Auto completion + Snippets
 You may have to force the auto completion via `ctrl + space`.  
