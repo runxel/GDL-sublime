@@ -1,8 +1,8 @@
 {
-	"install": "messages/install.txt",
-	"v1.0.1": "messages/v1.0.1.txt",
-	"v1.0.0": "messages/v1.0.0.txt",
-	"v0.3.0": "messages/v0.3.0.txt",
-	"v0.2.2": "messages/v0.2.2.txt",
-	"v0.2.0": "messages/v0.2.0.txt"
+	"install": "Messages/install.txt",
+	"v1.0.1": "Messages/v1.0.1.txt",
+	"v1.0.0": "Messages/v1.0.0.txt",
+	"v0.3.0": "Messages/v0.3.0.txt",
+	"v0.2.2": "Messages/v0.2.2.txt",
+	"v0.2.0": "Messages/v0.2.0.txt"
 }
