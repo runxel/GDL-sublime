@@ -19,7 +19,7 @@ patterns:
 - match: (?i)(\b[0-9]*:)(?=$|\s)
   name: entity.name.function.gdl
 
-- match: (?i)(\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)|(?<=^|\s)(MOD|%|AND|&|OR|\||EXOR|\@|NOT)(?=$|\s|\()
+- match: (?i)(\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)|(?<=^|\s)(MOD|%|AND|&|OR|\||EXOR|\@)(?=$|\s|\()
   name: keyword.operator.gdl
 
 - match: (?i)(?<=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|ENDWHILE|REPEAT|UNTIL|IF|THEN|ELSE|ENDIF|GOTO|GOSUB|RETURN|END|EXIT|BREAKPOINT)(?=$|\s)
@@ -28,7 +28,7 @@ patterns:
 - match: (?i)(?<=^|\s)(ADD[2XYZ]?|ROT[2XYZ]?|MUL[2XYZ]?|XFORM|DEL(\sTOP)?)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
   name: keyword.gdl.transform
 
-- match: (?i)(\b)(ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\b)
+- match: (?i)(\b)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\b)
   name: keyword.other.special-method.gdl.functions
 
 - match: (?i)(?<=^|\s)((LINE|RECT|ARC|CIRCLE|WALLINE|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-5]\})?)?))(?=$|\s)

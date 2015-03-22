@@ -39,7 +39,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)|(?&lt;=^|\s)(MOD|%|AND|&amp;|OR|\||EXOR|\@|NOT)(?=$|\s|\()</string>
+			<string>(?i)(\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)|(?&lt;=^|\s)(MOD|%|AND|&amp;|OR|\||EXOR|\@)(?=$|\s|\()</string>
 			<key>name</key>
 			<string>keyword.operator.gdl</string>
 		</dict>
@@ -57,7 +57,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(\b)(ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\b)</string>
+			<string>(?i)(\b)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\b)</string>
 			<key>name</key>
 			<string>keyword.other.special-method.gdl.functions</string>
 		</dict>
