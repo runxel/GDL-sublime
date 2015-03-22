@@ -9,7 +9,7 @@ Many users of ArchiCAD are making their own library parts or even publish them o
 But the rescue is here! _(at least something like that)_  
 The purpose of this package is to give you the chance to comfortably write code in the best editor of the galaxy – Sublime Text!
 
-This package provides **syntax highlighting** together with a well aligned **color scheme** and also **auto completion**. (Can be forced by pressing `ctrl + space`)
+This package provides **syntax highlighting** together with a well aligned **color scheme** and also **auto completion**. (Can be forced by pressing <kbd>ctrl</kbd> + <kbd>space</kbd>)
 
 ## Installation
 
@@ -54,7 +54,7 @@ Copy _one_ of these into the new file and save:
 ```
 
 ### Auto completion + Snippets
-You may have to force the auto completion via `ctrl + space`.  
+You may have to force the auto completion via <kbd>ctrl</kbd> + <kbd>space</kbd>.  
 Also some Snippets are now on board. Try it out! Type in: `comline` and then press TAB.  
 Voilá! There's a divider.  
 `! ---------------------------------------------------------------------- !`
