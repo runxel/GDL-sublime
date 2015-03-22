@@ -35,10 +35,21 @@ From now on you can select `GDL` as the current language in the bottom right cor
 But wait! There's more!
 Activate a well aligned color scheme by modifying the syntax specific preferences file, which you can find using the menu item `Preferences -> Settings - More -> Syntax Specific – User`, after you set the syntax to `GDL` for the current file.
 
-Copy this into the new file and save:
+There a 2 different color schemes at choice: A dark and light one. _I muchly recommend the dark one for fatigue-proof coding!_
+
+Copy _one_ of these into the new file and save:
+
+#### **Dark:**
 ```json
 {  
-	"color_scheme": "Packages/GDL/GDL.tmTheme"  
+	"color_scheme": "Packages/GDL/GDL-dark.tmTheme"  
+}
+```
+
+#### **Light:**
+```json
+{  
+	"color_scheme": "Packages/GDL/GDL-light.tmTheme"  
 }
 ```
 
