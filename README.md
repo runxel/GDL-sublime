@@ -55,7 +55,7 @@ Copy _one_ of these into the new file and save:
 
 ### Auto completion + Snippets
 You may have to force the auto completion via <kbd>ctrl</kbd> + <kbd>space</kbd>.  
-Also some Snippets are now on board. Try it out! Type in: `comline` and then press TAB.  
+Also some Snippets are now on board. Try it out! Type in: `comline` and then press <kbd>TAB ↹</kbd>.  
 Voilá! There's a divider.  
 `! ---------------------------------------------------------------------- !`
 
