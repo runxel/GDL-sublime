@@ -61,7 +61,7 @@ patterns:
 - match: (?i)(?<=^|\s)(PYRAMID|RULED(\{2\})?|EXTRUDE|SWEEP|TUBE[A]?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{2\})?|REVOLVEDSHELLANGULAR(\{2\})?)(?=$|\s)
   name: keyword.gdl.shape.3D.poly
 
-- match: (?i)(?<=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM|SHAPE)|WALL(HOLE|NICHE))(?=$|\s)
+- match: (?i)(?<=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)
   name: keyword.gdl.shape.3D.cut
 
 - match: (?i)(?<=^|\s)((ADD|ISECT|SUB|PLACE|KILL)?(GROUP)|SWEEPGROUP(\{2\})?|ISECTLINES|CREATE_GROUP_MAT)(?=$|\s)

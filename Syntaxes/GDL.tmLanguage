@@ -111,7 +111,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM|SHAPE)|WALL(HOLE|NICHE))(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.cut</string>
 		</dict>
