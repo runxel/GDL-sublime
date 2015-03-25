@@ -4,7 +4,8 @@ Thanks for installing the GDL Sublime Text package!
 What's new ???
 ===============
 
-• "CUTEND" was missing, this is fixed now
+• "NOT" is now a function
+• we have now two different flavored color schemes: dark and light
 
 
 How to use
