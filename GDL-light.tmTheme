@@ -16,7 +16,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#fbfbfb</string>
+				<string>#f8f8f8</string>
 				<key>caret</key>
 				<string>#8b8b8b</string>
 				<key>foreground</key>
@@ -85,7 +85,20 @@
 				<key>foreground</key>
 				<string>#3a9fad</string>
 				<key>fontStyle</key>
-				<string> underline</string>
+				<string>underline</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Jump labels</string>
+			<key>scope</key>
+			<string>entity.name.function.gdl.jump</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#40bdbd</string>
+				<key>background</key>
+				<string>#e7e7e2</string>
 			</dict>
 		</dict>
 		<dict>
@@ -183,20 +196,6 @@
 				<string></string>
 				<key>foreground</key>
 				<string>#ffffff</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string> &gt; JSON---------------</string>
-			<key>settings</key>
-			<dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string> &gt; Markdown-------------</string>
-			<key>settings</key>
-			<dict>
 			</dict>
 		</dict>
 		<dict>

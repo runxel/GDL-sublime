@@ -88,6 +88,19 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Jump labels</string>
+			<key>scope</key>
+			<string>entity.name.function.gdl.jump</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#40bdbd</string>
+				<key>background</key>
+				<string>#444439</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Constant</string>
 			<key>scope</key>
 			<string>constant.numeric, constant.language</string>
@@ -177,20 +190,6 @@
 				<string></string>
 				<key>foreground</key>
 				<string>#d7e7db</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string> &gt; JSON---------------</string>
-			<key>settings</key>
-			<dict>
-			</dict>
-		</dict>
-		<dict>
-			<key>name</key>
-			<string> &gt; Markdown-------------</string>
-			<key>settings</key>
-			<dict>
 			</dict>
 		</dict>
 		<dict>
