@@ -33,9 +33,15 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(\b[0-9]*:)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^)([0-9]*:)(?=$|\s)</string>
 			<key>name</key>
 			<string>entity.name.function.gdl</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=GOSUB|GOTO)(\s+)([0-9]*)(?=$|\s|\+|\-|\*{1,2}|\^|\/)</string>
+			<key>name</key>
+			<string>entity.name.function.gdl.jump</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -347,7 +353,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)([ABCDEFG]|ZZYZX|ac_\w+|ROOM_([a-z]|_)+)(?=$|\s|=)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|=|%|&amp;|\||\@)([ABCDEFG]|ZZYZX|ac_\w+|ROOM_([a-z]|_)+)(?=$|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|=|%|&amp;|\||\@)</string>
 			<key>name</key>
 			<string>keyword.gdl.optionalparameters</string>
 		</dict>
