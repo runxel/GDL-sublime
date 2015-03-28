@@ -87,6 +87,10 @@
 					<key>include</key>
 					<string>#functions</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -400,6 +404,10 @@
 				<dict>
 					<key>include</key>
 					<string>#functions</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
 				</dict>
 			</array>
 		</dict>

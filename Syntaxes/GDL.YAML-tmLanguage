@@ -44,6 +44,7 @@ patterns:
       name: keyword.other.special-method.gdl.functions
   patterns:
   - include: '#functions'
+  - include: $self
 
 # 2D
 - match: (?i)(?<=^|\s)((LINE|RECT|ARC|CIRCLE|WALLINE|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-5]\})?)?))(?=$|\s)
@@ -202,4 +203,5 @@ repository:
         name: keyword.other.special-method.gdl.functions
     patterns:
     - include: '#functions'
+    - include: $self
 
