@@ -4,7 +4,7 @@ Thanks for installing the GDL Sublime Text package!
 What's new ???
 ===============
 
-• problem with subroutines fixed
+• function brackets are now styled as well (little bugfix in v1.1.3)
 
 
 How to use
