@@ -32,8 +32,18 @@ patterns:
   name: keyword.gdl.transform
 
 # F U N C T I O N S
-- match: (?i)(\b)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\b)
-  name: keyword.other.special-method.gdl.functions
+- begin: (?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)
+  beginCaptures:
+    '1':
+      name: keyword.other.special-method.gdl.functions
+    '6':
+      name: keyword.other.special-method.gdl.functions
+  end: (\))
+  endCaptures:
+    '0':
+      name: keyword.other.special-method.gdl.functions
+  patterns:
+  - include: '#functions'
 
 # 2D
 - match: (?i)(?<=^|\s)((LINE|RECT|ARC|CIRCLE|WALLINE|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-5]\})?)?))(?=$|\s)
@@ -177,4 +187,19 @@ patterns:
 
 - match: (?i)(\bfalse\b)
   name: constant.language.boolean.false.gdl
+
+repository:
+  functions:
+    begin: (?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)
+    beginCaptures:
+      '1':
+        name: keyword.other.special-method.gdl.functions
+      '6':
+        name: keyword.other.special-method.gdl.functions
+    end: (\))
+    endCaptures:
+      '0':
+        name: keyword.other.special-method.gdl.functions
+    patterns:
+    - include: '#functions'
 

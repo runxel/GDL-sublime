@@ -56,10 +56,38 @@
 			<string>keyword.gdl.transform</string>
 		</dict>
 		<dict>
-			<key>match</key>
-			<string>(?i)(\b)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\b)</string>
-			<key>name</key>
-			<string>keyword.other.special-method.gdl.functions</string>
+			<key>begin</key>
+			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.special-method.gdl.functions</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.special-method.gdl.functions</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.special-method.gdl.functions</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#functions</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -338,6 +366,44 @@
 			<string>constant.language.boolean.false.gdl</string>
 		</dict>
 	</array>
+	<key>repository</key>
+	<dict>
+		<key>functions</key>
+		<dict>
+			<key>begin</key>
+			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.special-method.gdl.functions</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.special-method.gdl.functions</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.special-method.gdl.functions</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#functions</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>scopeName</key>
 	<string>source.gdl</string>
 	<key>uuid</key>
