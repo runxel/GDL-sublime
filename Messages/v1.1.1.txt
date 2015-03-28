@@ -4,7 +4,7 @@ Thanks for installing the GDL Sublime Text package!
 What's new ???
 ===============
 
-• function brackets are now styled as well
+• "CUTEND" was missing, this is fixed now
 
 
 How to use
