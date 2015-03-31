@@ -51,7 +51,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|ENDWHILE|REPEAT|UNTIL|IF|THEN|ELSE|ENDIF|GOTO|GOSUB|RETURN|END|EXIT|BREAKPOINT)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|END(WHILE|IF|GROUP)|REPEAT|UNTIL|IF|THEN|ELSE|GO(TO|SUB)|RETURN|EXIT|BREAKPOINT|GROUP)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.control.flow.gdl</string>
 		</dict>
@@ -155,7 +155,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)((ADD|ISECT|SUB|PLACE|KILL)?(GROUP)|SWEEPGROUP(\{2\})?|ISECTLINES|CREATE_GROUP_MAT)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)((ADD|ISECT|SUB|PLACE|KILL)GROUP|SWEEPGROUP(\{2\})?|ISECTLINES|CREATE_GROUP_MAT)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.seo</string>
 		</dict>

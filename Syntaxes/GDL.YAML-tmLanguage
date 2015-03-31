@@ -29,7 +29,7 @@ patterns:
   name: keyword.operator.gdl
 
 # C O N T R O L S
-- match: (?i)(?<=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|ENDWHILE|REPEAT|UNTIL|IF|THEN|ELSE|ENDIF|GOTO|GOSUB|RETURN|END|EXIT|BREAKPOINT)(?=$|\s)
+- match: (?i)(?<=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|END(WHILE|IF|GROUP)|REPEAT|UNTIL|IF|THEN|ELSE|GO(TO|SUB)|RETURN|EXIT|BREAKPOINT|GROUP)(?=$|\s)
   name: keyword.control.flow.gdl
 
 - match: (?i)(?<=^|\s)(ADD[2XYZ]?|ROT[2XYZ]?|MUL[2XYZ]?|XFORM|DEL(\sTOP)?)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
@@ -79,7 +79,7 @@ patterns:
 - match: (?i)(?<=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)
   name: keyword.gdl.shape.3D.cut
 
-- match: (?i)(?<=^|\s)((ADD|ISECT|SUB|PLACE|KILL)?(GROUP)|SWEEPGROUP(\{2\})?|ISECTLINES|CREATE_GROUP_MAT)(?=$|\s)
+- match: (?i)(?<=^|\s)((ADD|ISECT|SUB|PLACE|KILL)GROUP|SWEEPGROUP(\{2\})?|ISECTLINES|CREATE_GROUP_MAT)(?=$|\s)
   name: keyword.gdl.shape.3D.seo
 
 - match: (?i)(?<=^|\s)(TEXT|RICHTEXT)(?=$|\s)
