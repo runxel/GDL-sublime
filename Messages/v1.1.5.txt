@@ -4,7 +4,7 @@ Thanks for installing the GDL Sublime Text package!
 What's new ???
 ===============
 
-• syntax highlighting in xml enabled
+• problem with GROUP-ENDGROUP fixed
 
 
 How to use
