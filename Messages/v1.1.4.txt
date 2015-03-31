@@ -4,7 +4,7 @@ Thanks for installing the GDL Sublime Text package!
 What's new ???
 ===============
 
-• problem with GROUP-ENDGROUP fixed
+• problem with subroutines fixed
 
 
 How to use
