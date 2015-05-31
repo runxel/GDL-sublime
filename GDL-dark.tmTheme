@@ -251,6 +251,19 @@
 				<string>#e1e1e1</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>name</key>
+			<string>Transform</string>
+			<key>scope</key>
+			<string>keyword.gdl.transform</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#BC4B4B</string>
+			</dict>
+		</dict>
 	</array>
 	<key>uuid</key>
 	<string>F96223EB-1A60-4617-92F3-D24D4F13DB09</string>
