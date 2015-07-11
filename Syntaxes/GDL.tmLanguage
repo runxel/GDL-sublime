@@ -63,7 +63,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
+			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -131,9 +131,15 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(BASE|BODY|COOR|EDGE|PGON|PIPG|TEVE|VECT|VERT)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(BASE|BODY|COOR(\{2\})?|EDGE|PGON(\{[23]\})?|PIPG|TEVE|VECT|VERT(\{2\})?)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.primitive</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s)(POINTCLOUD)(?=$|\s)</string>
+			<key>name</key>
+			<string>keyword.gdl.shape.3D.pointclouds</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -149,13 +155,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM(\{2\})?|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.cut</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)((ADD|ISECT|SUB|PLACE|KILL)GROUP|SWEEPGROUP(\{2\})?|ISECTLINES|CREATE_GROUP_MAT)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)((ADD|ISECT|SUB|PLACE|KILL)GROUP|SWEEPGROUP(\{[2-4]\})?|ISECTLINES|CREATE_GROUP_MAT)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.seo</string>
 		</dict>
@@ -227,7 +233,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT|STYLE|OUTFIELD|INFIELD(\{[2-3]\})?|RADIOBUTTON|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?))(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT|STYLE|OUTFIELD|INFIELD(\{[2-4]\})?|RADIOBUTTON|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?))(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.nongeo.ui</string>
 		</dict>
@@ -251,7 +257,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_(SCRIPT_TYPE|CONTEXT|SCALE|NORTH_DIR|DRAWING_BGD_PEN|MODPAR_NAME|WORLD_ORIGO_OFFSET_[XY]|FRAME_NR|(FIRST|LAST)_FRAME|(EYE|TARG)POS_[XYZ]|SUN_A(ZIMUTH|LTITUDE)|UI_BUTTON_ID|CUTPLANES_INFO|STRUCTURE_DISPLAY))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_(SCRIPT_TYPE|CONTEXT|SCALE|NORTH_DIR|DRAWING_BGD_PEN|MODPAR_NAME|WORLD_ORIGO_OFFSET_[XY]|FRAME_NR|(FIRST|LAST)_FRAME|(EYE|TARG)POS_[XYZ]|SUN_A(ZIMUTH|LTITUDE)|UI_BUTTON_ID|CUTPLANES_INFO|STRUCTURE_DISPLAY|VIEW_TYPE|(PREVIEW|FEEDBACK|SEO_TOOL)_MODE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.general</string>
 		</dict>
@@ -281,7 +287,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(LABEL_(POSITION|CUSTOM_ARROW|ARROW_PEN|FONT_(NAME|STYLE)|TEXT_(SIZE|PEN|ALIGN|LEADING|WIDTH_FACT)|FRAME_ON|ANCHOR_POS|ROTANGLE|CHARSPACE_FACT))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(LABEL_(POSITION|CUSTOM_ARROW|ARROW_PEN|FONT_(NAME|STYLE)|TEXT_(SIZE|PEN|ALIGN|LEADING|WIDTH_FACT|WRAP)|FRAME_(ON|OFFSET)|ANCHOR_POS|ROTANGLE|CHARSPACE_FACT|ALWAYS_READABLE|ASSOC_ELEM_ORIENTATION))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.label</string>
 		</dict>
@@ -347,7 +353,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=")((BLUE|RED|GREEN)_OF_(PEN|MATERIAL)|GDL_VERSION|MODEL_SIZE|PEN_OF_RGB|PROGRAM|SERIAL_NUMBER|ANCESTRY_INFO|(ANGULAR_(LENGTH_)?|AREA_|RADIAL_|SILL_HEIGHT_)DIMENSION|(ASSOCEL|MATCHING)_PROPERTIES|ASSOCLP_(NAME|PARVALUE)|CALC_(ANGLE|AREA|LENGTH|VOLUME)_UNIT|CLEAN_INTERSECTIONS|CONSTR_FILLS_DISPLAY|CUSTOM_AUTO_LABEL|DATETIME|DOOR_SHOW_DIM|(ELEVATION|LEVEL|LINEAR)_DIMENSION|FONTNAMES_LIST|HEIGHT_OF_STYLE|HOME(_STORY|DB_INFO)|ID_OF_MAIN|INTERNAL_ID|NAME_OF_(FILL|LINE_TYPE|LISTED|MACRO|MAIN|MATERIAL|PLAN|PROGRAM|STYLE)|REFERENCE_DATA_LEVEL|RGB_OF_(MATERIAL|PEN)|STORY(_INFO)?|(STYLE|TEXTBLOCK)_INFO|WINDOW_(DOOR_(DIMENSION|SHOW_DIM|ZONE_RELEV)|SHOW_DIM)|WORKING_(ANGLE|LENGTH)_UNIT|ZONE_(CATEGORY|COLUS_AREA|RELATIONS)|MATERIAL_INFO)(?="|\s)</string>
+			<string>(?i)(?&lt;=")((BLUE|RED|GREEN)_OF_(PEN|MATERIAL)|GDL_VERSION|MODEL_SIZE|PEN_OF_RGB|PROGRAM|SERIAL_NUMBER|ANCESTRY_INFO|(ANGULAR_(LENGTH_)?|AREA_|RADIAL_|SILL_HEIGHT_)DIMENSION|(ASSOCEL|MATCHING)_PROPERTIES|ASSOCLP_(NAME|PARVALUE)|CALC_(ANGLE|AREA|LENGTH|VOLUME)_UNIT|CLEAN_INTERSECTIONS|CONSTR_FILLS_DISPLAY|CUSTOM_AUTO_LABEL|DATETIME|DOOR_SHOW_DIM|(ELEVATION|LEVEL|LINEAR)_DIMENSION|FONTNAMES_LIST|HEIGHT_OF_STYLE|HOME(_STORY|DB_INFO)|ID_OF_MAIN|INTERNAL_ID|Full_ID_of_parent|NAME_OF_(FILL|LINE_TYPE|LISTED|MACRO|MAIN|MATERIAL|PLAN|PROGRAM|STYLE)|REFERENCE_DATA_LEVEL|RGB_OF_(MATERIAL|PEN)|STORY(_INFO)?|(STYLE|TEXTBLOCK)_INFO|WINDOW_(DOOR_(DIMENSION|SHOW_DIM|ZONE_RELEV)|SHOW_DIM)|WORKING_(ANGLE|LENGTH)_UNIT|ZONE_(CATEGORY|COLUS_AREA|RELATIONS)|MATERIAL_INFO|COMPONENT_(PROJECTED_AREA|VOLUME))(?="|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.request</string>
 		</dict>
@@ -381,7 +387,7 @@
 		<key>functions</key>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
+			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
