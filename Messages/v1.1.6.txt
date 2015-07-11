@@ -4,7 +4,7 @@ Thanks for installing the GDL Sublime Text package!
 What's new ???
 ===============
 
-• new commands for AC 19 added
+• syntax highlighting in xml enabled
 
 
 How to use
