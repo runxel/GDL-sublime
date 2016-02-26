@@ -51,7 +51,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|END(WHILE|IF|GROUP)|REPEAT|UNTIL|IF|THEN|ELSE|GO(TO|SUB)|RETURN|EXIT|BREAKPOINT|GROUP)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|END(WHILE|IF|GROUP)?|REPEAT|UNTIL|IF|THEN|ELSE|GO(TO|SUB)|RETURN|EXIT|BREAKPOINT|GROUP)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.control.flow.gdl</string>
 		</dict>

@@ -29,7 +29,7 @@ patterns:
   name: keyword.operator.gdl
 
 # C O N T R O L S
-- match: (?i)(?<=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|END(WHILE|IF|GROUP)|REPEAT|UNTIL|IF|THEN|ELSE|GO(TO|SUB)|RETURN|EXIT|BREAKPOINT|GROUP)(?=$|\s)
+- match: (?i)(?<=^|\s)(FOR|TO|STEP|NEXT|DO|WHILE|END(WHILE|IF|GROUP)?|REPEAT|UNTIL|IF|THEN|ELSE|GO(TO|SUB)|RETURN|EXIT|BREAKPOINT|GROUP)(?=$|\s)
   name: keyword.control.flow.gdl
 
 - match: (?i)(?<=^|\s)(ADD[2XYZ]?|ROT[2XYZ]?|MUL[2XYZ]?|XFORM|DEL(\sTOP)?)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
