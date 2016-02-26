@@ -27,21 +27,21 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>("(?:[^"\\]|\\.)*"|'(?:[^''\\]|\\.)*')</string>
-			<key>name</key>
-			<string>string.gdl</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(?i)(?&lt;=^)([0-9]*:)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^)(([0-9]*|("([^"\\]|\\.)*"|'([^''\\]|\\.)*')):)(?=$|\s)</string>
 			<key>name</key>
 			<string>entity.name.function.gdl</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=GOSUB|GOTO)(\s+)([0-9]*)(?=$|\s|\+|\-|\*{1,2}|\^|\/)</string>
+			<string>(?i)(?&lt;=GOSUB|GOTO)(\s+)([0-9]*|("([^"\\]|\\.)*"|'([^''\\]|\\.)*'))(?=$|\s|\+|\-|\*{1,2}|\^|\/)</string>
 			<key>name</key>
 			<string>entity.name.function.gdl.jump</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>("(?:[^"\\]|\\.)*"|'(?:[^''\\]|\\.)*')</string>
+			<key>name</key>
+			<string>string.gdl</string>
 		</dict>
 		<dict>
 			<key>match</key>

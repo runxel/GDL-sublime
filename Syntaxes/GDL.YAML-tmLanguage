@@ -10,20 +10,21 @@ patterns:
 - match: (?i)\b(\!NOCONTOUR|BAS|BOX|CONT|FILLA|FILTER|GDLBIN|HIP_ROOFS|(LIN|NOD)(E)?|ORIGO|PARS|PAUSE|PLOTMAKER|PLOTTER|RECT_|SFLINE|TET(RA)?|TRI|UI_(CANCEL|OK)|VOCA|WALL_)\b
   name: invalid.deprecated.gdl
 
+# COMMENTS
 - begin: '!'
   end: $
   name: comment.line.gdl
 
-- match: ("(?:[^"\\]|\\.)*"|'(?:[^''\\]|\\.)*')
-  name: string.gdl
-
-# Subroutines like 100:
-- match: (?i)(?<=^)([0-9]*:)(?=$|\s)
+# Subroutines like 100:, "whatever":
+- match: (?i)(?<=^)(([0-9]*|("([^"\\]|\\.)*"|'([^''\\]|\\.)*')):)(?=$|\s)
   name: entity.name.function.gdl
 
 # get GOTOs and GOSUBs
-- match: (?i)(?<=GOSUB|GOTO)(\s+)([0-9]*)(?=$|\s|\+|\-|\*{1,2}|\^|\/)
+- match: (?i)(?<=GOSUB|GOTO)(\s+)([0-9]*|("([^"\\]|\\.)*"|'([^''\\]|\\.)*'))(?=$|\s|\+|\-|\*{1,2}|\^|\/)
   name: entity.name.function.gdl.jump
+
+- match: ("(?:[^"\\]|\\.)*"|'(?:[^''\\]|\\.)*')
+  name: string.gdl
 
 - match: (?i)(\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)|(?<=^|\s)(MOD|%|AND|&|OR|\||EXOR|\@)(?=$|\s|\()
   name: keyword.operator.gdl
