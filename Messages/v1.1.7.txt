@@ -4,8 +4,7 @@ Thanks for installing the GDL Sublime Text package!
 What's new ???
 ===============
 
-• wrong highlights are fixed
-• small adjustments of the color scheme
+• new commands for AC 19 added
 
 
 How to use
