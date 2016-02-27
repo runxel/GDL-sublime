@@ -1,4 +1,4 @@
-# GDL-sublime
+# [GDL-sublime](https://github.com/runxel/GDL-sublime)
 A bundle to make GDL available ("available" as in "easy" ;) in [Sublime Text](http://www.sublimetext.com/).
 
 # What is GDL?
