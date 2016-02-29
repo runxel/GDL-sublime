@@ -24,7 +24,7 @@ Go to your Sublime Text `Packages` directory and clone the repository using the 
 `git clone https://github.com/runxel/GDL-sublime "GDL"`
 
 ### Download Manually
-_not recommended – you won't get updates!_
+_not recommended – you won't get updates!_  
 - Download the files using the GitHub .zip download option
 - Unzip the files and rename the folder to 'GDL'
 - Copy the folder to your Sublime Text `Packages` directory e.g. 
