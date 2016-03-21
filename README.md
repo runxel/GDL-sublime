@@ -1,15 +1,15 @@
 # [GDL-sublime](https://github.com/runxel/GDL-sublime)
-A bundle to make GDL available ("available" as in "easy" ;) in [Sublime Text](http://www.sublimetext.com/).
+A bundle to make GDL available in [Sublime Text](http://www.sublimetext.com/).
 
 # What is GDL?
-GDL means 'Geometric Description Language'. [ArchiCAD](http://www.graphisoft.com/) uses it to define a library part (it's also used internally for many things).
+GDL means 'Geometric Description Language'. [ArchiCAD](http://www.graphisoft.com/) uses it to define a library part.
 
-Many ArchiCAD users are making their own library parts, sell them or even publish them for free on sites like [BIMComponents](https://bimcomponents.com/), while others might modify them. But they are all tied to the – unfortunately horrible – build-in object editor which is stuck in the 80's or so. It doesn't even have line numbers!
+Many ArchiCAD users are making their own library parts, sell them or even publish them for free on sites like [BIMComponents](https://bimcomponents.com/), while others might modify the provided ones. But they are all tied to the – unfortunately horrible – build-in object editor which is stuck in the 80's or so. It doesn't even have line numbers!
 
 But the rescue is here! _(at least something like that)_  
 The purpose of this package is to give you the chance to comfortably write code in the best editor of the galaxy – Sublime Text.
 
-This package provides **syntax highlighting** together with a well aligned **color scheme** (aka syntax highlighting) and also **auto completion** (can be forced by pressing <kbd>ctrl</kbd> + <kbd>space</kbd>).
+This package provides **syntax highlighting** with a well aligned **color scheme** (aka syntax highlighting) and also **auto completion** (can be forced by pressing <kbd>ctrl</kbd> + <kbd>space</kbd>).
 
 ## Installation
 
@@ -34,7 +34,7 @@ _not recommended – you won't get updates!_
 ## Usage
 From now on you can select `GDL` as the current language in the bottom right corner of ST and enjoy all the benefits ST brings.  
 But wait! There's more!
-Activate a well aligned color scheme by modifying the syntax specific preferences file, which you can find using the menu item `Preferences -> Settings - More -> Syntax Specific – User`, after you set the syntax to `GDL` for the current file.
+You should activate a the color scheme (=proper highlighting) by modifying the syntax specific preferences file, which you can find using the menu item `Preferences -> Settings - More -> Syntax Specific – User`, after you set the syntax to `GDL` for the current file.
 
 There are 2 different color schemes at choice: A dark and a light one. _I muchly recommend the dark one for fatigue-proof coding!_
 
@@ -55,7 +55,7 @@ Copy _one_ of these into the new file and save:
 ```
 
 #### Don't like the theme?
-Don't worry. Go to the [ththeme-editor](http://tmtheme-editor.herokuapp.com/) and select one of the two themes as start and make one which satisfies you!
+Don't worry. Go to the [ththeme-editor](http://tmtheme-editor.herokuapp.com/) and select one of the two themes as start and make one which satisfies you! (Note that the theme-editor of course has no preview for gdl code, so it's just direct scope color editing.)
 Also, you could edit the `.thTheme` files directly.
 
 ### Auto completion + Snippets
