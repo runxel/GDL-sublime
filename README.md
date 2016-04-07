@@ -59,7 +59,7 @@ Copy _one_ of these into the new file and save:
 #### Don't like the theme?
 Don't worry. Go to the [ththeme-editor](http://tmtheme-editor.herokuapp.com/) and select one of the two themes as start and make one which satisfies you! (Note that the theme-editor of course has no preview for gdl code, so it's just direct scope color editing.)  
 _See the [Wiki](https://github.com/runxel/GDL-sublime/wiki) for a list with the scopes so you can refine the scheme to suit your needs._  
-Of course you could also edit the `.thTheme` files directly. Remember not to save it next to provided one. Otherwise an update could overwrite your changes.
+Of course you could also edit the `.thTheme` files directly. Remember not to edit the provided one. Otherwise an update would overwrite your changes.
 
 ### Auto completion + Snippets
 You may have to force the auto completion via <kbd>ctrl</kbd> + <kbd>space</kbd>.  
