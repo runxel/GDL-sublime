@@ -37,7 +37,7 @@ patterns:
   name: keyword.gdl.transform
 
 # F U N C T I O N S
-- begin: (?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)
+- begin: (?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{[23]\})?)?|IND|NTR|VARTYPE)(\()(.*?)
   beginCaptures:
     '1':
       name: keyword.other.special-method.gdl.functions
@@ -68,7 +68,7 @@ patterns:
 - match: (?i)(?<=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{[23]\})?|[CB]WALL_|XWALL_(\{[23]\})?|BEAM|MESH|POLYROOF(\{[23]\})?)(?=$|\s)
   name: keyword.gdl.shape.3D.complex
 
-- match: (?i)(?<=^|\s)(BASE|BODY|COOR(\{2\})?|EDGE|PGON(\{[23]\})?|PIPG|TEVE|VECT|VERT(\{2\})?)(?=$|\s)
+- match: (?i)(?<=^|\s)(BASE|BODY|COOR(\{[23]\})?|EDGE|PGON(\{[23]\})?|PIPG|TEVE|VECT|VERT(\{2\})?)(?=$|\s)
   name: keyword.gdl.shape.3D.primitive
 
 - match: (?i)(?<=^|\s)(POINTCLOUD)(?=$|\s)
@@ -83,7 +83,7 @@ patterns:
 - match: (?i)(?<=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM(\{2\})?|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)
   name: keyword.gdl.shape.3D.cut
 
-- match: (?i)(?<=^|\s)((ADD|ISECT|SUB|PLACE|KILL)GROUP|SWEEPGROUP(\{[2-4]\})?|ISECTLINES|CREATEGROUPWITHMATERIAL)(?=$|\s)
+- match: (?i)(?<=^|\s)((ISECT|SUB|PLACE|KILL)GROUP|ADDGROUP(\{[23]\})?|SWEEPGROUP(\{[2-4]\})?|ISECTLINES|CREATEGROUPWITHMATERIAL)(?=$|\s)
   name: keyword.gdl.shape.3D.seo
 
 - match: (?i)(?<=^|\s)(TEXT|RICHTEXT)(?=$|\s)
@@ -92,7 +92,10 @@ patterns:
 - match: (?i)(?<=^|\s)(LIGHT|PICTURE|BINARY)(?=$|\s)
   name: keyword.gdl.shape.3D.other
 
-- match: (?i)(?<=^|\s)(FRAGMENT[2]?|PROJECT2(\{[2-3]\})?|DRAWING(2|3(\{[2-3]\})?))(?=$|\s)
+- match: (?i)(?<=^|\s)(NURBS(CURVE[23]D|(SUR)?FACE|VERT|EDGE|TRIM(SINGULAR)?|LUMP|BODY))(?=$|\s)
+  name: keyword.gdl.shape.nurbs
+
+- match: (?i)(?<=^|\s)(FRAGMENT[2]?|PROJECT2(\{[2-4]\})?|DRAWING(2|3(\{[2-3]\})?))(?=$|\s)
   name: keyword.gdl.symbol
 
 # HOTS
@@ -121,7 +124,7 @@ patterns:
 - match: (?i)(?<=^|\s)(COMPONENT|DESCRIPTOR|BINARYPROP|DATABASE_SET|POSITION|REF_(COMPONENT|DESCRIPTOR)|(SURFACE|VOLUME)3D|DRAWING[2]?)(?=$|\s)
   name: keyword.gdl.nongeo.properties
 
-- match: (?i)(?<=^|\s)(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT|STYLE|OUTFIELD|INFIELD(\{[2-4]\})?|RADIOBUTTON|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?))(?=$|\s)
+- match: (?i)(?<=^|\s)(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT|STYLE|OUTFIELD|INFIELD(\{[2-4]\})?|RADIOBUTTON(\{[2]\})?|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?)|(CUSTOM_POPUP_(INFIELD|LISTITEM)(\{2\})?))(?=$|\s)
   name: keyword.gdl.nongeo.ui
 
 - match: (?!)(?<=^|\s)(MIGRATIONWARNING|NEWPARAMETER|SETMIGRATIONGUID|DELETED_PAR_VALUE|STORED_PAR_VALUE)
@@ -152,7 +155,7 @@ patterns:
 - match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(LABEL_(POSITION|CUSTOM_ARROW|ARROW((HEAD)?_PEN|LINETYPE)|FONT_(NAME|STYLE(2)?)|TEXT_(SIZE|(BG_)?PEN|ALIGN|LEADING|WIDTH_FACT|WRAP|CHARSPACE_FACT)|CHARSPACE_FACT|FRAME_(ON|OFFSET)|ANCHOR_POS|ROTANGLE|ALWAYS_READABLE|ASSOC_ELEM_ORIENTATION))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
   name: keyword.gdl.globals.label
 
-- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(WALL_((INTGU)?ID|RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|(COMPS|BMAT)_NAME|SKINS_(PARAMS|NUMBER|BMAT_NAMES)|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB](_CON)?|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|GROSS_VOLUME|VOLUME(_[AB])?(_CON)?|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID|CROSSSECTION_TYPE|SKIN_((MIN|MAX)_HEIGHT|THICKNESS)_(A|B)|(INSU|AIR)_THICKNESS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
+- match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(WALL_((INTGU)?ID|RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|(COMPS|BMAT)_NAME|SKINS_(PARAMS|NUMBER|BMAT_NAMES)|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB](_CON)?|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|GROSS_VOLUME|VOLUME(_[AB])?(_CON)?|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID|CROSSSECTION_TYPE|SKIN_((MIN|MAX)_HEIGHT|THICKNESS)_(A|B)|(INSU|AIR)_THICKNESS|TEXTURE_WRAP))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
   name: keyword.gdl.globals.wall
 
 - match: (?i)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(COLU_(CORE(_(X|Y|FILL(_PEN)?|FBGD_PEN|((GROSS|TOP|BOT)_)?SURF|(GROSS_)?VOL|GROSS_TOPBOT_SURF|BMAT_NAME))?|VENEER_(FILL(_PEN)?|FBGD_PEN|WIDTH|VOL|(TOP_|BOT_)?SURF|GROSS_((TOPBOT_)?SURF|VOL)|BMAT_NAME)|((MIN|MAX)_)?HEIGHT|DIM[12]|MAT|LINETYPE|(SECT|VIEW)_PEN|PERIMETER|AREA|(GROSS_)?VOLUME|CROSSSECTION_TYPE|PROFILE_NAME))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|<|>|<\=|>\=|<>|\#)
@@ -220,7 +223,7 @@ patterns:
 
 repository:
   functions:
-    begin: (?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{2\})?)?|IND|NTR|VARTYPE)(\()(.*?)
+    begin: (?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{[23]\})?)?|IND|NTR|VARTYPE)(\()(.*?)
     beginCaptures:
       '1':
         name: keyword.other.special-method.gdl.functions
