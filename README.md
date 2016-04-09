@@ -1,7 +1,7 @@
 # [GDL-sublime](https://github.com/runxel/GDL-sublime)
 A bundle to make GDL available in [Sublime Text](http://www.sublimetext.com/).
 
-[![Version](https://img.shields.io/badge/version-1.1.8-brightgreen.svg)]()
+[![Version](https://img.shields.io/badge/version-1.2.0-brightgreen.svg)]()
 
 # What is GDL?
 GDL means 'Geometric Description Language'. [ArchiCAD](http://www.graphisoft.com/) uses it to define a library part.
