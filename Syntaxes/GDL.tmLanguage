@@ -63,7 +63,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{[23]\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
+			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET|REQ((UEST)(\{[23]\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -101,19 +101,25 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)((LINE|RECT|ARC|CIRCLE|WALLINE|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-5]\})?)?))(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(?&lt;=^|\s)(DIM)(\b)</string>
+			<key>name</key>
+			<string>keyword.other.special-method.gdl.functions</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s)((LINE|RECT|ARC|CIRCLE|WALLLINE[2]?|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-5]\})?)?))(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.2D</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(?&lt;=^|\s)((TEXT|RICHTEXT)2)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)((TEXT|RICHTEXT)2)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.text.2D.text</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(BLOCK|CYLIND|CONE|SPHERE|ELLIPS|ELBOW|ARMC|ARME)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(BLOCK|BRICK|CYLIND|CONE|SPHERE|ELLIPS|ELBOW|ARMC|ARME)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.basic</string>
 		</dict>
@@ -125,7 +131,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{[23]\})?|[CB]WALL_|XWALL_(\{[23]\})?|BEAM|MESH|POLYROOF(\{[23]\})?)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{[2-4]\})?|[CB]WALL_|XWALL_(\{[23]\})?|BEAM|MESH|POLYROOF(\{[2-4]\})?)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.complex</string>
 		</dict>
@@ -149,7 +155,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(PYRAMID|RULED(\{2\})?|EXTRUDE|SWEEP|TUBE[A]?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{2\})?|REVOLVEDSHELLANGULAR(\{2\})?)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(PYRAMID|RULED(\{2\})?|EXTRUDE|SWEEP|TUBE[A]?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{[23]\})?|REVOLVEDSHELLANGULAR(\{[23]\})?)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.poly</string>
 		</dict>
@@ -161,7 +167,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)((ISECT|SUB|PLACE|KILL)GROUP|ADDGROUP(\{[23]\})?|SWEEPGROUP(\{[2-4]\})?|ISECTLINES|CREATEGROUPWITHMATERIAL)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)((PLACE|KILL)GROUP|(ADD|ISECT|SUB)GROUP(\{[23]\})?|SWEEPGROUP(\{[2-4]\})?|ISECTLINES|CREATEGROUPWITHMATERIAL)(?=$|\s|\()</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.seo</string>
 		</dict>
@@ -203,7 +209,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)\b(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|MATERIAL|TEXTURE|STYLE(\{2\})?|PARAGRAPH|TEXTBLOCK|ADDITIONAL_DATA|SECT_(FILL|ATTRS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)\b(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|MATERIAL|TEXTURE|STYLE(\{2\})?|(END)?PARAGRAPH|TEXTBLOCK_?|ADDITIONAL_DATA|SECT_(FILL|ATTRS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|,)</string>
 			<key>name</key>
 			<string>support.type.gdl.attribute</string>
 		</dict>
@@ -239,13 +245,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT|STYLE|OUTFIELD|INFIELD(\{[2-4]\})?|RADIOBUTTON(\{[2]\})?|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?)|(CUSTOM_POPUP_(INFIELD|LISTITEM)(\{2\})?))(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT(_BUTTON)?|STYLE|OUTFIELD|INFIELD(\{[2-4]\})?|RADIOBUTTON(\{[2]\})?|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?|CUSTOM_POPUP_(INFIELD|LISTITEM)(\{2\})?))(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.nongeo.ui</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?!)(?&lt;=^|\s)(MIGRATIONWARNING|NEWPARAMETER|SETMIGRATIONGUID|DELETED_PAR_VALUE|STORED_PAR_VALUE)</string>
+			<string>(?i)(?&lt;=^|\s)(MIGRATIONWARNING|NEWPARAMETER|SETMIGRATIONGUID|DELETED_PAR_VALUE|STORED_PAR_VALUE)(?=$|\s|\()</string>
 			<key>name</key>
 			<string>keyword.gdl.nongeo.migration</string>
 		</dict>
@@ -254,6 +260,12 @@
 			<string>(?i)(?&lt;=^|\s)(PRINT|OPEN|INPUT|OUTPUT|CLOSE|CALL|FILE_DEPENDENCE)(?=$|\s|\()</string>
 			<key>name</key>
 			<string>keyword.gdl.extern</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s)((INIT|CLOSE)ADDONSCOPE|(CALL|PREPARE)FUNCTION)(?=$|\s|\()</string>
+			<key>name</key>
+			<string>keyword.gdl.addon</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -435,7 +447,7 @@
 		<key>functions</key>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|DIM|BITTEST|BITSET|REQ((UEST)(\{[23]\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
+			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET|REQ((UEST)(\{[23]\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
