@@ -161,7 +161,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(CUT(PLANE(\{[23]\})?|POLY[A]?|FORM(\{2\})?|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(CUT(PLANE(\{[2-4]\})?|POLY[A]?|FORM(\{2\})?|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.cut</string>
 		</dict>
@@ -311,7 +311,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(WALL_((INTGU)?ID|RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|(COMPS|BMAT)_NAME|SKINS_(PARAMS|NUMBER|BMAT_NAMES)|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB](_CON)?|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|GROSS_VOLUME|VOLUME(_[AB])?(_CON)?|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID|CROSSSECTION_TYPE|SKIN_((MIN|MAX)_HEIGHT|THICKNESS)_(A|B)|(INSU|AIR)_THICKNESS|TEXTURE_WRAP))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(WALL_((INTGU)?ID|RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|(COMPS|BMAT)_NAME|SKINS_(PARAMS|NUMBER|BMAT_NAMES)|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB](_CON)?|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|GROSS_VOLUME|VOLUME(_[AB])?(_CON)?|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID|CROSSSECTION_TYPE|SKIN_((MIN|MAX)_HEIGHT|THICKNESS)_(A|B)|(INSU|AIR)_THICKNESS|TEXTURE_WRAP))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.wall</string>
 		</dict>
@@ -389,7 +389,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(Gdl_WALLZ_(LENGTH|SURF|(DOORS|WINDS)_(SURF|WIDTH))|(FROM|TO)_GUID|SKYL_(MARKER_TXT|OPENING_(SURF|VOLUME|HEIGHT|WIDTH)|(HEADER|SILL)_HEIGHT))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(Gdl_WALLZ_(LENGTH|SURF|(DOORS|WINDS)_(SURF|WIDTH))|(FROM|TO)_GUID|SKYL_(MARKER_TXT|OPENING_(SURF|VOLUME|HEIGHT|WIDTH)|(HEADER|SILL)_HEIGHT|ROTANGLE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.misc</string>
 		</dict>
