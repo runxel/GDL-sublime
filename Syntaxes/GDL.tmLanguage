@@ -63,7 +63,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET|REQ((UEST)(\{[23]\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
+			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET|REQ((UEST)(\{[2-4]\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -101,13 +101,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(?&lt;=^|\s)(DIM)(\b)</string>
+			<string>(?i)(?&lt;=^|\s)(?&lt;=^|\s)(DIM|PI)(\b)</string>
 			<key>name</key>
 			<string>keyword.other.special-method.gdl.functions</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)((LINE|RECT|ARC|CIRCLE|WALLLINE[2]?|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-5]\})?)?))(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)((LINE|RECT|ARC|CIRCLE|WALLLINE[2]?|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-6]\})?)?))(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.2D</string>
 		</dict>
@@ -155,7 +155,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(PYRAMID|RULED(\{2\})?|EXTRUDE|SWEEP|TUBE[A]?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{[23]\})?|REVOLVEDSHELLANGULAR(\{[23]\})?)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(PYRAMID|RULED(\{2\}|SEGMENTED)?|EXTRUDE|SWEEP|TUBE([A]|\{2\})?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{[23]\})?|REVOLVEDSHELLANGULAR(\{[23]\})?)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.shape.3D.poly</string>
 		</dict>
@@ -209,7 +209,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)\b(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|MATERIAL|TEXTURE|STYLE(\{2\})?|(END)?PARAGRAPH|TEXTBLOCK_?|ADDITIONAL_DATA|SECT_(FILL|ATTRS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|,)</string>
+			<string>(?i)\b(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|SYMBOL_(LINE|FILL)|FILL[A]?|(SOLID|EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|FILLTYPES_MASK|(BUILDING_)?MATERIAL|TEXTURE|STYLE(\{2\})?|(END)?PARAGRAPH|TEXTBLOCK_?|ADDITIONAL_DATA|SECT_(FILL|ATTRS(\{2\})?))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|,)</string>
 			<key>name</key>
 			<string>support.type.gdl.attribute</string>
 		</dict>
@@ -233,13 +233,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(VALUES(\{2\})?|PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)(VALUES(\{2\})?|(RETURNED_)?PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.nongeo.parameters</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s)(COMPONENT|DESCRIPTOR|BINARYPROP|DATABASE_SET|POSITION|REF_(COMPONENT|DESCRIPTOR)|(SURFACE|VOLUME)3D|DRAWING[2]?)(?=$|\s)</string>
+			<string>(?i)(?&lt;=^|\s)((REF\s+)?(COMPONENT|DESCRIPTOR)|BINARYPROP|DATABASE_SET|POSITION|REF_(COMPONENT|DESCRIPTOR)|(SURFACE|VOLUME)3D|DRAWING[2]?)(?=$|\s)</string>
 			<key>name</key>
 			<string>keyword.gdl.nongeo.properties</string>
 		</dict>
@@ -311,31 +311,31 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(WALL_((INTGU)?ID|RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|(COMPS|BMAT)_NAME|SKINS_(PARAMS|NUMBER|BMAT_NAMES)|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB](_CON)?|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|GROSS_VOLUME|VOLUME(_[AB])?(_CON)?|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID|CROSSSECTION_TYPE|SKIN_((MIN|MAX)_HEIGHT|THICKNESS)_(A|B)|(INSU|AIR)_THICKNESS|TEXTURE_WRAP))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(WALL_((INTGU)?ID|RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?|(COMPS|BMAT)_NAME|SKINS_(PARAMS|NUMBER|BMAT_NAMES)|BMAT|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB](_CON)?|CENTER_LENGTH|AREA|PERIMETER|EDGE_SURF|GROSS_VOLUME|VOLUME(_[AB])?(_CON)?|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID|CROSSSECTION_TYPE|SKIN_((MIN|MAX)_HEIGHT|THICKNESS)_(A|B)|(INSU|AIR)_THICKNESS|TEXTURE_WRAP))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.wall</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(COLU_(CORE(_(X|Y|FILL(_PEN)?|FBGD_PEN|((GROSS|TOP|BOT)_)?SURF|(GROSS_)?VOL|GROSS_TOPBOT_SURF|BMAT_NAME))?|VENEER_(FILL(_PEN)?|FBGD_PEN|WIDTH|VOL|(TOP_|BOT_)?SURF|GROSS_((TOPBOT_)?SURF|VOL)|BMAT_NAME)|((MIN|MAX)_)?HEIGHT|DIM[12]|MAT|LINETYPE|(SECT|VIEW)_PEN|PERIMETER|AREA|(GROSS_)?VOLUME|CROSSSECTION_TYPE|PROFILE_NAME))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(COLU_(CORE(_(X|Y|FILL(_PEN)?|FBGD_PEN|((GROSS|TOP|BOT)_)?SURF|(GROSS_)?VOL|GROSS_TOPBOT_SURF|BMAT(_NAME)?))?|VENEER_(FILL(_PEN)?|FBGD_PEN|WIDTH|VOL|(TOP_|BOT_)?SURF|GROSS_((TOPBOT_)?SURF|VOL)|BMAT(_NAME)?)|((MIN|MAX)_)?HEIGHT|DIM[12]|MAT|LINETYPE|(SECT|VIEW)_PEN|PERIMETER|AREA|(GROSS_)?VOLUME|CROSSSECTION_TYPE|PROFILE_NAME))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.column</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(BEAM_(THICKNESS|HEIGHT|REFLINE_OFFSET|PRIORITY|MAT_(RIGHT|LEFT|TOP|BOTTOM|END)|BMAT_NAME|(OUTLINE|AXES)_LINETYPE|FILL(_PEN)?|(SECT|FBGD)_PEN|DIRECTION|POSITION|LENGTH_(RIGHT|LEFT)|(RIGHT|LEFT|TOP|BOTTOM|END)_SURF|VOLUME(_CON)?|HOLE(S_(NR|SURF|VOLUME)|_EDGE_SURF)|CROSSSECTION_TYPE|PROFILE_NAME))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(BEAM_(THICKNESS|HEIGHT|REFLINE_OFFSET|PRIORITY|MAT_(RIGHT|LEFT|TOP|BOTTOM|END)|BMAT(_NAME)?|(OUTLINE|AXES)_LINETYPE|FILL(_PEN)?|(SECT|FBGD)_PEN|DIRECTION|POSITION|LENGTH_(RIGHT|LEFT)|(RIGHT|LEFT|TOP|BOTTOM|END)_SURF|VOLUME(_CON)?|HOLE(S_(NR|SURF|VOLUME)|_EDGE_SURF)|CROSSSECTION_TYPE|PROFILE_NAME))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.beam</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SLAB_(THICKNESS|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|ELEVATION_(TOP|BOTTOM)|BMAT_NAME|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS|BMAT_NAMES)|PERIMETER|(GROSS_)?(TOP|BOT|EDGE)_SURF|(TOP|BOT)_SURF_CON|VOLUME(_CON)?|GROSS_VOLUME|GROSS_((TOP|BOT|EDGE)_SURF|VOLUME)_WITH_HOLES|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SLAB_(THICKNESS|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|ELEVATION_(TOP|BOTTOM)|BMAT(_NAME)?|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS|BMAT_NAMES)|PERIMETER|(GROSS_)?(TOP|BOT|EDGE)_SURF|(TOP|BOT)_SURF_CON|VOLUME(_CON)?|GROSS_VOLUME|GROSS_((TOP|BOT|EDGE)_SURF|VOLUME)_WITH_HOLES|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.slab</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(ROOF_(THICKNESS|ANGLE|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|BMAT_NAME|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS|BMAT_NAMES)|(GROSS_)?(TOP|BOTTOM|EDGE)_SURF|(TOP|BOTTOM)_SURF_CON|PERIMETER|VOLUME(_CON)?|GROSS_VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)|CONTOUR_AREA|INSU_THICKNESS|RIDGE|VALLEY|GABLE|HIP|EAVES|PEAK|(SIDE|END)_WALL|TRANSITION_(DOME|HOLLOW)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(ROOF_(THICKNESS|ANGLE|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|BMAT(_NAME)?|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS|BMAT_NAMES)|(GROSS_)?(TOP|BOTTOM|EDGE)_SURF|(TOP|BOTTOM)_SURF_CON|PERIMETER|VOLUME(_CON)?|GROSS_VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)|CONTOUR_AREA|INSU_THICKNESS|RIDGE|VALLEY|GABLE|HIP|EAVES|PEAK|(SIDE|END)_WALL|TRANSITION_(DOME|HOLLOW)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.roof</string>
 		</dict>
@@ -347,9 +347,57 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(MESH_((LINE)?TYPE|BASE_OFFSET|(USEREDGE|TRIEDGE|SECT|VIEW)_PEN|MAT_(TOP|EDGE|BOTT)|FILL(_PEN)?|BMAT_NAME|FBGD_PEN|(TOP|EDGE|BOTTOM)_SURF|PERIMETER|VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(MESH_((LINE)?TYPE|BASE_OFFSET|(USEREDGE|TRIEDGE|SECT|VIEW)_PEN|MAT_(TOP|EDGE|BOTT)|FILL(_PEN)?|BMAT(_NAME)?|FBGD_PEN|(TOP|EDGE|BOTTOM)_SURF|PERIMETER|VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.mesh</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(STAIR_(AREA|VOLUME|HEIGHT|WALKLINE_LENGTH|DEFAULT_(WIDTH|GOING_DEPTH|RISER_HEIGHT|TREAD_THICKNESS)|NR_OF_(RISERS|TREADS)(_IN_FLIGHTS)?|LANDING_NUMBER|STAIR_GRADIENT|RULE_(LIMITS|FLAGS)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.stair.general</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(TREAD_((FRONT_)?AREA|VOLUME|STEP_INDEX|ELEVATION|GOING|THICKNESS|BMATS|(LOWER|UPPER)_RISER_(THICKNESS|HEIGHT|SLANT_ANGLE)|NOSING(_METHOD|_BY_SLANTING)?)|STAIR_TREAD_(GEOMETRY|FLAGS))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.stair.tread</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(RISER_(FRONT_AREA|VOLUME|STEP_INDEX|WIDTH|HEIGHT|THICKNESS|BMATS|CUT|SLANT_ANGLE)|STAIR_RISER_GEOMETRY)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.stair.riser</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(STRUCTURE_(3DLENGTH|VOLUME|WIDTH|HEIGHT|THICKNESS)|STAIR_(STRUCTURE_(GEOMETRY|FLAGS|CONN_(OFFSETS|FLAGS))|STRINGER_PATH_OFFSET))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.stair.structure</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(STAIR2D_((FULL|LOWER|MIDDLE|UPPER)_((TPOLYGON|RPOLYLINE|WALKLINE)_(GEOM|FLAGS)|BOUNDARY_GEOM)|BREAKMARK_(GEOM|FLAGS|ANGLE)|(EXT_(TPOLYGON|RPOLYLINE)|DRAIN_TPOLYGON|POLYLINES)_(GEOM|FLAGS)|STRUCT_ATTRIBUTES|LAYOUT_TYPES|DESCRIPTION_POSITION|CURRSTORY_LOCATION|VISIBILITY|CUSTOMDISPLAY))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.stair.2D</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(RAILING_(HEIGHT|(3D|HORIZONTAL_)LENGTH|VOLUME|NR_OF_(SEGMENTS|POSTS|BALUSTERS|PANELS|RAILS)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.railing.general</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(RAIL(_(CONNECTING_POSTS(_NUM)?|TYPE|POLYLINE_GEOMETRY|SEGMENT_FLAGS|CUTS|COMPONENTS|SLANT_ANGLE)|ING(_REFLINE_DISTANCE|PANEL_(TYPE|(UNCUT_)?GEOMETRY|FLAGS|SIDE_OFFSETS|(SLANT|SKEW)_ANGLE)|POST_(TYPE|TOP_COORD|(SEGMENT_)?CUTS)|END_DIRECTION_AND_ANGLE)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.railing.3D</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(RAIL2D_((FULL|LOWER|MIDDLE|UPPER)_((POLY(LINE|GON)_(GEOM|FLAGS))|VISIBILITY)|CUSTOMDISPLAY)|RAILPOST2D_VISIBILITY)(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|\[)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.railing.2D</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -371,13 +419,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SHELLBASE_(THICKNESS|MAT_(REFERENCE|EDGE|OPPOSITE)|LINETYPE|FILL(_PEN)?|FBGD_PEN|(COMPS|BMAT)_NAME|SKINS_(NUMBER|PARAMS|BMAT_NAMES)|(SECT|VIEW)_PEN|(COND_|GROSS_)?(REFERENCE|OPPOSITE)_SURF|(GROSS_)?EDGE_SURF|PERIMETER|(GROSS_|COND_)?VOLUME|HOLES_(NR|SURF|PRM)|OPENINGS_(NR|SURF)|INSU_THICKNESS|RIDGE|VALLEY|GABLE|HIP|EAVES|PEAK|(END|SIDE)_WALL|TRANSITION_(DOME|HOLLOW)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(SHELLBASE_(THICKNESS|MAT_(REFERENCE|EDGE|OPPOSITE)|LINETYPE|FILL(_PEN)?|FBGD_PEN|(COMPS|BMAT)_NAME|BMAT|SKINS_(NUMBER|PARAMS|BMAT_NAMES)|(SECT|VIEW)_PEN|(COND_|GROSS_)?(REFERENCE|OPPOSITE)_SURF|(GROSS_)?EDGE_SURF|PERIMETER|(GROSS_|COND_)?VOLUME|HOLES_(NR|SURF|PRM)|OPENINGS_(NR|SURF)|INSU_THICKNESS|RIDGE|VALLEY|GABLE|HIP|EAVES|PEAK|(END|SIDE)_WALL|TRANSITION_(DOME|HOLLOW)))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.shell</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(MORPH_(LINETYPE|FILL(_PEN)?|BMAT_NAME|FBGD_PEN|SECT_LINETYPE|(SECT|VIEW)_PEN|SOLID|MAT_DEFAULT|(CASTS|RECEIVES)_SHADOW|SURFACE|VOLUME|FLOOR_PERIMETER))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(MORPH_(LINETYPE|FILL(_PEN)?|BMAT(_NAME)?|FBGD_PEN|SECT_LINETYPE|(SECT|VIEW)_PEN|SOLID|MAT_DEFAULT|(CASTS|RECEIVES)_SHADOW|SURFACE|VOLUME|FLOOR_PERIMETER))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.morph</string>
 		</dict>
@@ -392,6 +440,12 @@
 			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(Gdl_WALLZ_(LENGTH|SURF|(DOORS|WINDS)_(SURF|WIDTH))|(FROM|TO)_GUID|SKYL_(MARKER_TXT|OPENING_(SURF|VOLUME|HEIGHT|WIDTH)|(HEADER|SILL)_HEIGHT|ROTANGLE))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
 			<key>name</key>
 			<string>keyword.gdl.globals.misc</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)(GLOB_MVO_(STAIR_FLOOR_PLAN_(OPT|COMP)|RAILING_PLAN_COMP))(?=$|\s|\+|\-|\^|\*{1,2}|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#)</string>
+			<key>name</key>
+			<string>keyword.gdl.globals.mvo</string>
 		</dict>
 		<dict>
 			<key>match</key>
@@ -419,13 +473,47 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|=|%|&amp;|\||\@|,)([ABCDEFG]|ZZYZX|ac_\w+|gs_\w+|ROOM_([a-z]|_)+)(?=$|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|=|%|&amp;|\||\@|,)</string>
+			<string>(?i)(?&lt;=^|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|=|%|&amp;|\||\@|,)([ABCDEFG]|ZZYZX|ac_\w+|gs_\w+|ifc_\w+|ROOM_([a-z]|_)+)(?=$|\s|\+|\-|\^|\*|\*\*|\/|\=|&lt;|&gt;|&lt;\=|&gt;\=|&lt;&gt;|\#|=|%|&amp;|\||\@|,)</string>
 			<key>name</key>
 			<string>keyword.gdl.optionalparameters</string>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>(?i)(\b)(GET|USE)(\()(.*?)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.gdl.buffer</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.gdl.buffer</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.gdl.buffer</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
 			<key>match</key>
-			<string>(?i)(\b)(PUT|GET|USE|NSP)(\b)</string>
+			<string>(?i)(\b)(PUT|NSP)(\b)</string>
 			<key>name</key>
 			<string>keyword.gdl.buffer</string>
 		</dict>
@@ -447,7 +535,7 @@
 		<key>functions</key>
 		<dict>
 			<key>begin</key>
-			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET|REQ((UEST)(\{[23]\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
+			<string>(?i)(NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|PI|EXP|LGT|LOG|SQR|MAX|MIN|RND|STR(\{2\})?|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET|REQ((UEST)(\{[2-4]\})?)?|IND|NTR|VARTYPE)(\()(.*?)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
