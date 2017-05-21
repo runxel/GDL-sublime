@@ -4,11 +4,9 @@ Thanks for installing the GDL Sublime Text package!
 What's new ???
 ===============
 
-• many fixes
-• the best AUTO COMPLETION you ever had! you can cycle through placeholders with `TAB`
-• many many new scopes defined (list of GLOBALS should be complete now)
-• NURBS geometry commands added for upcoming ArchiCAD 20 (_thanks, George!_)
-• other ArchiCAD 20 stuff
+• ARCHICAD 21 new commands added
+• which also includes e.g. the new STAIR and RAILING GLOBALS
+• some minor fixes
 
 
 How to use
