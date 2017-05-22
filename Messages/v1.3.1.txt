@@ -20,4 +20,5 @@ What's new ???
 *************************
 
 • same as 1.3.0    BUT
-• this message should again
+• this message should show again
+Thanks to Piotr for pointing out it wasn't   ;)
