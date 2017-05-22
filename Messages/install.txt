@@ -1,16 +1,11 @@
-Thanks for installing the GDL Sublime Text package!
+*************************
+Thanks for installing the
+GDL Sublime Text package!
+*************************
 
 
-What's new ???
-===============
-
-• ARCHICAD 21 new commands added
-• which also includes e.g. the new STAIR and RAILING GLOBALS
-• some minor fixes
-
-
-How to use
-===============
+       How to use
+=========================
 
 From now you can just select `GDL` from the code-language menu in the bottom right corner of Sublime Text.
 BUT wait! There's more!
@@ -45,5 +40,4 @@ Give it a try!
 
 THANKS
 ---------------
-- to Jochen Suehlo and Frank Beister for their help and
-- for selfgdl.de [this project would not be possible without this great resource!]
+to Jochen Suehlo and Frank Beister for their help and encouragement, aswell selfgdl.de
