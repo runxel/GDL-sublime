@@ -41,7 +41,7 @@ But wait! There's more!
 You should activate a color scheme (meaning proper highlighting) by modifying the syntax specific preferences file.  
 First set the syntax to `GDL` for the current file, then proceed to `Preferences > Settings – Syntax Specific`(or `Preferences > Settings – More > Syntax Specific – User` if youre using an older version of Sublime Text).
 
-There are 2 different color schemes at choice: A dark and a light one. _I muchly recommend the dark one for fatigue-proof coding. If you're more the traditionell architect the light scheme might be your choice ;)_
+There are 2 different color schemes at choice: A dark and a light one. _I muchly recommend the dark one for fatigue-proof coding. If you're more the traditional architect the light scheme might be your choice ;)_
 
 Copy _one_ of these into the new file and save:
 
@@ -76,7 +76,7 @@ You will find all the shipped snippets in the "Snippets" folder.
 
 ## Further usage
 This Sublime Text package got accompanied by [GDLnucleus](http://www.opengdl.org/Default.aspx?tabid=9748) (_Not freeware_). GDLnucleus is a assistant program which enables you to send your changes live to ArchiCAD from Sublime Text, instead of relying on copy+paste.
-It can be understood as a SublimeText-project handler integrated with a link to the LP_XMLConverter, which comes with ArchiCAD. See the page for more details.
+It can be understood as a SublimeText-project handler integrated with a link to the LP\_XMLConverter, which comes with ArchiCAD. See the page for more details.
 (_Please note: I did not made GDLnucleus._)
 
 ## Getting Started With Sublime Text
