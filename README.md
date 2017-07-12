@@ -1,7 +1,7 @@
 # [GDL-sublime](https://github.com/runxel/GDL-sublime)
 A bundle to make GDL available in [Sublime Text](http://www.sublimetext.com/).
 
-[![Version](https://img.shields.io/badge/version-1.3.1-brightgreen.svg)]()  
+[![Version](https://img.shields.io/github/release/runxel/GDL-sublime.svg)]()
 
 ![dark color scheme](http://i.imgur.com/zg85SmQ.png)  
 
