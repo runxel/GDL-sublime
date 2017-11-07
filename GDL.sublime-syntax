@@ -309,13 +309,13 @@ contexts:
     - match: (?i)\b(MIGRATIONWARNING|NEWPARAMETER|SETMIGRATIONGUID|DELETED_PAR_VALUE|STORED_PAR_VALUE)\b
       scope: keyword.gdl.nongeo.migration
 
-    - match: (?i)\b(PRINT|INPUT|OUTPUT|CLOSE|CALL|FILE_DEPENDENCE)\b
+    - match: (?i)\b(PRINT|OUTPUT|CLOSE|CALL|FILE_DEPENDENCE)\b
       scope: keyword.gdl.extern
 
     - match: (?i)\b((INIT|CLOSE)ADDONSCOPE|(CALL|PREPARE)FUNCTION)\b
       scope: keyword.gdl.addon
 
-    - match: (?i)((OPEN)\s?(?=\())
+    - match: (?i)((OPEN|INPUT)\s?(?=\())
       captures:
         2:  keyword.gdl.extern
       push:
@@ -332,6 +332,7 @@ contexts:
           - include: operators
           - include: expression-common
           - include: string
+          - include: arrays
 
 ############### opt Params #################
   optional:
@@ -499,6 +500,7 @@ contexts:
         - include: string
         - include: functions
         - include: functions-special
+        - include: arrays
 
   buffer-in:
     # now buffer com without ()
@@ -525,6 +527,7 @@ contexts:
           - include: expression-common
           - include: string
           - include: optional
+          - include: arrays
 
   functions-special:
   - match: (?i)(?<=^|\s)(DIM|PI)(\b)
@@ -538,13 +541,28 @@ contexts:
         - match: \[
           scope: punctuation.section.array.begin.gdl
           set: 
+          - meta_scope: section.array.gdl
           - match: \]
             scope: punctuation.section.array.end.gdl
-            pop: true
-          - match: ','
-            scope: punctuation.separator.array.gdl
+            set: after-array
           - include: functions
           - include: functions-special
           - include: operators
           - include: expression-common
           - include: string
+
+  after-array:
+    - match: \[
+      scope: punctuation.section.array.begin.gdl
+      set:                      # we want only one possible bracket
+        - meta_scope: section.array.gdl
+        - match: \]
+          scope: punctuation.section.array.end.gdl
+          pop: true
+        - include: functions
+        - include: functions-special
+        - include: operators
+        - include: expression-common
+        - include: string
+    - match: ''                 # if no second bracket pop out
+      pop: true
