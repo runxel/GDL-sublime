@@ -62,6 +62,17 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Support Variable Shadow</string>
+			<key>scope</key>
+			<string>support.other.variable.gdl.shadow</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Support Class</string>
 			<key>scope</key>
 			<string>support.type</string>
@@ -75,35 +86,46 @@
 			<key>name</key>
 			<string>Subroutines</string>
 			<key>scope</key>
-			<string>entity.name.function</string>
+			<string>entity.name.function, punctuation.section.function</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
 				<string>#40bdbd</string>
+				<key>background</key>
+				<string>#444439</string>
+				<key>fontStyle</key>
+				<string>bold</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Jump labels</string>
 			<key>scope</key>
-			<string>entity.name.function.gdl.jump</string>
+			<string>variable.function.gdl</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
 				<string>#389C9C</string><!-- #40bdbd -->
-				<key>background</key>
-				<string>#444439</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Constant</string>
 			<key>scope</key>
-			<string>constant.numeric, constant.language</string>
+			<string>constant.numeric</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
+				<key>foreground</key>
+				<string>#fac49f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Constant</string>
+			<key>scope</key>
+			<string>constant.language</string>
+			<key>settings</key>
+			<dict>
 				<key>foreground</key>
 				<string>#f79e60</string>
 			</dict>
@@ -123,6 +145,32 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Escape chars</string>
+			<key>scope</key>
+			<string>constant.character.escape</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#d7dd9b</string>
+				<key>background</key>
+				<string>#875593</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String placeholders</string>
+			<key>scope</key>
+			<string>constant.other.placeholder</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#d7dd9b</string>
+				<key>background</key>
+				<string>#34495e</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Operators</string>
 			<key>scope</key>
 			<string>keyword.operator, constant.other.color</string>
@@ -136,7 +184,7 @@
 			<key>name</key>
 			<string>Function Methods</string>
 			<key>scope</key>
-			<string>keyword.other.special-method</string>
+			<string>keyword.other.special-method, punctuation.section.arguments</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -150,10 +198,8 @@
 			<string>keyword, storage.type</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
-				<string>#ea7979</string>
+				<string>#FF7979</string>
 			</dict>
 		</dict>
 		<dict>
@@ -207,14 +253,14 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#40bf80</string>
+				<string>#39ab73</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Keyword.control</string>
 			<key>scope</key>
-			<string>keyword.control.flow, keyword.control.js</string>
+			<string>keyword.control</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
@@ -242,7 +288,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#CBE36D</string>
+				<string>#AAFFAA</string>
 			</dict>
 		</dict>
 		<dict>
@@ -255,7 +301,7 @@
 				<key>fontStyle</key>
 				<string>italic</string>
 				<key>foreground</key>
-				<string>#B83D3D</string>
+				<string>#BB3D3D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -266,18 +312,62 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#DB9464</string>
+				<string>#DD6664</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Buffer</string>
 			<key>scope</key>
-			<string>keyword.gdl.buffer</string>
+			<string>keyword.gdl.buffer, punctuation.section.buffer</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
 				<string>#1F95D9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Line continuation</string>
+			<key>scope</key>
+			<string>punctuation.separator.continuation</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#156897</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Array</string>
+			<key>scope</key>
+			<string>entity.name.array</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#dfb76a</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Array brackets</string>
+			<key>scope</key>
+			<string>punctuation.section.array</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#8c7342</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>open calls</string>
+			<key>scope</key>
+			<string>keyword.gdl.extern, keyword.gdl.addon</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#ae4977</string>
 			</dict>
 		</dict>
 	</array>

@@ -1,0 +1,37 @@
+
+ ██████╗ ██████╗ ██╗     
+██╔════╝ ██╔══██╗██║     
+██║  ███╗██║  ██║██║     
+██║   ██║██║  ██║██║     
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		2.0.0
+
+*************************
+
+
+     ¿ What's new ?
+*************************
+
+• Version 2.0 was completly rewritten
+  from scratch
+• From v2 on the GDL plugin will require
+  ST build 3084 or newer
+• v2 uses the then new introduced sublime-syntax
+  (instead of .tmLanguage)
+• other cool stuff as described below
+
+   _____Features_____
+• "GoTo Definition" works with subroutines! press F12 to get to the matching subroutine fast
+• bracket mismatching
+• escape chars (\t, \n) in strings highlighting
+• string placeholder (like found in STR())
+• more robust and versatile
+• the scopes are refined and follow the new style guide
+• more love for the light theme ♥

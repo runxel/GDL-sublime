@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[
 ! ---------------------------------------------------------------------- !
-! ---------------------------------------------------------------------- !
-100:								 	  ! ${1:description}
-
+${1:"name" or number}:
+	${2:! do something}
+RETURN
 
 ]]></content>
 	<tabTrigger>sub</tabTrigger>

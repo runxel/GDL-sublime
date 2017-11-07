@@ -1,4 +1,11 @@
-*************************
+﻿
+ ██████╗ ██████╗ ██╗     
+██╔════╝ ██╔══██╗██║     
+██║  ███╗██║  ██║██║     
+██║   ██║██║  ██║██║     
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
 Thanks for installing the
 GDL Sublime Text package!
 *************************
@@ -13,9 +20,9 @@ BUT wait! There's more!
 Activate the color scheme
 -------------------------
 
-Activate the color scheme by modifying a syntax specific preferences file, which you can find using the menu item `Preferences -> Settings - More -> Syntax Specific – User`.
+Activate the color scheme by modifying a syntax specific preferences file, which you can find using the menu item `Preferences -> Syntax Specific`.
 
-There a 2 different color schemes at choice: A dark and light one. _I muchly recommend the dark one for fatigue-proof coding!_
+There are 2 different color schemes at choice: A dark and light one. I muchly recommend the dark one for fatigue-proof coding!
 
 Copy _one_ of these into the new file and save:
 
@@ -28,16 +35,3 @@ Light:
 {  
 	"color_scheme": "Packages/GDL/GDL-light.tmTheme"  
 }
-
-GDL color scheme
-----------------
-
-This color scheme is made especially for a comfortable GDL coding environment in Sublime Text.  
-If you like it: I have also a more complete color scheme aligned with a beatiful and minimal UI theme.
-You can find it here:	https://github.com/runxel/hitoshi
-Give it a try!
-
-
-THANKS
----------------
-to Jochen Suehlo and Frank Beister for their help and encouragement, aswell selfgdl.de

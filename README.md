@@ -81,6 +81,3 @@ It can be understood as a SublimeText-project handler integrated with a link to 
 
 ## Getting Started With Sublime Text
 New to Sublime? Then I can recommend this excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
-
-
-### ~~TO DO LIST~~
