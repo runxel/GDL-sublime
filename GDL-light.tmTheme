@@ -12,7 +12,7 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#f8f8f8</string>
+				<string>#eee</string>
 				<key>caret</key>
 				<string>#8b8b8b</string>
 				<key>foreground</key>
@@ -22,7 +22,7 @@
 				<key>lineHighlight</key>
 				<string>#dedfd9</string>
 				<key>selection</key>
-				<string>#b9bcb4</string>
+				<string>#dcddd9</string>
 			</dict>
 		</dict>
 		<dict>
@@ -43,8 +43,6 @@
 			<string>keyword.operator.class, constant.other</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#405346</string>
 			</dict>
@@ -62,6 +60,17 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Support Variable Shadow</string>
+			<key>scope</key>
+			<string>support.other.variable.gdl.shadow</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Support Class</string>
 			<key>scope</key>
 			<string>support.type</string>
@@ -75,39 +84,59 @@
 			<key>name</key>
 			<string>Subroutines</string>
 			<key>scope</key>
-			<string>entity.name.function</string>
+			<string>entity.name.function, punctuation.section.function</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#3a9fad</string>
+				<string>#40bdbd</string>
+				<key>background</key>
+				<string>#ececeb</string>
 				<key>fontStyle</key>
-				<string>underline</string>
+				<string>bold</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Jump labels</string>
 			<key>scope</key>
-			<string>entity.name.function.gdl.jump</string>
+			<string>variable.function.gdl</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#40bdbd</string>
-				<key>background</key>
-				<string>#e7e7e2</string>
+				<string>#389C9C</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Jump labels</string>
+			<key>scope</key>
+			<string>variable.function.gdl</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#389C9C</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Constant</string>
 			<key>scope</key>
-			<string>constant.numeric, constant.language</string>
+			<string>constant.numeric</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
-				<string>#f1670c</string>
+				<string>#f59454</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Constant</string>
+			<key>scope</key>
+			<string>constant.language</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#f79e60</string>
 			</dict>
 		</dict>
 		<dict>
@@ -117,10 +146,34 @@
 			<string>string</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
-				<string>#B3B059</string>
+				<string>#b0ac3c</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Escape chars</string>
+			<key>scope</key>
+			<string>constant.character.escape</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#d7dd9b</string>
+				<key>background</key>
+				<string>#875593</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>String placeholders</string>
+			<key>scope</key>
+			<string>constant.other.placeholder</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#d7dd9b</string>
+				<key>background</key>
+				<string>#34495e</string>
 			</dict>
 		</dict>
 		<dict>
@@ -131,24 +184,18 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#14e0c7</string>
-				<key>background</key>
-				<string>#e7f8ea</string>
-				<key>fontStyle</key>
-				<string> bold</string>
+				<string>#3eafa2</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Function Methods</string>
 			<key>scope</key>
-			<string>keyword.other.special-method</string>
+			<string>keyword.other.special-method, punctuation.section.arguments</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
-				<string>#709dc2</string>
+				<string>#648dae</string>
 			</dict>
 		</dict>
 		<dict>
@@ -158,8 +205,6 @@
 			<string>keyword, storage.type</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#e24b4b</string>
 			</dict>
@@ -173,8 +218,6 @@
 			<dict>
 				<key>background</key>
 				<string>#f86161</string>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#ffffff</string>
 			</dict>
@@ -188,8 +231,6 @@
 			<dict>
 				<key>background</key>
 				<string>#cc9ad8</string>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#ffffff</string>
 			</dict>
@@ -215,22 +256,20 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#40bf80</string>
+				<string>#0F8048</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>name</key>
 			<string>Keyword.control</string>
 			<key>scope</key>
-			<string>keyword.control.flow, keyword.control.js</string>
+			<string>keyword.control</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
 				<string>#7954e9</string>
 				<key>background</key>
 				<string>#e7e7e2</string>
-				<key>fontStyle</key>
-				<string> bold</string>
 			</dict>
 		</dict>
 		<dict>
@@ -283,11 +322,59 @@
 			<key>name</key>
 			<string>Buffer</string>
 			<key>scope</key>
-			<string>keyword.gdl.buffer</string>
+			<string>keyword.gdl.buffer, punctuation.section.buffer</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
 				<string>#1F95D9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Line continuation</string>
+			<key>scope</key>
+			<string>punctuation.separator.continuation</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#ffffff</string>
+				<key>background</key>
+				<string>#a1c2d5</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Array</string>
+			<key>scope</key>
+			<string>entity.name.array</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#c8a45f</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Array brackets</string>
+			<key>scope</key>
+			<string>punctuation.section.array</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#8c7342</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>open calls</string>
+			<key>scope</key>
+			<string>keyword.gdl.extern, keyword.gdl.addon</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#88556c</string>
+				<key>fontStyle</key>
+				<string>bold</string>
 			</dict>
 		</dict>
 	</array>
@@ -296,8 +383,8 @@
 	<key>colorSpaceName</key>
 	<string>sRGB</string>
 	<key>semanticClass</key>
-	<string>theme.dark.gdl_light</string>
+	<string>theme.light.gdl</string>
 	<key>author</key>
-	<string>Lucas Becker | https:&#x2f;&#x2f;github.com&#x2f;runxel</string>
+	<string>Lucas Becker | runxel @ github.com</string>
 </dict>
 </plist>

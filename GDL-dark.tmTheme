@@ -105,7 +105,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#389C9C</string><!-- #40bdbd -->
+				<string>#389C9C</string>
 			</dict>
 		</dict>
 		<dict>
@@ -137,8 +137,6 @@
 			<string>string</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#d7dd9b</string>
 			</dict>
@@ -211,8 +209,6 @@
 			<dict>
 				<key>background</key>
 				<string>#f86161</string>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#d7e7db</string>
 			</dict>
@@ -226,8 +222,6 @@
 			<dict>
 				<key>background</key>
 				<string>#cc9ad8</string>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#d7e7db</string>
 			</dict>
@@ -378,6 +372,6 @@
 	<key>semanticClass</key>
 	<string>theme.dark.gdl</string>
 	<key>author</key>
-	<string>Lucas Becker | https:&#x2f;&#x2f;github.com&#x2f;runxel</string>
+	<string>Lucas Becker | runxel @ github.com</string>
 </dict>
 </plist>
