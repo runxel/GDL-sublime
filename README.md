@@ -81,3 +81,8 @@ It can be understood as a SublimeText-project handler integrated with a link to 
 
 ## Getting Started With Sublime Text
 New to Sublime? Then I can recommend this excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/runxel/GDL-sublime/badge.svg?style=beer-square)](https://beerpay.io/runxel/GDL-sublime)  [![Beerpay](https://beerpay.io/runxel/GDL-sublime/make-wish.svg?style=flat-square)](https://beerpay.io/runxel/GDL-sublime?focus=wish)
