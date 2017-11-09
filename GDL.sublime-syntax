@@ -30,6 +30,7 @@ contexts:
     - include: functions-special
     - include: gdl-globals
     - include: optional
+    - include: expression-common      # needs to be last bc of brackets
 
 # Included in all contexts by default:
 # except where - meta_include_prototype: false
@@ -55,7 +56,6 @@ contexts:
     - include: line-continuation
     - include: statements
     - include: controls
-    - include: expression-common
 
 ############### Subroutines #################
   subs:
@@ -149,7 +149,7 @@ contexts:
           scope: variable.function.gdl
           pop: true
 
-    - match: (?i)(?<=^|\s)(FOR|TO|STEP|NEXT|DO|(END)?WHILE|REPEAT|UNTIL)\b
+    - match: (?i)(?<=^|\s)(FOR|TO|NEXT|DO|(END)?WHILE|REPEAT|UNTIL)\b
       scope: keyword.control.flow.gdl
 
     - match: (?i)(?<=^|\s)((END)?IF|THEN|ELSE)\b
@@ -192,12 +192,12 @@ contexts:
         - match: ','
           scope: punctuation.separator.gdl
         - include: main
-    # - match: \)
-    #   scope: invalid.illegal.stray.brace.round.gdl
-    # - match: \]
-    #   scope: invalid.illegal.stray.brace.square.gdl
-    # - match: \}
-    #   scope: invalid.illegal.stray.brace.curly.gdl
+    - match: \)
+      scope: invalid.illegal.stray.brace.round.gdl
+    - match: \]
+      scope: invalid.illegal.stray.brace.square.gdl
+    - match: \}
+      scope: invalid.illegal.stray.brace.curly.gdl
 
 ################ Hotspots ##################
   hots: 
@@ -277,7 +277,7 @@ contexts:
 
   attribute:
     - match: |-
-        (?ix)\b(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|
+        (?ix)\b(LET|PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|
           |SYMBOL_(LINE|FILL)|FILL[A]?|(SOLID|EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|
           |FILLTYPES_MASK|(BUILDING_)?MATERIAL|TEXTURE|STYLE(\{2\})?|(END)?PARAGRAPH|
           |TEXTBLOCK_?|ADDITIONAL_DATA|SECT_(FILL|ATTRS(\{2\})?))
@@ -292,12 +292,31 @@ contexts:
     - match: (?i)\b(ON|OFF|AUTO)\b
       scope: support.other.variable.gdl.shadow
   
+  range:
+    - match: (?i)\b(RANGE)(?=\s)
+      scope: keyword.gdl.nongeo.parameters.range
+
   nongeo:
+    - match: (?i)\b(VALUES(\{2\})?|STEP|(RETURNED_)?PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)
+      scope: keyword.gdl.nongeo.parameters
+
+    - include: range
+    - match: (?i)(?<=RANGE)\s(\(|\[)
+      scope: punctuation.section.range.left-delimiter.gdl
+      push:
+        - meta_scope: meta.section-range.gdl
+        - match: (\)|\])
+          scope: punctuation.section.range.right-delimiter.gdl
+          pop: true
+        - match: ','
+          scope: punctuation.separator.arguments.gdl
+        - include: main
+
+    - match: (?i)\b(CUSTOM)\b
+      scope: support.other.variable.gdl.parameters.custom
+
     - match: (?i)\b(UI_(NEXT|PREV))\b
       scope: support.other.variable.gdl.ui
-
-    - match: (?i)\b(VALUES(\{2\})?|(RETURNED_)?PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)
-      scope: keyword.gdl.nongeo.parameters
 
     - match: (?i)\b((REF\s+)?(COMPONENT|DESCRIPTOR)|BINARYPROP|DATABASE_SET|POSITION|REF_(COMPONENT|DESCRIPTOR)|(SURFACE|VOLUME)3D|DRAWING[2]?)\b
       scope: keyword.gdl.nongeo.properties
@@ -507,13 +526,7 @@ contexts:
         - match: \)
           scope: punctuation.section.buffer.end.gdl
           pop: true
-        - include: buffer
-        - include: operators
-        - include: expression-common
-        - include: string
-        - include: functions
-        - include: functions-special
-        - include: arrays
+        - include: main
 
   buffer-in:
     # now buffer com without ()
@@ -534,13 +547,7 @@ contexts:
             pop: true
           - match: ','
             scope: punctuation.separator.arguments.gdl
-          - include: functions
-          - include: functions-special
-          - include: operators
-          - include: expression-common
-          - include: string
-          - include: optional
-          - include: arrays
+          - include: main
 
   functions-special:
   - match: (?i)(?<=^|\s)(DIM|PI)(\b)

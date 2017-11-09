@@ -202,7 +202,7 @@
 			<key>name</key>
 			<string>Keyword, Storage</string>
 			<key>scope</key>
-			<string>keyword, storage.type</string>
+			<string>keyword, storage.type, punctuation.section.range</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
