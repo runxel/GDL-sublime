@@ -72,7 +72,7 @@ Voilá! There's a divider.
 `! ---------------------------------------------------------------------- !`
 
 I hardly encourage you to either modify the snippets, so they will suit your needs; or to make new ones.
-You will find all the shipped snippets in the "Snippets" folder.
+You will find all the shipped snippets in the `Snippets` folder.
 
 ## Further usage
 This Sublime Text package got accompanied by [GDLnucleus](http://www.opengdl.org/Default.aspx?tabid=9748) (_Not freeware_). GDLnucleus is a assistant program which enables you to send your changes live to ArchiCAD from Sublime Text, instead of relying on copy+paste.
