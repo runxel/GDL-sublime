@@ -1,0 +1,20 @@
+
+ ██████╗ ██████╗ ██╗     
+██╔════╝ ██╔══██╗██║     
+██║  ███╗██║  ██║██║     
+██║   ██║██║  ██║██║     
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		2.0.1
+
+*************************
+
+• String placheholder got 
+  styled incorrect sometimes,
+  this is now fixed
