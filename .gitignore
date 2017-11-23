@@ -1,6 +1,7 @@
 *.cache
 *.pyc
-.DS_Store
 .Bridge*
+.DS_Store
+package-metadata.json
 *.sublime-workspace
 *.sublime-project
