@@ -118,8 +118,8 @@ contexts:
           (\d+)?                  # might have number with...
           (\.)?                   # ...decimal point
           (\d+)                   # at least one number
-          {{units}}?|             # unitmarker possible
-          |{{units}}|             # unit alone
+          {{units}}?              # unitmarker possible
+          |{{units}}              # unit alone
           |(~|\.|n|s))?           # possible without number and unit
       scope: constant.other.placeholder.gdl
 
