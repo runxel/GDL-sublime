@@ -1,5 +1,6 @@
 {
 	"install": "Messages/install.txt",
 	"v2.0.0": "Messages/v2.0.0.txt",
-	"v2.0.1": "Messages/v2.0.1.txt"
+	"v2.0.1": "Messages/v2.0.1.txt",
+	"v2.0.2": "Messages/v2.0.2.txt"
 }
