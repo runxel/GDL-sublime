@@ -555,7 +555,7 @@ contexts:
 
 ################### Arrays ######################
   arrays:
-    - match: (?i)([a-z_]+)(?=\[)
+    - match: (?i)([a-z_0-9]+)(?=\[)
       scope: entity.name.array.gdl
       push:
         - match: \[
