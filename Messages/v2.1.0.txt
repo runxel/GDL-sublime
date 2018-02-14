@@ -1,0 +1,22 @@
+
+ ██████╗ ██████╗ ██╗     
+██╔════╝ ██╔══██╗██║     
+██║  ███╗██║  ██║██║     
+██║   ██║██║  ██║██║     
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		2.1.0
+
+*************************
+
+• some styling errors with
+  GOSUBS fixed
+• auto completion is now
+  all lower caps, see 
+  issue #9 on github
