@@ -9,7 +9,7 @@ scope: source.gdl
 variables:
   escaped_byte: '\\(n|t|\\)?'
   units: '(e|mm?|cm|f(f|d)?i|d(f|i)|pt|sq(mm?|cm|f|i)|d(d|ms)|gr|rad|surv|(ga)?l|cu((c|m)?m|f|i|y))'
-  subroutine_name: ([0-9]+|(")[a-z_]+("))
+  subroutine_name: ([0-9]+|(")[a-z_1-9]+("))
   function_names: |-
     (NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|EXP|LGT|LOG|SQR|MAX|MIN|RND
       |STR\{2\}|STR|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET
@@ -147,6 +147,10 @@ contexts:
         - meta_scope: meta.function-call.gdl
         - match: (?i)({{subroutine_name}})
           scope: variable.function.gdl
+          pop: true
+        - include: main
+        - match: (?i)\b(\w+)\b
+          scope: variable.gdl
           pop: true
 
     - match: (?i)(?<=^|\s)(FOR|TO|NEXT|DO|(END)?WHILE|REPEAT|UNTIL)\b
@@ -514,7 +518,7 @@ contexts:
       scope: keyword.gdl.globals.request
 
   globals-deprecated:
-    - match: (?i)\b([A-Z](_|~))\b
+    - match: (?i)\b([A-Z](_\b|~))
       scope: keyword.gdl.globals.deprecated
 
 ################# Buffer ##################
