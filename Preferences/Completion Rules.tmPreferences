@@ -6,7 +6,7 @@
 	<key>settings</key>
 	<dict>
 		<key>cancelCompletion</key>
-		<string>(?i)(\s*(RETURN|ENDWHILE|NEXT|GOSUB))</string>
+		<string>(?i)(\s*(Return|Endwhile|Next|Gosub))</string>
 	</dict>
 </dict>
 </plist>
