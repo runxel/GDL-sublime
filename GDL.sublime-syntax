@@ -357,13 +357,14 @@ contexts:
 
 ############### opt Params #################
   optional:
-    - match: (?i)\b([ABCDEFG]|ZZYZX|ac_\w+|gs_\w+|ifc_\w+|ROOM_\w+)\b
+    - match: (?i)\b([ABCDEFG]|ZZYZX|(ac|gs|ifc|ROOM|FM)_\w+)\b
       scope: keyword.gdl.optionalparameters.fixed
 
 ############### GDL globals #################
   gdl-globals:
     - include: gdl-global-param
     - include: request-param
+    - include: globals-deprecated
     - match: (?i)\b(APPLICATION_QUERY|LIBRARYGLOBAL)\b
       scope: keyword.gdl.request
 
@@ -511,6 +512,10 @@ contexts:
           |MATERIAL_INFO|COMPONENT_(PROJECTED_AREA|VOLUME))
           \b
       scope: keyword.gdl.globals.request
+
+  globals-deprecated:
+    - match: (?i)\b([A-Z](_|~))\b
+      scope: keyword.gdl.globals.deprecated
 
 ################# Buffer ##################
   buffer-out:
