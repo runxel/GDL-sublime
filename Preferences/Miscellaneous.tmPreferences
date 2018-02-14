@@ -8,9 +8,9 @@
 	<key>settings</key>
 	<dict>
 		<key>decreaseIndentPattern</key>
-		<string>(?i)(^\s*(END|ENDIF|RETURN|NEXT|ENDWHILE|UNTIL|ENDGROUP))</string>
+		<string>(?i)(^\s*(End|Endif|Return|Next|Endwhile|Until|Endgroup))</string>
 		<key>increaseIndentPattern</key>
-		<string>(?i)(^\s*(IF)\b.*\sTHEN$)|(^\s*(ELSE)\s*$)|(^\s*(FOR|DO|WHILE|REPEAT|GROUP)\b.*$)|(([0-9]+|(")[a-z_]+(")):)</string>
+		<string>(?i)(^\s*(If)\b.*\sThen$)|(^\s*(Else)\s*$)|(^\s*(For|Do|While|Repeat|Group)\b.*$)|(([0-9]+|(")[a-z_]+(")):)</string>
 		<key>shellVariables</key>
 		<array>
 			<dict>
