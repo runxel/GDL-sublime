@@ -1,6 +1,10 @@
 {
 	"scope": "source.gdl",
 	"completions": [
+		/* only Globals are all upper case
+			(like mentioned in the official GS docs)
+		*/
+
 		/* A A A A A A A A A A A A A A A A A A A A A A A A A A A */
 		{ "trigger": "abs", "contents": "abs(${1:x})" },
 		{ "trigger": "acs", "contents": "acs(${1:x})" },
@@ -120,7 +124,7 @@
 		{ "trigger": "file_dependance", "contents": "file_dependance \"${1:name}\"" },
 		{ "trigger": "fill", "contents": "fill ${1:name or index}" },
 		"filltypes_mask",
-		{ "trigger": "for … to … step … next", "contents": "for ${1:variable} = ${2:initial_value} to ${3:end_value} step ${4:step_value}\n\t${5:!statement}\nnexT ${1:variable}\n" },
+		{ "trigger": "for … to … step … next", "contents": "for ${1:variable} = ${2:initial_value} to ${3:end_value} step ${4:step_value}\n\t${5:!statement}\nnext ${1:variable}\n" },
 		"fprism_",
 		{ "trigger": "fra", "contents": "fra(${1:x})" },
 		{ "trigger": "fragment2", "contents": "fragment2 ${1:index}, ${2:use_current_attributes_flag}" },
