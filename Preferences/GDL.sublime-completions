@@ -403,7 +403,7 @@
 		{ "trigger": "ui_separator", "contents": "ui_separator ${1:x1}, ${2:y1}, ${3:x2}, ${4:y2}" },
 		{ "trigger": "ui_slider", "contents": "ui_slider \"${1:name}\", ${2:x0}, ${3:y0}, ${4:width}, ${5:height}" },
 		{ "trigger": "ui_slider{2}", "contents": "ui_slider{2} ${1:name}, ${2:x0}, ${3:y0}, ${4:width}, ${5:height}" },
-		{ "trigger": "ui_style", "contents": "ui_style ${1:tooltiptext}" },
+		{ "trigger": "ui_style", "contents": "ui_style ${1:fontsize}, ${2:face_code}" },
 		{ "trigger": "ui_tooltip", "contents": "ui_tooltip ${1:tooltiptext}" },
 		"until",
 		"use",
