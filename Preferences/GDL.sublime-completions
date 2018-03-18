@@ -121,7 +121,7 @@
 		"extrudedshell{3}",
 
 		/* F F F F F F F F F F F F F F F F F F F F F F F F F F F */
-		{ "trigger": "file_dependance", "contents": "file_dependance \"${1:name}\"" },
+		{ "trigger": "file_dependence", "contents": "file_dependence \"${1:name}\"" },
 		{ "trigger": "fill", "contents": "fill ${1:name or index}" },
 		"filltypes_mask",
 		{ "trigger": "for … to … step … next", "contents": "for ${1:variable} = ${2:initial_value} to ${3:end_value} step ${4:step_value}\n\t${5:!statement}\nnext ${1:variable}\n" },
