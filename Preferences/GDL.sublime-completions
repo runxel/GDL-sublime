@@ -437,7 +437,7 @@
 		"walls",
 		"WALL_RESOL",
 		"WALL_SECT_PEN",
-		{ "trigger": "while … do", "contents": "while ${1:condition} do\n\t${2:statement1}\nendwhile" },
+		{ "trigger": "while … do", "contents": "while ${1:condition} do\n\t${2:! statement}\nendwhile" },
 		"WIDO_FRAME_THICKNESS",
 		"WIDO_HEAD_DEPTH",
 		"WIDO_ORIG_DIST",
