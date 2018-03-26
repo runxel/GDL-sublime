@@ -9,7 +9,7 @@ scope: source.gdl
 variables:
   escaped_byte: '\\(n|t|\\)?'
   units: '(e|mm?|cm|f(f|d)?i|d(f|i)|pt|sq(mm?|cm|f|i)|d(d|ms)|gr|rad|surv|(ga)?l|cu((c|m)?m|f|i|y))'
-  subroutine_name: ([0-9]+|(")[a-z_1-9]+("))
+  subroutine_name: ([0-9]+|(")[a-z_0-9]+("))
   function_names: |-
     (NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|EXP|LGT|LOG|SQR|MAX|MIN|RND
       |STR\{2\}|STR|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET
