@@ -8,7 +8,7 @@ scope: source.gdl
 
 variables:
   escaped_byte: '\\(n|t|\\)?'
-  units: '(e|mm?|cm|f(f|d)?i|d(f|i)|pt|sq(mm?|cm|f|i)|d(d|ms)|gr|rad|surv|(ga)?l|cu((c|m)?m|f|i|y))'
+  units: '(e|(m|c|d)?m|f(f|d)?i|d(f|i)|pt|sq(mm?|cm|f|i)|d(d|ms)|gr|rad|surv|(ga)?l|cu((c|m)?m|f|i|y))'
   subroutine_name: ([0-9]+|(")[a-z_0-9]+("))
   function_names: |-
     (NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|EXP|LGT|LOG|SQR|MAX|MIN|RND
@@ -98,6 +98,7 @@ contexts:
         - include: escaped-byte
         - include: string_placeholder
         - include: request-param
+        - include: autotext
         - include: optional
     - match: "'|`"
       scope: punctuation.definition.string.begin.localized.gdl
@@ -110,6 +111,7 @@ contexts:
         - include: escaped-byte
         - include: string_placeholder
         - include: request-param
+        - include: autotext
         - include: optional
 
   string_placeholder:
@@ -123,6 +125,23 @@ contexts:
           |{{units}}              # unit alone
           |(~|\.|n|s))?           # possible without number and unit
       scope: constant.other.placeholder.gdl
+
+  autotext:
+    - match: |-
+        (?ix)(<(
+          project(name|number|status)|dateOfIssue|
+          site(fullAddress|address[1-3]|city|state|postcode|country)|
+          keywords|notes|
+          (architect(name|position|company|fullAddress|address[1-3]|city|state|postcode|country|email|phone|fax|web)|
+          cadTechnician|
+          (client(name|company|fullAddress|address[1-3]|city|state|postcode|country|email|phone|fax))|
+          (short|long)date)|time|lastSaved(at|by)|
+          (file(name|path)|layout(name|ID|number)|subset(name|ID)|drawing(name|ID|scale)|originalScale|magnification|renovationFilter|
+          marker(sheet|drawing)number(90|110)?|backRefSheetNumber)(_R)?|
+          numOfLayouts|change(ID|description)|
+          revisionID|(current)?issue(ID|description|date|dby)|currentRevisionID
+          )>)
+      scope: constant.other.autotext.gdl
 
   line-continuation:
     - match: (?<=\s)(:)
@@ -253,7 +272,7 @@ contexts:
     - match: (?i)(?<=^|\s)(CUT(PLANE(\{[2-4]\})?|POLY[A]?|FORM(\{2\})?|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)
       scope: keyword.gdl.shape.3D.cut
 
-    - match: (?i)(?<=^|\s)((PLACE|KILL)GROUP|(ADD|ISECT|SUB)GROUP(\{[23]\})?|SWEEPGROUP(\{[2-4]\})?|ISECTLINES|CREATEGROUPWITHMATERIAL)(?=$|\s|\()
+    - match: (?i)(?<=^|\s)((place|kill)group|(add|isect|sub)group(\{[23]\})?|sweepgroup(\{[2-5]\})?|isectlines|creategroupwithmaterial)(?=$|\s|\()
       scope: keyword.gdl.shape.3D.seo
 
     - match: (?i)(?<=^|\s)(TEXT|RICHTEXT)(?=$|\s)
@@ -327,8 +346,9 @@ contexts:
       scope: keyword.gdl.nongeo.properties
 
     - match: |-
-        (?ix)\b(UI_(DIALOG|(CURRENT_)?PAGE|BUTTON|SEPARATOR|GROUPBOX|PICT(_BUTTON)?|STYLE|OUTFIELD|INFIELD(\{[2-4]\})?
-          |RADIOBUTTON(\{[2]\})?|TOOLTIP|LISTFIELD|LISTITEM(\{2\})?|COLORPICKER(\{2\})?|SLIDER(\{2\})?|CUSTOM_POPUP_(INFIELD|LISTITEM)(\{2\})?))
+        (?ix)\b(UI_(dialog|(current_)?page|button|pict(_button)?|separator|groupbox|style|outfield|tooltip|listfield|
+          infield(\{[2-4]\})?|
+          ((pict_)?radiobutton|pict_pushcheckbutton|listitem|colorpicker|slider|textstyle_infield|custom_popup_(infield|listitem))(\{[2]\})?))
           (?=$|\s)
       scope: keyword.gdl.nongeo.ui
 

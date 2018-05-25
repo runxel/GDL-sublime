@@ -169,6 +169,19 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>Autotext</string>
+			<key>scope</key>
+			<string>constant.other.autotext</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#93BD50</string>
+				<key>background</key>
+				<string>#243341</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Operators</string>
 			<key>scope</key>
 			<string>keyword.operator, constant.other.color</string>
