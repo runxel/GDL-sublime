@@ -442,7 +442,7 @@
 		"WALL_MAT_B",
 		"WALL_MAT_EDGE",
 		"wallniche",
-		"WALL_THICKNISS",
+		"WALL_THICKNESS",
 		"walls",
 		"WALL_RESOL",
 		"WALL_SECT_PEN",
