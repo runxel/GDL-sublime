@@ -254,6 +254,17 @@
 		</dict>
 		<dict>
 			<key>name</key>
+			<string>,</string>
+			<key>scope</key>
+			<string>punctuation.separator</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#657b83</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
 			<string>Globals</string>
 			<key>scope</key>
 			<string>keyword.gdl.globals</string>
