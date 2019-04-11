@@ -1,0 +1,34 @@
+! DEMO CODE FOR SYNTAX HIGHLIGHTING
+! it serves no other purpose than showing styling
+
+VALUES "part" 4, RANGE (5, 10], STEP 0.5, CUSTOM
+IF NOT(gs_gutter) THEN LOCK "part"
+
+DIM	stHangerPos[6]
+
+HOTSPOT2 	0, 	B/2, 	unID 	:unID = unID+1
+CALL "m_DSProfiles"
+
+PEN mypen
+MUL2 1, COS(ac_wall_ang)
+ADD2 0, -tempWidth
+POLY2_B{2} NSP/3, 1+2+4+64,	gs_fill_pen, gs_back_pen,
+		A, 0, 0,
+		USE(NSP)
+DEL 2
+
+IF GLOB_MODPAR_NAME = "OffsetLength"  THEN
+	posX = 0.8e10
+ELSE
+	GOSUB "myFunc"
+ENDIF
+
+string = STR("%.3m",number)
+
+! ------------------------------------------------------- !
+"myFunc":
+	define Style "Text" txtstyle, ntxt*j, txtpt, 0
+	REQUEST("Height_of_style", "Text", height)
+	esc = "It Has Escape\nChars and autotext <CHANGEID>!"
+RETURN
+
