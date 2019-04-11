@@ -1,0 +1,45 @@
+[
+    {
+        "id": "preferences",
+        "children":
+        [
+            {
+                "caption": "Package Settings",
+                "mnemonic": "P",
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "GDL",
+                        "children":
+                        [
+                            {
+                                "caption": "Settings",
+                                "command": "edit_settings",
+                                "args": {
+                                    "base_file": "${packages}/GDL/GDL.sublime-settings",
+                                    "default": "{\n$0\n}\n"
+                                }
+                            },
+                            {
+                                "caption": "Demo code",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/GDL/demo-code.gdl",
+                                }
+                            },
+                            { "caption": "-" },
+                            {
+                                "caption": "Github",
+                                "command": "open_url",
+                                "args": {
+                                    "url": "https://github.com/runxel/GDL-sublime"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
