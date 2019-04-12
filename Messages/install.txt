@@ -15,23 +15,12 @@ GDL Sublime Text package!
 =========================
 
 From now you can just select `GDL` from the code-language menu in the bottom right corner of Sublime Text.
-BUT wait! There's more!
+This package comes with 2 pre-designed color schemes.
+As default the light theme will be selected.
+If you prefer – like me – a dark coding environment, you can change this in the settings.
+Go to `Preferences > Package Settings > GDL > Settings`.
+Put your settings into the right pane and you're good to go!
 
-Activate the color scheme
--------------------------
-
-Activate the color scheme by modifying a syntax specific preferences file, which you can find using the menu item `Preferences -> Syntax Specific`.
-
-There are 2 different color schemes at choice: A dark and light one. I muchly recommend the dark one for fatigue-proof coding!
-
-Copy _one_ of these into the new file and save:
-
-Dark:
-{  
-	"color_scheme": "Packages/GDL/GDL-dark.tmTheme"  
-}
-
-Light:
-{  
-	"color_scheme": "Packages/GDL/GDL-light.tmTheme"  
-}
+=========================
+      Happy coding!
+      
