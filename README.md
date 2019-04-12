@@ -3,7 +3,7 @@ A bundle to make GDL available in [Sublime Text](http://www.sublimetext.com/).
 
 [![Version](https://img.shields.io/github/release/runxel/GDL-sublime.svg?style=flat-square)](https://github.com/runxel/GDL-sublime/releases/latest)
 
-![dark color scheme](https://i.imgur.com/pH7MH1P.png)  
+![dark color scheme](https://i.imgur.com/OEurk9A.png)  
 
 # What is GDL?
 GDL means 'Geometric Description Language'. [ArchiCAD](http://www.graphisoft.com/) uses it to define a library part.
@@ -48,17 +48,17 @@ Copy _one_ of these into the new file and save:
 #### **Dark:**
 ```json
 {  
-	"color_scheme": "Packages/GDL/GDL-dark.tmTheme"  
+	"color_scheme": "Packages/GDL/GDL-dark.sublime-color-scheme"  
 }
 ```
 
 #### **Light:**
 ```json
 {  
-	"color_scheme": "Packages/GDL/GDL-light.tmTheme"  
+	"color_scheme": "Packages/GDL/GDL-light.sublime-color-scheme"  
 }
 ```
-![light color scheme](https://i.imgur.com/9eXjKPe.png)  
+![light color scheme](https://i.imgur.com/OQx2IF2.png)  
 
 #### Don't like the theme?
 Don't worry. Go to the [ththeme-editor](http://tmtheme-editor.herokuapp.com/#!/editor/theme/GDL%20dark) and select one of the two themes as start and make one which satisfies you! (Note that the theme-editor of course has no preview for gdl code, so it's just direct scope color editing.)  
