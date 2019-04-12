@@ -1,0 +1,230 @@
+{
+	/* visit https://github.com/runxel/GDL-sublime */
+	"name": "GDL-light",
+	/* .sublime-color-scheme Version for ST3 */
+	"author": "Lucas Becker",
+	/* runxel @ github.com */
+	"variables":
+	{
+		"background": 	"#EEEEEE",
+		"foreground":	"#5F6A6A",
+		"caret": 		"#8B8B8B",
+		"invisibles": 	"#B9BAAF",
+		"lineHilight": 	"#DEDFD9",
+		"dark":			"#22221C",
+
+		"coral":		"#EF5350",
+		"darkred":		"#BB3D3D",
+		"oldpink":		"#D2999A",
+		"peach":		"#FF8A65",
+		"mustard":		"#DFB76A",
+		"gold":			"#F5B041",
+		"wheat":		"#999966",
+		"lightgreen":	"#66CC33",
+		"darkgreen":	"#39AB73",
+		"forestgreen":	"#117A65",
+		"dodgerblue":	"#42A5F5",
+		"lightblue":	"#8BB6D9",
+		"darkblue":		"#1976d2",
+		"violet":		"#6F5BA8",
+		"purple":		"#AE4977",
+		"brown":		"#8C7342",
+		"grey":			"#B6B7AE"
+	},
+	"globals":
+	{
+		"background": "var(background)",
+		"foreground": "var(foreground)",
+		"line_highlight": "var(lineHilight)",
+		"gutter": "var(background)",
+		"minimap_border": "var(dark)",
+
+		"caret": "var(caret)",
+		"invisibles": "var(invisibles)",
+
+		"highlight": "var(coral)",
+		"find_highlight": "var(coral)",
+		"find_highlight_foreground": "var(background)",
+
+		"guide": "#42473a",
+		"active_guide": "#e1cc83",
+		"stack_guide": "#655e53",
+
+		"selection": "#dcddd9",
+		"selection_border": "var(dark)",
+		"inactive_selection": "color(var(background) blend(var(dark) 65%))",
+		"selection_corner_style": "square",
+
+		"shadow": "color(var(background) blend(#000 45%))",
+		"shadow_width": "4"
+	},
+	"rules":
+	[
+		{
+			"name": "Comment",
+			"scope": "comment",
+			"foreground": "var(grey)"
+		},
+		{
+			"name": "Foreground",
+			"scope": "keyword.operator.class, constant.other",
+			"foreground": "#d7e6dc"
+		},
+		{
+			"name": "Support Variables",
+			"scope": "support.other.variable",
+			"foreground": "var(oldpink)"
+		},
+		{
+			"name": "Support Variable Shadow",
+			"scope": "support.other.variable.shadow.gdl",
+			"font_style": "italic"
+		},
+		{
+			"name": "Support Class",
+			"scope": "support.type",
+			"foreground": "var(gold)"
+		},
+		{
+			"name": "Subroutines",
+			"scope": "entity.name.function, punctuation.section.function",
+			"foreground": "#40bdbd",
+			"background": "color(var(foreground) alpha(0.13))",
+			"font_style": "bold"
+		},
+		{
+			"name": "Jump labels",
+			"scope": "variable.function.gdl",
+			"foreground": "#389C9C"
+		},
+		{
+			"name": "Constant numeric",
+			"scope": "constant.numeric",
+			"foreground": "var(peach)"
+		},
+		{
+			"name": "Constant (lang)",
+			"scope": "constant.language",
+			"foreground": "#f79e60"
+		},
+		{
+			"name": "String",
+			"scope": "string",
+			"foreground": "var(wheat)"
+		},
+		{
+			"name": "Escape chars",
+			"scope": "constant.character.escape",
+			"foreground": "#d7dd9b",
+			"background": "color(#875593 alpha(0.5))"
+		},
+		{
+			"name": "String placeholders",
+			"scope": "constant.other.placeholder",
+			"foreground": "#d7dd9b",
+			"background": "color(#34495e alpha(0.7))"
+		},
+		{
+			"name": "Autotext",
+			"scope": "constant.other.autotext",
+			"foreground": "color(#006633 alpha(0.7))",
+			"background": "color(#243341 alpha(0.12))"
+		},
+		{
+			"name": "Operators",
+			"scope": "keyword.operator, constant.other.color",
+			"foreground": "var(dodgerblue)"
+		},
+		{
+			"name": "Function Methods",
+			"scope": "keyword.other.special-method, punctuation.section.arguments",
+			"foreground": "var(lightblue)"
+		},
+		{
+			"name": "Keyword, Storage",
+			"scope": "keyword, storage.type, punctuation.section.range",
+			"foreground": "var(coral)"
+		},
+		{
+			"name": "Invalid",
+			"scope": "invalid",
+			"foreground": "#d7e7db",
+			"background": "#f86161"
+		},
+		{
+			"name": "Deprecated",
+			"scope": "invalid.deprecated",
+			"foreground": "#d7e7db",
+			"background": "color(#cc9ad8 alpha(0.7))"
+		},
+		{
+			"name": "Storage Function",
+			"scope": "storage.type.function",
+			"foreground": "#8ad341",
+			"font_style": "italic"
+		},
+		{
+			"name": "Globals",
+			"scope": "keyword.globals",
+			"foreground": "var(darkgreen)"
+		},
+		{
+			"name": "Keyword control",
+			"scope": "keyword.control",
+			"foreground": "var(violet)",
+			"background": "color(var(violet) alpha(0.15))"
+		},
+		{
+			"name": "Argument",
+			"scope": "meta.function-call.arguments",
+			"foreground": "#dbca95"
+		},
+		{
+			"name": "Optional parameters",
+			"scope": "keyword.optionalparameters",
+			"foreground": "var(lightgreen)"
+		},
+		{
+			"name": "Transform",
+			"scope": "keyword.transform",
+			"foreground": "var(darkred)",
+			"font_style": "italic"
+		},
+		{
+			"name": "Hotedits",
+			"scope": "keyword.hotedits",
+			"foreground": "color(var(coral) alpha(0.8))"
+		},
+		{
+			"name": "Buffer",
+			"scope": "keyword.buffer, punctuation.section.buffer",
+			"foreground": "var(darkblue)"
+		},
+		{
+			"name": "inline Line continuation",
+			"scope": "punctuation.separator.continuation",
+			"background": "color(var(dodgerblue) alpha(0.25))"
+		},
+		{
+			"name": "Array",
+			"scope": "entity.name.array",
+			"foreground": "" /*#dfb76a*/
+		},
+		{
+			"name": "Array brackets",
+			"scope": "punctuation.section.array",
+			"foreground": "var(brown)"
+		},
+		{
+			"name": "Ident Keywords",
+			"scope": "storage.type.ident-keyword.gdl",
+			"foreground": "var(mustard)",
+			"font_style": "italic"
+		},
+		{
+			"name": "Open Calls",
+			"scope": "keyword.extern, keyword.addon",
+			"foreground": "var(purple)"
+		}
+	]
+}
