@@ -1,8 +1,8 @@
 {
-	// By default the dark color scheme is used.
+	// By default the light color scheme is used.
 	// You can select either GDL-dark or GDL-light
 	// or put a relative path to your own scheme here.
-	"color_scheme": "${packages}/GDL/GDL-dark.tmTheme",
+	"color_scheme": "${packages}/GDL/GDL-light.tmTheme",
 
-	"rulers": [80,120]
+	"rulers": [80,120],
 }
