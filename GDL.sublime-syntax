@@ -14,6 +14,8 @@ variables:
     (NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|EXP|LGT|LOG|SQR|MAX|MIN|RND
       |STR\{2\}|STR|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET
       |REQ((UEST)(\{[2-4]\})?)?|IND|NTR|VARTYPE)
+  identifier_continue: '[[:alnum:]_]'
+  identifier: '\b[[:alpha:]_]{{identifier_continue}}*\b'
 
 
 contexts:
@@ -31,6 +33,7 @@ contexts:
     - include: gdl-globals
     - include: optional
     - include: expression-common      # needs to be last bc of brackets
+    - include: generic-names
 
 # Included in all contexts by default:
 # except where - meta_include_prototype: false
@@ -62,7 +65,7 @@ contexts:
   subs:
     - match: (?i)(?<=^){{subroutine_name}}(?=:($|\s))
       scope: entity.name.function.gdl
-      push: 
+      push:
       - match: ':'
         scope: punctuation.section.function.begin.gdl
         pop: true
@@ -182,7 +185,7 @@ contexts:
   number:
     # handles integer and decimal numbers
     - match: |-
-        \b(?x:       
+        \b(?x:
           -?         # an optional minus
           (?:
             0        # a zero
@@ -223,15 +226,19 @@ contexts:
     - match: \}
       scope: invalid.illegal.stray.brace.curly.gdl
 
+  generic-names:
+    - match: '{{identifier}}'
+      scope: meta.generic-name.gdl
+
 ################ Hotspots ##################
-  hots: 
+  hots:
     - match: (?i)\b(HOTSPOT[2]?|HOTLINE[2]?|HOTARC[2]?)\b
-      scope: keyword.gdl.hotedits
+      scope: keyword.hotedits.gdl
 
 ################ Transform ##################
   transform:
     - match: (?i)\b(ADD[2XYZ]?|ROT[2XYZ]?|MUL[2XYZ]?|XFORM|DEL(\sTOP)?)\b
-      scope: keyword.gdl.transform
+      scope: keyword.transform.gdl
 
 ################ METHODS ##################
   methods:
@@ -241,59 +248,64 @@ contexts:
   ################ 2D #################
   methods-2d:
     - match: (?i)(?<=^|\s)((LINE|RECT|ARC|CIRCLE|WALLLINE[2]?|WALLARC)2|SPLINE2[A]?|(PICTURE|WALLHOLE|WALLBLOCK)2(\{2\})?|POLY2(_?(A|B(\{[2-6]\})?)?))(?=$|\s)
-      scope: keyword.gdl.shape.2D
+      scope: keyword.shape.2D.gdl
 
     - match: (?i)(?<=^|\s)((TEXT|RICHTEXT)2)(?=$|\s)
-      scope: keyword.gdl.text.2D.text
+      scope: keyword.text.2D.text.gdl
 
   ################ 3D #################
   methods-3d:
     - match: (?i)(?<=^|\s)(BLOCK|BRICK|CYLIND|CONE|SPHERE|ELLIPS|ELBOW|ARMC|ARME)(?=$|\s)
-      scope: keyword.gdl.shape.3D.basic
+      scope: keyword.shape.3D.basic.gdl
 
     - match: (?i)(?<=^|\s)((PLANE|POLY)(_?)|ARC|CIRCLE|LIN_|RECT)(?=$|\s)
-      scope: keyword.gdl.shape.3D.planar
+      scope: keyword.shape.3D.planar.gdl
 
     - match: (?i)(?<=^|\s)(SLAB(_?)|CSLAB_|CROOF_(\{[2-4]\})?|[CB]WALL_|XWALL_(\{[23]\})?|BEAM|MESH|POLYROOF(\{[2-4]\})?)(?=$|\s)
-      scope: keyword.gdl.shape.3D.complex
+      scope: keyword.shape.3D.complex.gdl
 
     - match: (?i)(?<=^|\s)(BASE|BODY|COOR(\{[23]\})?|EDGE|PGON(\{[23]\})?|PIPG|TEVE|VECT|VERT(\{2\})?)(?=$|\s)
-      scope: keyword.gdl.shape.3D.primitive
+      scope: keyword.shape.3D.primitive.gdl
 
     - match: (?i)(?<=^|\s)(POINTCLOUD)(?=$|\s)
-      scope: keyword.gdl.shape.3D.pointcloud
+      scope: keyword.shape.3D.pointcloud.gdl
 
     - match: (?i)(?<=^|\s)(PRISM_?|[BFH]PRISM_|[CS]PRISM_(\{[234]\})?)(?=$|\s)
-      scope: keyword.gdl.shape.3D.prisms
+      scope: keyword.shape.3D.prisms.gdl
 
     - match: (?i)(?<=^|\s)(PYRAMID|RULED(\{2\}|SEGMENTED)?|EXTRUDE|SWEEP|TUBE([A]|\{2\})?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{[23]\})?|REVOLVEDSHELLANGULAR(\{[23]\})?)(?=$|\s)
-      scope: keyword.gdl.shape.3D.poly    
+      scope: keyword.shape.3D.poly.gdl
 
     - match: (?i)(?<=^|\s)(CUT(PLANE(\{[2-4]\})?|POLY[A]?|FORM(\{2\})?|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)
-      scope: keyword.gdl.shape.3D.cut
+      scope: keyword.shape.3D.cut.gdl
 
     - match: (?i)(?<=^|\s)((place|kill)group|(add|isect|sub)group(\{[23]\})?|sweepgroup(\{[2-5]\})?|isectlines|creategroupwithmaterial)(?=$|\s|\()
-      scope: keyword.gdl.shape.3D.seo
+      scope: keyword.shape.3D.seo.gdl
 
     - match: (?i)(?<=^|\s)(TEXT|RICHTEXT)(?=$|\s)
-      scope: keyword.gdl.shape.3D.text
+      scope: keyword.shape.3D.text.gdl
 
     - match: (?i)(?<=^|\s)(LIGHT|PICTURE|BINARY)(?=$|\s)
-      scope: keyword.gdl.shape.3D.other
+      scope: keyword.shape.3D.other.gdl
 
     - match: (?i)(?<=^|\s)(NURBS(CURVE[23]D|(SUR)?FACE|VERT|EDGE|TRIM(SINGULAR)?|LUMP|BODY))(?=$|\s)
-      scope: keyword.gdl.shape.nurbs
+      scope: keyword.shape.nurbs.gdl
 
     - match: (?i)(?<=^|\s)(FRAGMENT[2]?|PROJECT2(\{[2-4]\})?|DRAWING(2|3(\{[2-3]\})?))(?=$|\s)
-      scope: keyword.gdl.symbol
+      scope: keyword.symbol.gdl
 
 ############### Attributes #################
   attributes:
+    - include: ident-keyword
     - include: attribute-set
     - include: attribute
     - include: model
     - include: shadow
     - include: nongeo
+
+  ident-keyword:
+    - match: (?i)(?<=^|\s)(LET|DIM|DICT)(\b)
+      scope: storage.type.ident-keyword.gdl
 
   attribute-set:
     - match: (?i)\b(DEFINE|SET|BASED_ON)\b
@@ -301,28 +313,28 @@ contexts:
 
   attribute:
     - match: |-
-        (?ix)\b(LET|PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|
+        (?ix)\b(PEN|RESOL|RADIUS|TOLER|MODEL|SHADOW|DRAWINDEX|LINE_(TYPE|PROPERTY)|
           |SYMBOL_(LINE|FILL)|FILL[A]?|(SOLID|EMPTY|TRANSLUCENT|IMAGE|(LINEAR|RADIAL)_GRADIENT)_FILL|
           |FILLTYPES_MASK|(BUILDING_)?MATERIAL|TEXTURE|STYLE(\{2\})?|(END)?PARAGRAPH|
           |TEXTBLOCK_?|ADDITIONAL_DATA|SECT_(FILL|ATTRS(\{2\})?))
           (?=$|\s)
-      scope: support.type.gdl.attribute
+      scope: support.type.attribute.gdl
 
   model:
     - match: (?i)\b(SOLID|SURFACE|WIRE)\b
-      scope: support.other.variable.gdl.model
+      scope: support.other.variable.model.gdl
 
   shadow:
     - match: (?i)\b(ON|OFF|AUTO)\b
-      scope: support.other.variable.gdl.shadow
-  
+      scope: support.other.variable.shadow.gdl
+
   range:
     - match: (?i)\b(RANGE)(?=\s)
-      scope: keyword.gdl.nongeo.parameters.range
+      scope: keyword.nongeo.parameters.range.gdl
 
   nongeo:
     - match: (?i)\b(VALUES(\{2\})?|STEP|(RETURNED_)?PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)
-      scope: keyword.gdl.nongeo.parameters
+      scope: keyword.nongeo.parameters.gdl
 
     - include: range
     - match: (?i)(?<=RANGE)\s(\(|\[)
@@ -337,33 +349,33 @@ contexts:
         - include: main
 
     - match: (?i)\b(CUSTOM)\b
-      scope: support.other.variable.gdl.parameters.custom
+      scope: support.other.variable.parameters.custom.gdl
 
     - match: (?i)\b(UI_(NEXT|PREV))\b
-      scope: support.other.variable.gdl.ui
+      scope: support.other.variable.ui.gdl
 
     - match: (?i)\b((REF\s+)?(COMPONENT|DESCRIPTOR)|BINARYPROP|DATABASE_SET|POSITION|REF_(COMPONENT|DESCRIPTOR)|(SURFACE|VOLUME)3D|DRAWING[2]?)\b
-      scope: keyword.gdl.nongeo.properties
+      scope: keyword.nongeo.properties.gdl
 
     - match: |-
         (?ix)\b(UI_(dialog|(current_)?page|button|pict(_button)?|separator|groupbox|style|outfield|tooltip|listfield|
           infield(\{[2-4]\})?|
           ((pict_)?radiobutton|pict_pushcheckbutton|listitem|colorpicker|slider|textstyle_infield|custom_popup_(infield|listitem))(\{[2]\})?))
           (?=$|\s)
-      scope: keyword.gdl.nongeo.ui
+      scope: keyword.nongeo.ui.gdl
 
     - match: (?i)\b(MIGRATIONWARNING|NEWPARAMETER|SETMIGRATIONGUID|DELETED_PAR_VALUE|STORED_PAR_VALUE)\b
-      scope: keyword.gdl.nongeo.migration
+      scope: keyword.nongeo.migration.gdl
 
     - match: (?i)\b(PRINT|OUTPUT|CLOSE|CALL|FILE_DEPENDENCE)\b
-      scope: keyword.gdl.extern
+      scope: keyword.extern.gdl
 
     - match: (?i)\b((INIT|CLOSE)ADDONSCOPE|(CALL|PREPARE)FUNCTION)\b
-      scope: keyword.gdl.addon
+      scope: keyword.addon.gdl
 
     - match: (?i)((OPEN|INPUT)\s?(?=\())
       captures:
-        2:  keyword.gdl.extern
+        2:  keyword.extern.gdl
       push:
         - match: \(
           scope: punctuation.section.arguments.begin.gdl
@@ -383,7 +395,7 @@ contexts:
 ############### opt Params #################
   optional:
     - match: (?i)\b([ABCDEFG]|ZZYZX|(ac|gs|ifc|ROOM|FM)_\w+)\b
-      scope: keyword.gdl.optionalparameters.fixed
+      scope: keyword.optionalparameters.fixed.gdl
 
 ############### GDL globals #################
   gdl-globals:
@@ -391,7 +403,7 @@ contexts:
     - include: request-param
     - include: globals-deprecated
     - match: (?i)\b(APPLICATION_QUERY|LIBRARYGLOBAL)\b
-      scope: keyword.gdl.request
+      scope: keyword.request.gdl
 
   gdl-global-param:
     - match: |-
@@ -399,134 +411,134 @@ contexts:
           |FRAME_NR|(FIRST|LAST)_FRAME|(EYE|TARG)POS_[XYZ]|SUN_A(ZIMUTH|LTITUDE)|UI_BUTTON_ID|CUTPLANES_INFO
           |STRUCTURE_DISPLAY|VIEW_TYPE|(PREVIEW|FEEDBACK|SEO_TOOL)_MODE))
           \b
-      scope: keyword.gdl.globals.general
+      scope: keyword.globals.general.gdl
 
     - match: (?i)\b(GLOB_([HC]STORY_(ELEV|HEIGHT)|CH_STORY_DIST))\b
-      scope: keyword.gdl.globals.story
+      scope: keyword.globals.story.gdl
 
     - match: (?i)\b(GLOB_(LAYER|ID|INTGUID|ELEVATION|ELEM_TYPE))\b
-      scope: keyword.gdl.globals.elementparameters
+      scope: keyword.globals.elementparameters.gdl
 
     - match: (?i)\b(SYMB_((LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_[XYZ]|ROTANGLE|MIRRORED|[ABZ]+_SIZE))\b
-      scope: keyword.gdl.globals.objectparameters
+      scope: keyword.globals.objectparameters.gdl
 
     - match: |-
         (?ix)\b(WIDO_(REVEAL_(ON|SIDE)|SILL(_HEIGHT)?|(R|OPR)SIDE_SILL_HEIGHT|(RIGHT|LEFT)_JAMB|(THRES|HEAD)_DEPTH|((R|OPR)SIDE_)?HEAD_HEIGHT
           |(FRAME|SUBFL)_THICKNESS|POSITION|ORIENTATION|MARKER_TXT|PREFIX|CUSTOM_MARKER|ORIG_DIST|PWALL_INSET|(N_)?(R|OPR)SIDE_(WIDTH|HEIGHT|SURF)|VOLUME|GROSS_(SURFACE|VOLUME)))
           \b
-      scope: keyword.gdl.globals.window
+      scope: keyword.globals.window.gdl
 
     - match: |-
         (?ix)\b(LABEL_(POSITION|CUSTOM_ARROW|ARROW((HEAD)?_PEN|LINETYPE)|FONT_(NAME|STYLE(2)?)|TEXT_(SIZE|(BG_)?PEN|ALIGN|LEADING|WIDTH_FACT|WRAP|CHARSPACE_FACT)
           |CHARSPACE_FACT|FRAME_(ON|OFFSET)|ANCHOR_POS|ROTANGLE|ALWAYS_READABLE|ASSOC_ELEM_ORIENTATION))
           \b
-      scope: keyword.gdl.globals.label
+      scope: keyword.globals.label.gdl
 
     - match: |-
         (?ix)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(WALL_((INTGU)?ID|RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?
           |(COMPS|BMAT)_NAME|SKINS_(PARAMS|NUMBER|BMAT_NAMES)|BMAT|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB](_CON)?|CENTER_LENGTH|AREA|PERIMETER
           |EDGE_SURF|GROSS_VOLUME|VOLUME(_[AB])?(_CON)?|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID|CROSSSECTION_TYPE
           |SKIN_((MIN|MAX)_HEIGHT|THICKNESS)_(A|B)|(INSU|AIR)_THICKNESS|TEXTURE_WRAP))\b
-      scope: keyword.gdl.globals.wall
+      scope: keyword.globals.wall.gdl
 
     - match: |-
         (?ix)\b(COLU_(CORE(_(X|Y|FILL(_PEN)?|FBGD_PEN|((GROSS|TOP|BOT)_)?SURF|(GROSS_)?VOL|GROSS_TOPBOT_SURF|BMAT(_NAME)?))?
           |VENEER_(FILL(_PEN)?|FBGD_PEN|WIDTH|VOL|(TOP_|BOT_)?SURF|GROSS_((TOPBOT_)?SURF|VOL)|BMAT(_NAME)?)|((MIN|MAX)_)?HEIGHT|DIM[12]|MAT|LINETYPE|(SECT|VIEW)_PEN
           |PERIMETER|AREA|(GROSS_)?VOLUME|CROSSSECTION_TYPE|PROFILE_NAME))
           \b
-      scope: keyword.gdl.globals.column
+      scope: keyword.globals.column.gdl
 
     - match: |-
         (?ix)\b(BEAM_(THICKNESS|HEIGHT|REFLINE_OFFSET|PRIORITY|MAT_(RIGHT|LEFT|TOP|BOTTOM|END)|BMAT(_NAME)?|(OUTLINE|AXES)_LINETYPE|FILL(_PEN)?|(SECT|FBGD)_PEN
           |DIRECTION|POSITION|LENGTH_(RIGHT|LEFT)|(RIGHT|LEFT|TOP|BOTTOM|END)_SURF|VOLUME(_CON)?|HOLE(S_(NR|SURF|VOLUME)|_EDGE_SURF)|CROSSSECTION_TYPE|PROFILE_NAME))
           (?=$|\s)
-      scope: keyword.gdl.globals.beam
+      scope: keyword.globals.beam.gdl
 
     - match: |-
         (?ix)\b(SLAB_(THICKNESS|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|ELEVATION_(TOP|BOTTOM)|BMAT(_NAME)?|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS|BMAT_NAMES)
           |PERIMETER|(GROSS_)?(TOP|BOT|EDGE)_SURF|(TOP|BOT)_SURF_CON|VOLUME(_CON)?|GROSS_VOLUME|GROSS_((TOP|BOT|EDGE)_SURF|VOLUME)_WITH_HOLES|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))
           \b
-      scope: keyword.gdl.globals.slab
+      scope: keyword.globals.slab.gdl
 
     - match: |-
         (?ix)\b(ROOF_(THICKNESS|ANGLE|MAT_(TOP|EDGE|BOTT)|LINETYPE|FILL(_PEN)?|BMAT(_NAME)?|(FBGD|SECT|VIEW)+_PEN|COMPS_NAME|SKINS_(NUMBER|PARAMS|BMAT_NAMES)
           |(GROSS_)?(TOP|BOTTOM|EDGE)_SURF|(TOP|BOTTOM)_SURF_CON|PERIMETER|VOLUME(_CON)?|GROSS_VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)|CONTOUR_AREA|INSU_THICKNESS
           |RIDGE|VALLEY|GABLE|HIP|EAVES|PEAK|(SIDE|END)_WALL|TRANSITION_(DOME|HOLLOW)))
           \b
-      scope: keyword.gdl.globals.roof
+      scope: keyword.globals.roof.gdl
 
     - match: (?i)\b(FILL_(LINETYPE|FILL(_PEN|_CATEGORY)?|PEN|BMAT_NAME|FBGD_PEN|SURF|PERIMETER|SEGMENT_NR|HOLES_(NR|AREA|PRM)))\b
-      scope: keyword.gdl.globals.fill
+      scope: keyword.globals.fill.gdl
 
     - match: (?i)\b(MESH_((LINE)?TYPE|BASE_OFFSET|(USEREDGE|TRIEDGE|SECT|VIEW)_PEN|MAT_(TOP|EDGE|BOTT)|FILL(_PEN)?|BMAT(_NAME)?|FBGD_PEN|(TOP|EDGE|BOTTOM)_SURF|PERIMETER|VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))\b
-      scope: keyword.gdl.globals.mesh
+      scope: keyword.globals.mesh.gdl
 
     - match: (?i)\b(STAIR_(AREA|VOLUME|HEIGHT|WALKLINE_LENGTH|DEFAULT_(WIDTH|GOING_DEPTH|RISER_HEIGHT|TREAD_THICKNESS)|NR_OF_(RISERS|TREADS)(_IN_FLIGHTS)?|LANDING_NUMBER|STAIR_GRADIENT|RULE_(LIMITS|FLAGS)))\b
-      scope: keyword.gdl.globals.stair.general
+      scope: keyword.globals.stair.general.gdl
 
     - match: (?i)\b(TREAD_((FRONT_)?AREA|VOLUME|STEP_INDEX|ELEVATION|GOING|THICKNESS|BMATS|(LOWER|UPPER)_RISER_(THICKNESS|HEIGHT|SLANT_ANGLE)|NOSING(_METHOD|_BY_SLANTING)?)|STAIR_TREAD_(GEOMETRY|FLAGS))\b
-      scope: keyword.gdl.globals.stair.tread
+      scope: keyword.globals.stair.tread.gdl
 
     - match: (?i)\b(RISER_(FRONT_AREA|VOLUME|STEP_INDEX|WIDTH|HEIGHT|THICKNESS|BMATS|CUT|SLANT_ANGLE)|STAIR_RISER_GEOMETRY)\b
-      scope: keyword.gdl.globals.stair.riser
+      scope: keyword.globals.stair.riser.gdl
 
     - match: (?i)\b(STRUCTURE_(3DLENGTH|VOLUME|WIDTH|HEIGHT|THICKNESS)|STAIR_(STRUCTURE_(GEOMETRY|FLAGS|CONN_(OFFSETS|FLAGS))|STRINGER_PATH_OFFSET))\b
-      scope: keyword.gdl.globals.stair.structure
+      scope: keyword.globals.stair.structure.gdl
 
     - match: |-
         (?ix)\b(STAIR2D_((FULL|LOWER|MIDDLE|UPPER)_((TPOLYGON|RPOLYLINE|WALKLINE)_(GEOM|FLAGS)|BOUNDARY_GEOM)|BREAKMARK_(GEOM|FLAGS|ANGLE)
             |(EXT_(TPOLYGON|RPOLYLINE)|DRAIN_TPOLYGON|POLYLINES)_(GEOM|FLAGS)|STRUCT_ATTRIBUTES|LAYOUT_TYPES|DESCRIPTION_POSITION|CURRSTORY_LOCATION|VISIBILITY|CUSTOMDISPLAY))
             \b
-      scope: keyword.gdl.globals.stair.2D
+      scope: keyword.globals.stair.2D.gdl
 
     - match: (?i)\b(RAILING_(HEIGHT|(3D|HORIZONTAL_)LENGTH|VOLUME|NR_OF_(SEGMENTS|POSTS|BALUSTERS|PANELS|RAILS)))\b
-      scope: keyword.gdl.globals.railing.general
+      scope: keyword.globals.railing.general.gdl
 
     - match: |-
         (?ix)(RAIL(_(CONNECTING_POSTS(_NUM)?|TYPE|POLYLINE_GEOMETRY|SEGMENT_FLAGS|CUTS|COMPONENTS|SLANT_ANGLE)|ING(_REFLINE_DISTANCE|PANEL_(TYPE|(UNCUT_)?GEOMETRY|FLAGS|SIDE_OFFSETS
             |(SLANT|SKEW)_ANGLE)|POST_(TYPE|TOP_COORD|(SEGMENT_)?CUTS)|END_DIRECTION_AND_ANGLE)))
             \b
-      scope: keyword.gdl.globals.railing.3D
+      scope: keyword.globals.railing.3D.gdl
 
     - match: (?i)\b(RAIL2D_((FULL|LOWER|MIDDLE|UPPER)_((POLY(LINE|GON)_(GEOM|FLAGS))|VISIBILITY)|CUSTOMDISPLAY)|RAILPOST2D_VISIBILITY)\b
-      scope: keyword.gdl.globals.railing.2D
+      scope: keyword.globals.railing.2D.gdl
 
     - match: (?i)\b((CWALL_(ID|(((CONTOUR|MAINAXIS|SECAXIS|CUSTOM)_)?FRAMES_)?LENGTH|SURF(_BOUNDARY)?|PANELS_(SURF(_([NSEW]|NE|NW|SE|SW))?|NR)|HEIGHT|SLANT_ANGLE|THICKNESS|PATTERN_ANGLE))|(CWJUNC|CWACC)_TYPE)\b
-      scope: keyword.gdl.globals.facade.general
+      scope: keyword.globals.facade.general.gdl
 
     - match: (?i)\b(CWFRAME_(TYPE|CLASS|POSITION|DIRECTION|WIDTH|DEPTH|LENGTH|MAT))\b
-      scope: keyword.gdl.globals.facade.profile
+      scope: keyword.globals.facade.profile.gdl
 
     - match: (?i)\b(CWPANEL_(TYPE|CLASS|(VERTICAL|HORIZONTAL)_DIRECTION|(NOMINAL_)?(WIDTH|HEIGHT)|THICKNESS|(GROSS_|NOMINAL_)?SURF|PERIMETER|MAT_(OUTER|INNER|CUT)|FUNCTION|ORIENTATION))\b
-      scope: keyword.gdl.globals.facade.panel
+      scope: keyword.globals.facade.panel.gdl
 
     - match: |-
         (?ix)\b(SHELLBASE_(THICKNESS|MAT_(REFERENCE|EDGE|OPPOSITE)|LINETYPE|FILL(_PEN)?|FBGD_PEN|(COMPS|BMAT)_NAME|BMAT|SKINS_(NUMBER|PARAMS|BMAT_NAMES)|(SECT|VIEW)_PEN
             |(COND_|GROSS_)?(REFERENCE|OPPOSITE)_SURF|(GROSS_)?EDGE_SURF|PERIMETER|(GROSS_|COND_)?VOLUME|HOLES_(NR|SURF|PRM)|OPENINGS_(NR|SURF)|INSU_THICKNESS
             |RIDGE|VALLEY|GABLE|HIP|EAVES|PEAK|(END|SIDE)_WALL|TRANSITION_(DOME|HOLLOW)))
             \b
-      scope: keyword.gdl.globals.shell
+      scope: keyword.globals.shell.gdl
 
     - match: (?i)\b(MORPH_(LINETYPE|FILL(_PEN)?|BMAT(_NAME)?|FBGD_PEN|SECT_LINETYPE|(SECT|VIEW)_PEN|SOLID|MAT_DEFAULT|(CASTS|RECEIVES)_SHADOW|SURFACE|VOLUME|FLOOR_PERIMETER))\b
-      scope: keyword.gdl.globals.morph
+      scope: keyword.globals.morph.gdl
 
     - match: (?i)\b(LIGHT_(ON|RED|GREEN|BLUE|INTENSITY))\b
-      scope: keyword.gdl.globals.light
+      scope: keyword.globals.light.gdl
 
     - match: (?i)\b(Gdl_WALLZ_(LENGTH|SURF|(DOORS|WINDS)_(SURF|WIDTH))|(FROM|TO)_GUID|SKYL_(MARKER_TXT|OPENING_(SURF|VOLUME|HEIGHT|WIDTH)|(HEADER|SILL)_HEIGHT|ROTANGLE))\b
-      scope: keyword.gdl.globals.misc
+      scope: keyword.globals.misc.gdl
 
     - match: (?i)\b(GLOB_MVO_(STAIR_FLOOR_PLAN_(OPT|COMP)|RAILING_PLAN_COMP))\b
-      scope: keyword.gdl.globals.mvo
+      scope: keyword.globals.mvo.gdl
 
     - match: (?i)\b((GLOB_((ISSUE|CHANGE)_SCHEME))|LAYOUT_((REVISION|CHANGE)_HISTORY|CURRENTVERSION_OPEN))\b
-      scope: keyword.gdl.globals.layout
+      scope: keyword.globals.layout.gdl
 
     - match: (?i)\b(GLOB_(PROJECT_((LONG|LAT|ALT)ITUDE|DATE)|NORTH_DIR))\b
-      scope: keyword.gdl.globals.project
+      scope: keyword.globals.project.gdl
 
     - match: (?i)\b(GLOB_USER_([1-9]|[1][0-9]|20))\b
-      scope: keyword.gdl.globals.user
+      scope: keyword.globals.user.gdl
 
   request-param:
     - match: |-
@@ -536,17 +548,17 @@ contexts:
           |REFERENCE_DATA_LEVEL|RGB_OF_(MATERIAL|PEN)|STORY(_INFO)?|(STYLE|TEXTBLOCK)_INFO|WINDOW_(DOOR_(DIMENSION|SHOW_DIM|ZONE_RELEV)|SHOW_DIM)|WORKING_(ANGLE|LENGTH)_UNIT|ZONE_(CATEGORY|COLUS_AREA|RELATIONS)
           |MATERIAL_INFO|COMPONENT_(PROJECTED_AREA|VOLUME))
           \b
-      scope: keyword.gdl.globals.request
+      scope: keyword.globals.request.gdl
 
   globals-deprecated:
     - match: (?i)\b([A-Z](_\b|~))
-      scope: keyword.gdl.globals.deprecated
+      scope: keyword.globals.deprecated.gdl
 
 ################# Buffer ##################
   buffer-out:
     - match: (?i)\b(GET|USE)\b
-      scope: keyword.gdl.buffer
-  
+      scope: keyword.buffer.gdl
+
   buffer:
     - include: buffer-out
     - match: (?i)(?<=(GET|USE))\s?\(
@@ -561,7 +573,7 @@ contexts:
   buffer-in:
     # now buffer com without ()
     - match: (?i)(\b)(PUT|NSP)(\b)
-      scope: keyword.gdl.buffer
+      scope: keyword.buffer.gdl
 
 ############### FUNCTIONS #################
   functions:
@@ -580,8 +592,8 @@ contexts:
           - include: main
 
   functions-special:
-  - match: (?i)(?<=^|\s)(DIM|PI)(\b)
-    scope: keyword.other.special-method.gdl.functions
+  - match: (?i)(\b)(PI)(\b)
+    scope: keyword.other.special-method.functions.gdl
 
 ################### Arrays ######################
   arrays:
@@ -590,7 +602,7 @@ contexts:
       push:
         - match: \[
           scope: punctuation.section.array.begin.gdl
-          set: 
+          set:
           - meta_scope: section.array.gdl
           - match: \]
             scope: punctuation.section.array.end.gdl
