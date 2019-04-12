@@ -1,34 +1,39 @@
 ! DEMO CODE FOR SYNTAX HIGHLIGHTING
 ! it serves no other purpose than showing styling
 
-VALUES "part" 4, RANGE (5, 10], STEP 0.5, CUSTOM
-IF NOT(gs_gutter) THEN LOCK "part"
+values "part" 4, range (5, 10], step 0.5, custom
+if not(gs_gutter) then lock "part"
 
-DIM	stHangerPos[6]
+dim	stHangerPos[6]
+dict eps
+eps.angle = ACS( 2*PI - len)
 
-HOTSPOT2 	0, 	B/2, 	unID 	:unID = unID+1
+hotspot2 	0, 	B/2, 	unID 	:unID = unID+1
 CALL "m_DSProfiles"
 
-PEN mypen
-MUL2 1, COS(ac_wall_ang)
-ADD2 0, -tempWidth
-POLY2_B{2} NSP/3, 1+2+4+64,	gs_fill_pen, gs_back_pen,
+pen mypen
+mul2 1, COS(ac_wall_ang)
+add2 0, -tempWidth
+poly2_b{2} NSP/3, 1+2+4+64,	gs_fill_pen, gs_back_pen,
 		A, 0, 0,
 		USE(NSP)
-DEL 2
+del 2
 
-IF GLOB_MODPAR_NAME = "OffsetLength"  THEN
+if GLOB_MODPAR_NAME = "OffsetLength"  then
 	posX = 0.8e10
-ELSE
-	GOSUB "myFunc"
-ENDIF
+	FM_Type = 11
+else
+	gosub "myFunc"
+endif
 
-string = STR("%.3m",number)
+shadow off
+string = STR("%.3m", number)
+
+LIN ! is deprecated dude
 
 ! ------------------------------------------------------- !
 "myFunc":
-	define Style "Text" txtstyle, ntxt*j, txtpt, 0
+	define style "Text" txtstyle, ntxt*j, txtpt, 0
 	REQUEST("Height_of_style", "Text", height)
 	esc = "It Has Escape\nChars and autotext <CHANGEID>!"
-RETURN
-
+return
