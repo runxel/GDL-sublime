@@ -5,3 +5,4 @@
 package-metadata.json
 *.sublime-workspace
 *.sublime-project
+syntax_test_*
