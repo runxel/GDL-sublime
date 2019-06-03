@@ -26,6 +26,7 @@
 		"dodgerblue":	"#42A5F5",
 		"lightblue":	"#8BB6D9",
 		"darkblue":		"#1976d2",
+		"greyblue":		"#657b83",
 		"violet":		"#6F5BA8",
 		"purple":		"#AE4977",
 		"brown":		"#8C7342",
@@ -139,6 +140,11 @@
 			"name": "Function Methods",
 			"scope": "keyword.other.special-method, punctuation.section.arguments",
 			"foreground": "var(lightblue)"
+		},
+		{
+			"name": "Brackets",
+			"scope": "punctuation.section.group",
+			"foreground": "var(greyblue)"
 		},
 		{
 			"name": "Keyword, Storage",
