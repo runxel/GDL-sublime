@@ -2,8 +2,9 @@
 ---
 # See the DOCS: http://www.sublimetext.com/docs/3/syntax.html
 # See the REPO: https://github.com/runxel/GDL-sublime
+author: Lucas Becker  mail@wilu.be
 name: GDL
-file_extensions: [gsm, gdl]
+file_extensions: gdl
 scope: source.gdl
 
 variables:
@@ -13,7 +14,8 @@ variables:
   function_names: |-
     (NOT|ABS|CEIL|INT|FRA|ROUND_INT|SGN|ACS|ASN|ATN|COS|SIN|TAN|EXP|LGT|LOG|SQR|MAX|MIN|RND
       |STR\{2\}|STR|SPLIT|STW|STRLEN|STRSTR|STRSUB|STRTOUPPER|STRTOLOWER|VARDIM[12]|BITTEST|BITSET
-      |REQ((UEST)(\{[2-4]\})?)?|IND|NTR|VARTYPE)
+      |REQ((UEST)(\{[2-4]\})?)?|IND|NTR|VARTYPE|(HAS|REMOVE)KEY)
+  addon_function_names: ((INIT|CLOSE)ADDONSCOPE|(CALL|PREPARE)FUNCTION)
   identifier_continue: '[[:alnum:]_]'
   identifier: '\b[[:alpha:]_]{{identifier_continue}}*\b'
 
@@ -28,11 +30,11 @@ contexts:
     - include: attributes
     - include: buffer
     - include: buffer-in
-    - include: functions
-    - include: functions-special
+    - include: func
     - include: gdl-globals
     - include: optional
     - include: expression-common      # needs to be last bc of brackets
+    - include: dotted-names
     - include: generic-names
 
 # Included in all contexts by default:
@@ -226,6 +228,16 @@ contexts:
     - match: \}
       scope: invalid.illegal.stray.brace.curly.gdl
 
+  dotted-names:
+    - match: '(\.)(?={{identifier}})'
+      captures:
+        1: punctuation.accessor.dot.gdl
+      push:
+        - include: arrays
+        - include: generic-names
+        - match: ''
+          pop: true
+
   generic-names:
     - match: '{{identifier}}'
       scope: meta.generic-name.gdl
@@ -273,7 +285,7 @@ contexts:
     - match: (?i)(?<=^|\s)(PRISM_?|[BFH]PRISM_|[CS]PRISM_(\{[234]\})?)(?=$|\s)
       scope: keyword.shape.3D.prisms.gdl
 
-    - match: (?i)(?<=^|\s)(PYRAMID|RULED(\{2\}|SEGMENTED)?|EXTRUDE|SWEEP|TUBE([A]|\{2\})?|MASS(\{2\})?|COONS|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{[23]\})?|REVOLVEDSHELLANGULAR(\{[23]\})?)(?=$|\s)
+    - match: (?i)(?<=^|\s)(PYRAMID|RULED(\{2\}|SEGMENTED)?|EXTRUDE|SWEEP|TUBE([A]|\{2\})?|MASS(\{2\})?|COONS(\{2\})?|REVOLVE(\{[2-5]\})?|(EXTRUDED|REVOLVED|RULED)SHELL(\{[23]\})?|REVOLVEDSHELLANGULAR(\{[23]\})?)(?=$|\s)
       scope: keyword.shape.3D.poly.gdl
 
     - match: (?i)(?<=^|\s)(CUT(PLANE(\{[2-4]\})?|POLY[A]?|FORM(\{2\})?|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)
@@ -370,7 +382,7 @@ contexts:
     - match: (?i)\b(PRINT|OUTPUT|CLOSE|CALL|FILE_DEPENDENCE)\b
       scope: keyword.extern.gdl
 
-    - match: (?i)\b((INIT|CLOSE)ADDONSCOPE|(CALL|PREPARE)FUNCTION)\b
+    - match: (?i)\b({{addon_function_names}})\b
       scope: keyword.addon.gdl
 
     - match: (?i)((OPEN|INPUT)\s?(?=\())
@@ -385,8 +397,7 @@ contexts:
             pop: true
           - match: ','
             scope: punctuation.separator.arguments.gdl
-          - include: functions
-          - include: functions-special
+          - include: func
           - include: operators
           - include: expression-common
           - include: string
@@ -416,7 +427,7 @@ contexts:
     - match: (?i)\b(GLOB_([HC]STORY_(ELEV|HEIGHT)|CH_STORY_DIST))\b
       scope: keyword.globals.story.gdl
 
-    - match: (?i)\b(GLOB_(LAYER|ID|INTGUID|ELEVATION|ELEM_TYPE))\b
+    - match: (?i)\b(GLOB_(LAYER|ID|INT(GU)?ID|ELEVATION|ELEM_TYPE))\b
       scope: keyword.globals.elementparameters.gdl
 
     - match: (?i)\b(SYMB_((LINETYPE|FILL(_PEN)?)|(FBGD|SECT|VIEW)+_PEN|MAT|POS_[XYZ]|ROTANGLE|MIRRORED|[ABZ]+_SIZE))\b
@@ -429,8 +440,8 @@ contexts:
       scope: keyword.globals.window.gdl
 
     - match: |-
-        (?ix)\b(LABEL_(POSITION|CUSTOM_ARROW|ARROW((HEAD)?_PEN|LINETYPE)|FONT_(NAME|STYLE(2)?)|TEXT_(SIZE|(BG_)?PEN|ALIGN|LEADING|WIDTH_FACT|WRAP|CHARSPACE_FACT)
-          |CHARSPACE_FACT|FRAME_(ON|OFFSET)|ANCHOR_POS|ROTANGLE|ALWAYS_READABLE|ASSOC_ELEM_ORIENTATION))
+        (?ix)\b(LABEL_(POSITION|CUSTOM_ARROW|ARROW((HEAD)?_PEN|_LINETYPE)|FONT_(NAME|STYLE(2)?)|TEXT_(SIZE|(BG_)?PEN|ALIGN|LEADING|WIDTH_FACT|WRAP|CHARSPACE_FACT)
+          |WRAP_TEXT|CHARSPACE_FACT|FRAME_(ON|OFFSET)|ANCHOR_POS|ROTANGLE|ALWAYS_READABLE|ASSOC_ELEM_ORIENTATION))
           \b
       scope: keyword.globals.label.gdl
 
@@ -519,6 +530,9 @@ contexts:
             \b
       scope: keyword.globals.shell.gdl
 
+    - match: (?i)\b(OPENING_(SYMBOL_(DISPLAY|BOUNDINGBOX)|POLYGON|HEIGHT|WIDTH|(HEADER|CENTER|SILL)HEIGHT_VALUES))\b
+      scope: keyword.globals.opening.gdl
+
     - match: (?i)\b(MORPH_(LINETYPE|FILL(_PEN)?|BMAT(_NAME)?|FBGD_PEN|SECT_LINETYPE|(SECT|VIEW)_PEN|SOLID|MAT_DEFAULT|(CASTS|RECEIVES)_SHADOW|SURFACE|VOLUME|FLOOR_PERIMETER))\b
       scope: keyword.globals.morph.gdl
 
@@ -542,11 +556,14 @@ contexts:
 
   request-param:
     - match: |-
-        (?ix)\b((BLUE|RED|GREEN)_OF_(PEN|MATERIAL)|GDL_VERSION|MODEL_SIZE|PEN_OF_RGB|PROGRAM|SERIAL_NUMBER|ANCESTRY_INFO|(ANGULAR_(LENGTH_)?|AREA_|RADIAL_|SILL_HEIGHT_)DIMENSION
-          |(ASSOCEL|MATCHING)_PROPERTIES|ASSOCLP_(NAME|PARVALUE)|CALC_(ANGLE|AREA|LENGTH|VOLUME)_UNIT|CLEAN_INTERSECTIONS|CONSTR_FILLS_DISPLAY|CUSTOM_AUTO_LABEL|DATETIME|DOOR_SHOW_DIM
-          |(ELEVATION|LEVEL|LINEAR)_DIMENSION|FONTNAMES_LIST|HEIGHT_OF_STYLE|HOME(_STORY|DB_INFO)|ID_OF_MAIN|INTERNAL_ID|Full_ID_of_parent|NAME_OF_(FILL|LINE_TYPE|LISTED|MACRO|MAIN|MATERIAL|PLAN|PROGRAM|STYLE)
+        (?ix)\b((BLUE|RED|GREEN)_OF_(PEN|MATERIAL)|GDL_VERSION|MODEL_SIZE|PEN_OF_RGB|PROGRAM|SERIAL_NUMBER|ANCESTRY_INFO
+          |(ANGULAR_(LENGTH_)?|AREA_|RADIAL_|SILL_HEIGHT_)DIMENSION|(ASSOCEL|MATCHING)_PROPERTIES|ASSOCLP_(NAME|PARVALUE(_WITH_DESCRIPTION)?)
+          |CALC_(ANGLE|AREA|LENGTH|VOLUME)_UNIT|CLEAN_INTERSECTIONS|CONSTR_FILLS_DISPLAY|CUSTOM_AUTO_LABEL|DATETIME|DOOR_SHOW_DIM
+          |(ELEVATION|LEVEL|LINEAR)_DIMENSION|FONTNAMES_LIST|HEIGHT_OF_STYLE|HOME(_STORY|DB_INFO)|ID_OF_MAIN|INTERNAL_ID
+          |Full_ID_of_parent|NAME_OF_(FILL|LINE_TYPE|LISTED|MACRO|MAIN|MATERIAL|PLAN|PROGRAM|STYLE)
           |REFERENCE_DATA_LEVEL|RGB_OF_(MATERIAL|PEN)|STORY(_INFO)?|(STYLE|TEXTBLOCK)_INFO|WINDOW_(DOOR_(DIMENSION|SHOW_DIM|ZONE_RELEV)|SHOW_DIM)|WORKING_(ANGLE|LENGTH)_UNIT|ZONE_(CATEGORY|COLUS_AREA|RELATIONS)
-          |MATERIAL_INFO|COMPONENT_(PROJECTED_AREA|VOLUME))
+          |MATERIAL_INFO|COMPONENT_(PROJECTED_AREA|VOLUME)
+          |(Component_Ids|((Component_)?(Property_Values|Properties)))_Of_Parent)
           \b
       scope: keyword.globals.request.gdl
 
@@ -571,11 +588,15 @@ contexts:
         - include: main
 
   buffer-in:
-    # now buffer com without ()
+    # now buffer coms without ()
     - match: (?i)(\b)(PUT|NSP)(\b)
       scope: keyword.buffer.gdl
 
 ############### FUNCTIONS #################
+  func:
+    - include: functions
+    - include: functions-special
+
   functions:
     - match: (?ix)(({{function_names}})\s?(?=\())
       captures:
@@ -595,10 +616,14 @@ contexts:
   - match: (?i)(\b)(PI)(\b)
     scope: keyword.other.special-method.functions.gdl
 
-################### Arrays ######################
+################### Item Access ######################
+# originally this was labeld "Arrays"
+# but since we got dicts, not only arrays get the square brackets
   arrays:
-    - match: (?i)([a-z_0-9]+)(?=\[)
-      scope: entity.name.array.gdl
+    - match: (?i)(?:(GLOB_(CUTPLANES_INFO|PROJECT_DATE)|WALL_POSITION|(ROOF|SHELLBASE)_SKINS_PARAMS|(LABEL|BEAM)_POSITION)|([a-z_0-9]+))(?=\[)
+      captures:
+        1: keyword.globals.general.gdl
+        2: entity.name.array.gdl
       push:
         - match: \[
           scope: punctuation.section.array.begin.gdl
@@ -607,8 +632,7 @@ contexts:
           - match: \]
             scope: punctuation.section.array.end.gdl
             set: after-array
-          - include: functions
-          - include: functions-special
+          - include: func
           - include: operators
           - include: expression-common
           - include: string
@@ -621,8 +645,7 @@ contexts:
         - match: \]
           scope: punctuation.section.array.end.gdl
           pop: true
-        - include: functions
-        - include: functions-special
+        - include: func
         - include: operators
         - include: expression-common
         - include: string
