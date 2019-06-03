@@ -96,7 +96,7 @@
 		{ "trigger": "deleted_par_value", "contents": "deleted_par_value (${1:oldparname}, ${1:outputvalue})" },
 		{ "trigger": "descriptor", "contents": "descriptor ${1:name}" },
 		"dialog",
-		"dict",
+		{ "trigger": "dict", "contents": "dict ${1:dictname}" },
 		"dim",
 		"doors",
 		{ "trigger": "drawindex", "contents": "drawindex ${1:number: 10 20 30 40 50}" },
@@ -162,6 +162,7 @@
 
 		/* H H H H H H H H H H H H H H H H H H H H H H H H H H H */
 		"hatches",
+		{ "trigger": "haskey", "contents": "haskey(${1:dictionary.key})" },
 		{ "trigger": "hideparameter", "contents": "hideparameter \"${1:name}\"" },
 		{ "trigger": "hotarc", "contents": "hotarc ${1:r}, ${2:alpha}, ${3:beta}, ${4:unID}" },
 		{ "trigger": "hotarc2", "contents": "hotarc2 ${1:x}, ${2:y}, ${3:r}, ${4:startangle}, ${5:endangle}, ${6:unID}" },
@@ -278,6 +279,7 @@
 		{ "trigger": "rect2", "contents": "rect2 ${1:x1}, ${2:y1}, ${3:x2}, ${4:y2}" },
 		{ "trigger": "ref component", "contents": "ref component ${1:code}" },
 		{ "trigger": "ref descriptor", "contents": "ref descriptor ${1:code}" },
+		{ "trigger": "removekey", "contents": "removekey(${1:dictionary.key})" },
 		{ "trigger": "repeat … until", "contents": "repeat\n\t${2:! do something}\nuntil ${3:condition}" },
 		{ "trigger": "req", "contents": "req(${1:parameter_string})" },
 		{ "trigger": "request", "contents": "request(${1:question_name}, ${2:name})" },
