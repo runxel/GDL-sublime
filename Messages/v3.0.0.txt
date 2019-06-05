@@ -1,0 +1,32 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.0.0
+
+*************************
+
+• makes use of the new gsm to hsf
+  (and vice-versa) workflow [using the LP_XMLConverter]
+• new menu for conversion can be found
+  under `Tools > GDL`, and also as a
+  RMB context menu
+• compatibility with
+  upcoming Archicad 23
+  · introduced dicts
+• uses now .sublime-color-scheme
+  files instead of .thTheme
+• other workflow related
+  refinements
+• some globals didn't got styled
+  this is now fixed
+  

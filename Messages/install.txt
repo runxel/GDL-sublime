@@ -1,26 +1,28 @@
 ﻿
- ██████╗ ██████╗ ██╗     
-██╔════╝ ██╔══██╗██║     
-██║  ███╗██║  ██║██║     
-██║   ██║██║  ██║██║     
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
 ╚██████╔╝██████╔╝███████╗
  ╚═════╝ ╚═════╝ ╚══════╝
                          
 Thanks for installing the
 GDL Sublime Text package!
-*************************
+-------------------------
 
 
        How to use
 =========================
 
-From now you can just select `GDL` from the code-language menu in the bottom right corner of Sublime Text.
+From now you can just select `GDL` from the code-language menu in the bottom right corner of Sublime Text. It will be automatically applied to any open files with the `.gdl` extension.
+
 This package comes with 2 pre-designed color schemes.
-As default the light theme will be selected.
+Per default the light theme will be selected.
 If you prefer – like me – a dark coding environment, you can change this in the settings.
 Go to `Preferences > Package Settings > GDL > Settings`.
 Put your settings into the right pane and you're good to go!
 
+Whenever possible, use the "project" feature of Sublime Text, so you can benefit from automatic libpart conversion (via the "LP_XMLConverter") – which means avoiding the pain of copy & pasting every piece of code back into ARCHICAD.
+
 =========================
       Happy coding!
-      
