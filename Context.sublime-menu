@@ -1,0 +1,19 @@
+[
+    { "caption": "-", "id": "gdl-sep-top"},
+    {
+        "id": "gdl",
+        "caption": "GDL (convert)",
+        "children":
+        [
+            {
+                "caption": "Convert to script  [gsm ⯈ hsf/gdl]",
+                "command": "hsf_build"
+            },
+            {
+                "caption": "Build GSM from HSF  [hsf/gdl ⯈ gsm]",
+                "command": "libpart_build"
+            }
+        ]
+    },
+    { "caption": "-", "id": "gdl-sep-bottom"}
+]

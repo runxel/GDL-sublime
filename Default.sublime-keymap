@@ -1,0 +1,6 @@
+[
+	// Convert to script (gsm ⯈ hsf/gdl) 
+	{ "keys": ["ctrl+shift+h"], "command": "hsf_build" },
+	// Build GSM from HSF (hsf/gdl ⯈ gsm)
+	{ "keys": ["ctrl+shift+alt+g"], "command": "libpart_build", "context":[{"key":"selector", "operator":"equal", "operand":"source.gdl"}] },
+]

@@ -1,5 +1,31 @@
 [
     {
+        "caption": "Tools",
+        "mnemonic": "T",
+        "id": "tools",
+        "children":
+        [
+            {
+                "caption": "GDL",
+                "mnemonic": "G",
+                "id": "gdlmenu",
+                "children": 
+                [
+                    {
+                        "caption": "Convert to script  [gsm ⯈ hsf/gdl]",
+                        "command": "hsf_build",
+                        "mnemonic": "H",
+                    },
+                    {
+                        "caption": "Build GSM from HSF  [hsf/gdl ⯈ gsm]",
+                        "command": "libpart_build",
+                        "mnemonic": "G",
+                    }
+                ],
+            }
+        ]
+    },
+    {
         "id": "preferences",
         "children":
         [
