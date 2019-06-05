@@ -5,4 +5,7 @@
 	"color_scheme": "${packages}/GDL/GDL-light.tmTheme",
 
 	"rulers": [80,120],
+
+	// Path to the current Archicad
+	"AC_path": "C:/Program Files/GRAPHISOFT/ARCHICAD 23",
 }
