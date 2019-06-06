@@ -57,7 +57,7 @@ Copy _one_ of these into the file on the right and save:
 ```
 ![light color scheme](https://i.imgur.com/OQx2IF2.png)  
 
-#### Don't like the theme?
+#### Don't like the themes?
 You can edit the `.sublime-color-scheme` files directly. But remember to copy and rename the provided one. Otherwise an update would overwrite your changes.
 
 ### GoTo, Auto completion, Snippets
@@ -74,7 +74,7 @@ You will find all the shipped snippets in the `Snippets` folder.
 With the advent of ARCHICAD 23 we don't longer need third-party apps like [GDLnucleus](http://www.opengdl.org/Default.aspx?tabid=9748) for a Sublime Text driven workflow. The **LP_XMLConverter**, which is part of every Archicad installation, can now convert `.gsm` directly into subsequent `.gdl` scripts and vice-versa. This means an end to the abundant copy & pasting orgy of the past.  
 
 To use this feature you first need to set the path to where your ARCHICAD is installed. Open the package settings again, with the pencil icon on the left you can copy the respective item from the left to the right pane. Change the path accordingly.  
-Afterwards drag and drop a folder with your 'gsm' (I recommend different folders for different gsm's) into Sublime Text and then create a Sublime project via `Project > Save Project sAs…`. Other benefits are a better working 'goto', 'auto completion', and the possibility to fast switch between different coding sessions on various gsm's.  
+Afterwards drag and drop a folder with your 'gsm' (I recommend different folders for different gsm's) into Sublime Text and then create a Sublime project via `Project > Save Project As…`. Other benefits are a better working 'goto', 'auto completion', and the possibility to fast switch between different coding sessions on various gsm's.  
 You can now use the the two conversion options in `Tools > GDL`. For a quick access both items are reachable via a right mouse click on the editor pane and key bindings on each.  
 The default for `Convert to script (gsm ⯈ hsf/gdl)` is <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>H</kbd>. `Build GSM from HSF (hsf/gdl ⯈ gsm)` has <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>alt</kbd>+<kbd>G</kbd>. Of course this can be adjusted to your taste.  
 
