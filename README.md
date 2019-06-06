@@ -77,9 +77,11 @@ To use this feature you first need to set the path to where your ARCHICAD is ins
 Afterwards drag and drop a folder with your 'gsm' (I recommend different folders for different gsm's) into Sublime Text and then create a Sublime project via `Project > Save Project sAs…`. Other benefits are a better working 'goto', 'auto completion', and the possibility to fast switch between different coding sessions on various gsm's.  
 You can now use the the two conversion options in `Tools > GDL`. For a quick access both items are reachable via a right mouse click on the editor pane and key bindings on each.  
 The default for `Convert to script (gsm ⯈ hsf/gdl)` is <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>H</kbd>. `Build GSM from HSF (hsf/gdl ⯈ gsm)` has <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>alt</kbd>+<kbd>G</kbd>. Of course this can be adjusted to your taste.  
-&nbsp;
+
+&nbsp;  
 ![cmd args](https://i.imgur.com/HDiunZe.png)
-&nbsp;
+&nbsp;  
+
 If you need to provide additional arguments for the LP_XMLConverter, you can do so by `Project > Edit Project`, then copy this into the open file:
 ```json
 "cmdargs":
@@ -90,7 +92,8 @@ If you need to provide additional arguments for the LP_XMLConverter, you can do 
 ```
 where `<args>` is to be replaced. If you don't need it, you can leave it empty. To check the possible args you can run the LP_XMLConverter with the `-?` argument to get help.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;  
+&nbsp;  
 
 ## Getting Started With Sublime Text
 New to Sublime? Then I can recommend this excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
