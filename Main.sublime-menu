@@ -14,12 +14,12 @@
                     {
                         "caption": "Convert to script  [gsm ⯈ hsf/gdl]",
                         "command": "hsf_build",
-                        "mnemonic": "H",
+                        "mnemonic": "h",
                     },
                     {
                         "caption": "Build GSM from HSF  [hsf/gdl ⯈ gsm]",
                         "command": "libpart_build",
-                        "mnemonic": "G",
+                        "mnemonic": "g",
                     }
                 ],
             }
