@@ -56,8 +56,8 @@ class HsfBuildCommand(sublime_plugin.WindowCommand):
 
 	def run(self, *args, **kwargs):
 		self.os = check_system()
-		view = self.window.active_view()
-		if view.settings().get("auto_save", True):
+		self.view = self.window.active_view()
+		if self.view.settings().get("auto_save", True):
 			save_all_files()
 
 		settings = sublime.load_settings(PACKAGE_SETTINGS)
@@ -70,12 +70,18 @@ class HsfBuildCommand(sublime_plugin.WindowCommand):
 			if len(folders) == 1:
 				self.multipleFolders = False
 				self.project_folder = folders[0]
+				self.on_done_proj()  # go on here
 			else:
 				self.multipleFolders = True
 				self.pick_project_folder(folders)
-		
+
+	def on_done_proj(self):
+		# this needs to be in its own function, because
+		#  the sublime text quick panel works asynchronous
 		self.find_gsm()
-		self.cmdargs = get_project_data(view, 'to-hsf')
+
+	def on_done_file(self):
+		self.cmdargs = get_project_data(self.view, 'to-hsf')
 		self.run_hsf()
 
 	def pick_project_folder(self, folders):
@@ -95,6 +101,7 @@ class HsfBuildCommand(sublime_plugin.WindowCommand):
 		if select < 0:  # will be -1 if panel was cancelled
 			return
 		self.project_folder = folders[select]
+		self.on_done_proj()  # go on here
 
 	def find_gsm(self):
 		self.files = []
@@ -108,14 +115,16 @@ class HsfBuildCommand(sublime_plugin.WindowCommand):
 			sublime.error_message("GDL build error: No GSM found.")
 
 		if len(self.files) > 1:
-			self.show_quick_panel(self.files, self.select_project)
+			self.show_quick_panel(self.files, self.select_gsm)
 		else:
 			self.file_to_convert = self.files[0]
+			self.on_done_file()  # go on here
 
 	def select_gsm(self, select):
 		if select < 0:
 			return
 		self.file_to_convert = self.files[select]
+		self.on_done_file()  # go on here
 
 	# Sublime Text 3 requires a short timeout between quick panels
 	def show_quick_panel(self, options, done):
@@ -133,8 +142,8 @@ class LibpartBuildCommand(sublime_plugin.WindowCommand):
 
 	def run(self, *args, **kwargs):
 		self.os = check_system()
-		view = self.window.active_view()
-		if view.settings().get("auto_save", True):
+		self.view = self.window.active_view()
+		if self.view.settings().get("auto_save", True):
 			save_all_files()
 
 		settings = sublime.load_settings(PACKAGE_SETTINGS)
@@ -147,13 +156,18 @@ class LibpartBuildCommand(sublime_plugin.WindowCommand):
 			if len(folders) == 1:
 				self.multipleFolders = False
 				self.project_folder = folders[0]
+				self.on_done_proj()  # go on here
 			else:
 				self.multipleFolders = True
 				self.pick_project_folder(folders)
 
+	def on_done_proj(self):
+		# own function because quick panel is async
 		self.find_hsf()
+
+	def on_done_file(self):
 		self.gsm_name = self.folder_to_convert + ".gsm"
-		self.cmdargs = get_project_data(view, 'to-gsm')
+		self.cmdargs = get_project_data(self.view, 'to-gsm')
 		self.run_libpart()
 
 	def pick_project_folder(self, folders):
@@ -173,6 +187,7 @@ class LibpartBuildCommand(sublime_plugin.WindowCommand):
 		if select < 0:  # will be -1 if panel was cancelled
 			return
 		self.project_folder = folders[select]
+		self.on_done_proj()  # go on here
 
 	def find_hsf(self):
 		# self.folders = []
@@ -189,12 +204,14 @@ class LibpartBuildCommand(sublime_plugin.WindowCommand):
 			self.show_quick_panel(self.folders, self.select_hsf)
 		else:
 			self.folder_to_convert = self.project_folder + "\\" + self.folders[0]
+			self.on_done_file()  # go on here
 
 	def select_hsf(self, select):
 		folders = self.folders
 		if select < 0:  # will be -1 if panel was cancelled
 			return
 		self.folder_to_convert = self.project_folder + "\\" + folders[select]
+		self.on_done_file()  # go on here
 
 	# Sublime Text 3 requires a short timeout between quick panels
 	def show_quick_panel(self, options, done):
