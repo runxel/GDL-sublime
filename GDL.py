@@ -108,7 +108,7 @@ class HsfBuildCommand(sublime_plugin.WindowCommand):
 			sublime.error_message("GDL build error: No GSM found.")
 
 		if len(self.files) > 1:
-			self.show_quick_panel(folderNames, self.select_project)
+			self.show_quick_panel(self.files, self.select_project)
 		else:
 			self.file_to_convert = self.files[0]
 
