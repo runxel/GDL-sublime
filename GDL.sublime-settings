@@ -6,6 +6,6 @@
 
 	"rulers": [80,120],
 
-	// Path to the current Archicad
+	// Path to the current Archicad, where the LP_XMLConverter resides
 	"AC_path": "C:/Program Files/GRAPHISOFT/ARCHICAD 23",
 }
