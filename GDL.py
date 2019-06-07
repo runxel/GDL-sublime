@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import os
 import sublime
 import sublime_plugin
 import sys
+import logging as log
 
 PACKAGE_SETTINGS = "GDL.sublime-settings"
 DEFAULT_AC_PATH = "C:/Program Files/GRAPHISOFT/ARCHICAD 23"
@@ -11,9 +14,9 @@ def check_system():
 		operating system of the user.
 	"""
 	if sys.platform.startswith('darwin'): # OSX
-		return "app"
+		return "Contents/MacOS/LP_XMLConverter.app/Contents/MacOS/LP_XMLConverter"
 	elif sys.platform.startswith('win'):  # Windows
-		return "exe"
+		return "/LP_XMLConverter.exe"
 	else:
 		sublime.error_message("GDL build error: Your OS is not supported.")
 		return
@@ -34,7 +37,7 @@ def get_project_data(view, invoke):  # invoke is either 'to-hsf' or 'to-gsm'
 	"""
 	project_data = view.window().project_data()
 	if not project_data:
-		sublime.error_message("You must create a project first! (Project > Save Project As…)")
+		sublime.error_message("You must create a project first! (Project > Save Project As...)")
 		return
 
 	project_settings = project_data.get('cmdargs', {})
@@ -48,6 +51,10 @@ def get_project_data(view, invoke):  # invoke is either 'to-hsf' or 'to-gsm'
 	else:
 		sublime.error_message("Something went wrong.")
 		return
+		
+# class AutocompleteCaps(sublime_plugin.EventListener):
+# 	def on_query_completions(self, view, prefix, locations):
+# 		return suggestions
 		
 # go to
 # http://gdl.graphisoft.com/tips-and-tricks/how-to-use-the-lp_xmlconverter-tool
@@ -131,8 +138,9 @@ class HsfBuildCommand(sublime_plugin.WindowCommand):
 		sublime.set_timeout(lambda: self.window.show_quick_panel(options, done), 10)
 
 	def run_hsf(self, ):
-		converter = self.AC_path + "/LP_XMLConverter." + self.os
+		converter = self.AC_path + self.os
 		cmd = [converter, "libpart2hsf", self.cmdargs, self.file_to_convert, self.project_folder] # cmd, source, dest
+		log.debug("GDL Command run: " + " ".join(cmd))
 		execCMD = {"cmd": cmd}
 		
 		self.window.run_command("exec", execCMD)
@@ -218,8 +226,9 @@ class LibpartBuildCommand(sublime_plugin.WindowCommand):
 		sublime.set_timeout(lambda: self.window.show_quick_panel(options, done), 10)
 
 	def run_libpart(self):
-		converter = self.AC_path + "/LP_XMLConverter.exe"
+		converter = self.AC_path + self.os
 		cmd = [converter, "hsf2libpart", self.cmdargs, self.folder_to_convert, self.gsm_name] # cmd, source, dest
+		log.debug("GDL Command run: " + " ".join(cmd))
 		execCMD = {"cmd": cmd}
 
 		self.window.run_command("exec", execCMD)
