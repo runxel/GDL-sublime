@@ -2,7 +2,7 @@
 	// By default the light color scheme is used.
 	// You can select either GDL-dark or GDL-light
 	// or put a relative path to your own scheme here.
-	"color_scheme": "${packages}/GDL/GDL-light.tmTheme",
+	"color_scheme": "${packages}/GDL/GDL-light.sublime-color-scheme",
 
 	"rulers": [80,120],
 
