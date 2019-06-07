@@ -14,7 +14,7 @@ def check_system():
 		operating system of the user.
 	"""
 	if sys.platform.startswith('darwin'): # OSX
-		return "Contents/MacOS/LP_XMLConverter.app/Contents/MacOS/LP_XMLConverter"
+		return "/Contents/MacOS/LP_XMLConverter.app/Contents/MacOS/LP_XMLConverter"
 	elif sys.platform.startswith('win'):  # Windows
 		return "/LP_XMLConverter.exe"
 	else:
@@ -140,6 +140,7 @@ class HsfBuildCommand(sublime_plugin.WindowCommand):
 	def run_hsf(self, ):
 		converter = self.AC_path + self.os
 		cmd = [converter, "libpart2hsf", self.cmdargs, self.file_to_convert, self.project_folder] # cmd, source, dest
+		cmd = list(filter(None, cmd))  # filters out the empty cmdargs. otherwise Macs get hiccups. sigh.
 		log.debug("GDL Command run: " + " ".join(cmd))
 		execCMD = {"cmd": cmd}
 		
@@ -228,6 +229,7 @@ class LibpartBuildCommand(sublime_plugin.WindowCommand):
 	def run_libpart(self):
 		converter = self.AC_path + self.os
 		cmd = [converter, "hsf2libpart", self.cmdargs, self.folder_to_convert, self.gsm_name] # cmd, source, dest
+		cmd = list(filter(None, cmd))  # filters out the empty cmdargs. otherwise Macs get hiccups. sigh.
 		log.debug("GDL Command run: " + " ".join(cmd))
 		execCMD = {"cmd": cmd}
 
