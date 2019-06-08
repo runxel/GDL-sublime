@@ -12,12 +12,12 @@
                 "children": 
                 [
                     {
-                        "caption": "Convert to script  [gsm ⯈ hsf/gdl]",
+                        "caption": "Convert to script  [gsm –> hsf/gdl]",
                         "command": "hsf_build",
                         "mnemonic": "h",
                     },
                     {
-                        "caption": "Build GSM from HSF  [hsf/gdl ⯈ gsm]",
+                        "caption": "Build GSM from HSF  [hsf/gdl –> gsm]",
                         "command": "libpart_build",
                         "mnemonic": "g",
                     }
