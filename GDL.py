@@ -14,9 +14,9 @@ def check_system():
 		operating system of the user.
 	"""
 	if sys.platform.startswith('darwin'): # OSX
-		return "/Contents/MacOS/LP_XMLConverter.app/Contents/MacOS/LP_XMLConverter"
+		return "Contents/MacOS/LP_XMLConverter.app/Contents/MacOS/LP_XMLConverter"
 	elif sys.platform.startswith('win'):  # Windows
-		return "/LP_XMLConverter.exe"
+		return "LP_XMLConverter.exe"
 	else:
 		sublime.error_message("GDL build error: Your OS is not supported.")
 		return
@@ -138,7 +138,7 @@ class HsfBuildCommand(sublime_plugin.WindowCommand):
 		sublime.set_timeout(lambda: self.window.show_quick_panel(options, done), 10)
 
 	def run_hsf(self, ):
-		converter = self.AC_path + self.os
+		converter = os.path.join(self.AC_path, self.os)
 		cmd = [converter, "libpart2hsf", self.cmdargs, self.file_to_convert, self.project_folder] # cmd, source, dest
 		cmd = list(filter(None, cmd))  # filters out the empty cmdargs. otherwise Macs get hiccups. sigh.
 		log.debug("GDL Command run: " + " ".join(cmd))
@@ -199,12 +199,7 @@ class LibpartBuildCommand(sublime_plugin.WindowCommand):
 		self.on_done_proj()  # go on here
 
 	def find_hsf(self):
-		# self.folders = []
-		#for fldr in os.listdir(self.project_folder):
-		# for  fldr in os.scandir(self.project_folder):
-		# 	self.folders.append(fldr.name)
 		self.folders = [fldr for fldr in os.listdir(self.project_folder) if os.path.isdir(os.path.join(self.project_folder, fldr))]
-		print(self.folders)
 
 		if len(self.folders) <= 0:
 			sublime.error_message("GDL build error: No HSF found.")
@@ -212,14 +207,14 @@ class LibpartBuildCommand(sublime_plugin.WindowCommand):
 		if len(self.folders) > 1:
 			self.show_quick_panel(self.folders, self.select_hsf)
 		else:
-			self.folder_to_convert = self.project_folder + "\\" + self.folders[0]
+			self.folder_to_convert = os.path.join(self.project_folder,self.folders[0])
 			self.on_done_file()  # go on here
 
 	def select_hsf(self, select):
 		folders = self.folders
 		if select < 0:  # will be -1 if panel was cancelled
 			return
-		self.folder_to_convert = self.project_folder + "\\" + folders[select]
+		self.folder_to_convert = os.path.join(self.project_folder, folders[select])
 		self.on_done_file()  # go on here
 
 	# Sublime Text 3 requires a short timeout between quick panels
@@ -227,7 +222,7 @@ class LibpartBuildCommand(sublime_plugin.WindowCommand):
 		sublime.set_timeout(lambda: self.window.show_quick_panel(options, done), 10)
 
 	def run_libpart(self):
-		converter = self.AC_path + self.os
+		converter = os.path.join(self.AC_path, self.os)
 		cmd = [converter, "hsf2libpart", self.cmdargs, self.folder_to_convert, self.gsm_name] # cmd, source, dest
 		cmd = list(filter(None, cmd))  # filters out the empty cmdargs. otherwise Macs get hiccups. sigh.
 		log.debug("GDL Command run: " + " ".join(cmd))
