@@ -4,6 +4,9 @@
 	// or put a relative path to your own scheme here.
 	"color_scheme": "${packages}/GDL/GDL-light.sublime-color-scheme",
 
+	// set the syntax automatically for all .gdl files
+	"extensions": ["gdl"],
+
 	"rulers": [80,120],
 
 	// Path to the current Archicad, where the LP_XMLConverter resides
