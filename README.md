@@ -90,7 +90,7 @@ If you need to provide additional arguments for the LP_XMLConverter, you can do 
     "to-gsm": "<args>"
 }
 ```
-where `<args>` is to be replaced. If you don't need it, you can leave it empty. To check the possible args you can run the LP_XMLConverter with the `-?` argument to get help.
+where `<args>` is to be replaced. If you don't need it, you can leave it empty. To check the possible args you can run the LP_XMLConverter with the `-?` argument to get help. **NOTE: AT THE MOMENT IT SEEMS THAT THERE ARE NO SUPPORTED ARGUMENTS FOR THE GSM-HSF-GSM WORKFLOW.**
 
 &nbsp;  
 &nbsp;  
