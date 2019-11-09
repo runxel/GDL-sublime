@@ -89,6 +89,8 @@ Of course you can overwrite this behavior by having a path on _project basis_. T
     },
 ```
 
+If you substitute the path with `"default"` you can mimic the standard behavior: the GSM will be built next to the HSF. This is useful if you have set a global path in the package settings. Remeber: Project settings override global settings.
+
 Note: There's no path checking implemented at the moment! You have to take care by yourself that you're allowed to write at the paths accordingly.
 
 ![Project path setting](https://i.imgur.com/71LeiOW.png)
