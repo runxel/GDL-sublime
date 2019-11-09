@@ -24,5 +24,7 @@ Put your settings into the right pane and you're good to go!
 
 Whenever possible, use the "project" feature of Sublime Text, so you can benefit from automatic libpart conversion (via the "LP_XMLConverter") – which means avoiding the pain of copy & pasting every piece of code back into ARCHICAD.
 
+Don't forget to set up your Package Settings!
+
 =========================
       Happy coding!

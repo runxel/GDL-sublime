@@ -38,7 +38,7 @@ Go to your Sublime Text `Packages` directory and clone the repository using the 
 ## Usage
 From now on you can select `GDL` as the current language in the bottom right corner of ST and enjoy all the benefits. For files with the `.gdl` extension it will be automatically active.  
 For the coloring (meaning the proper highlighting) there are two choices. By default a light color scheme will be applied.  
-I personly like the dark coloring more providing fatigue-proof coding. To change the use of a color scheme go to `Preferences > Package Settings > GDL > Settings`.  
+I personly like the dark coloring more, providing fatigue-proof coding. To change the use of a color scheme go to `Preferences > Package Settings > GDL > Settings`.  
 
 Copy _one_ of these into the file on the right and save:
 
@@ -73,11 +73,27 @@ You will find all the shipped snippets in the `Snippets` folder.
 ## Workflow
 With the advent of ARCHICAD 23 we don't longer need third-party apps like [GDLnucleus](http://www.opengdl.org/Default.aspx?tabid=9748) for a Sublime Text driven workflow. The **LP_XMLConverter**, which is part of every Archicad installation, can now convert `.gsm` directly into subsequent `.gdl` scripts and vice-versa. This means an end to the abundant copy & pasting orgy of the past.  
 
-To use this feature you first need to set the path to where your ARCHICAD is installed. Open the package settings again, with the pencil icon on the left you can copy the respective item from the left to the right pane. Change the path accordingly.  
+To use this feature you first need to set the path to where your ARCHICAD is installed. Open the package settings again and copy the respective item from the left to the right pane. Change the path accordingly.  
 Afterwards drag and drop a folder with your 'gsm' (I recommend different folders for different gsm's) into Sublime Text and then create a Sublime project via `Project > Save Project As…`. Other benefits are a better working 'goto', 'auto completion', and the possibility to fast switch between different coding sessions on various gsm's.  
-You can now use the the two conversion options in `Tools > GDL`. For a quick access both items are reachable via a right mouse click on the editor pane and key bindings on each.  
-The default for `Convert to script (gsm ⯈ hsf/gdl)` is <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>H</kbd>. `Build GSM from HSF (hsf/gdl ⯈ gsm)` has <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>alt</kbd>+<kbd>G</kbd>. Of course this can be adjusted to your taste.  
+You can now use the the two conversion options in `Tools > GDL`. For a quick access both items are reachable via a right mouse click on the editor pane. There are also key bindings on each.  
+The default for `Convert to script (gsm → hsf/gdl)` is <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>H</kbd>. `Build GSM from HSF (hsf/gdl → gsm)` has <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>alt</kbd>+<kbd>G</kbd>. Of course these can be adjusted to your taste.  
 
+### Places
+If you convert between HSF and GSM the default place will be next to each other. However you can define a _global default path_ where any GSMs should be deployed to. This is useful if you have a central library already linked in Archicad.  
+Of course you can overwrite this behavior by having a path on _project basis_. This can be set by opening the corresponding `.sublime-project` file and adding:
+
+```json
+"cmdargs":
+    {
+        "proj_gsm_path": "C:/Users/runxel/Desktop",
+    },
+```
+
+Note: There's no path checking implemented at the moment! You have to take care by yourself that you're allowed to write at the paths accordingly.
+
+![Project path setting](https://i.imgur.com/71LeiOW.png)
+
+<!-- 
 &nbsp;  
 ![cmd args](https://i.imgur.com/HDiunZe.png)
 &nbsp;  
@@ -94,6 +110,7 @@ where `<args>` is to be replaced. If you don't need it, you can leave it empty. 
 
 &nbsp;  
 &nbsp;  
+-->
 
 ## Getting Started With Sublime Text
 New to Sublime? Then I can recommend this excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
@@ -104,4 +121,4 @@ Please consider donating to sustain working on this plugin.
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y5VOOM)
 
-[![Beerpay](https://beerpay.io/runxel/GDL-sublime/badge.svg?style=beer-square)](https://beerpay.io/runxel/GDL-sublime)
+<!-- [![Beerpay](https://beerpay.io/runxel/GDL-sublime/badge.svg?style=beer-square)](https://beerpay.io/runxel/GDL-sublime) -->

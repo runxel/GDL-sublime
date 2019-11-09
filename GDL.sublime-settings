@@ -9,9 +9,14 @@
 
 	"rulers": [80,120],
 
-	// Path to the current Archicad, where the LP_XMLConverter resides
+	// Path to the current Archicad, where the LP_XMLConverter resides.
 	// example Win:
-	"AC_path": "C:/Program Files/GRAPHISOFT/ARCHICAD 23"
+	"AC_path": "C:/Program Files/GRAPHISOFT/ARCHICAD 23",
 	// example Mac:
 	//         "/Applications/GRAPHISOFT/AC23B3/ARCHICAD 23.app"
+
+	// If you specify a path here all conversions from HSF to GSM
+	// will go into this place. This is helpful if you want to deploy
+	// into a central library already linked in Archicad.
+	"global_gsm_path": "",
 }

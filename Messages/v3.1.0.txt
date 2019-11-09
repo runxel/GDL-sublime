@@ -1,0 +1,39 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.1.0
+
+*************************
+
+• New Package Setting:
+  `global_gsm_path`
+  You can now define a global default path where any
+  GSMs should be deployed to.
+  This is useful if you have a central library 
+  already linked in Archicad.
+  (Thanks to Ben Cohen, http://www.4dlibrary.com.au/,
+  for the suggestion.)
+
+• New Project Setting:
+  `proj_gsm_path`
+  You can also set a conversion path on project basis.
+  This overrides the default (which is project root)
+  and *also* the new `global_gsm_path` from the
+  package setting!
+  Instead of putting a path we can also write `default`
+  which mimics the standard behavior (building the GSM 
+  right next to the HSF).
+
+Note: There's no path checking implemented at the moment! 
+You have to take care by yourself that you're allowed to 
+write at the paths accordingly.
