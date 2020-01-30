@@ -1,0 +1,20 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.1.1
+
+*************************
+
+• Some AC23 key words were missing.
+  This is fixed.
+  See also: http://gdl.graphisoft.com/new-features-guide/new-gdl-features-in-archicad-23
