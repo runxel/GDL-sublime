@@ -6,7 +6,7 @@
 	/* runxel @ github.com */
 	"variables":
 	{
-		"background": 	"#313128",
+		"background": 	"#2A2827",
 		"foreground":	"#E5E5E5",
 		"caret": 		"#3FEDD8",
 		"invisibles": 	"#48493F",
