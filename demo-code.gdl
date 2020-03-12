@@ -1,3 +1,4 @@
+! GDL-Sublime | MIT License | Lucas Becker | <https://github.com/runxel/GDL-sublime>
 ! DEMO CODE FOR SYNTAX HIGHLIGHTING
 ! it serves no other purpose than showing styling
 
@@ -14,6 +15,7 @@ CALL "m_DSProfiles"
 pen mypen
 mul2 1, COS(ac_wall_ang)
 add2 0, -tempWidth
+rot2 W~
 poly2_b{2} NSP/3, 1+2+4+64,	gs_fill_pen, gs_back_pen,
 		A, 0, 0,
 		USE(NSP)
