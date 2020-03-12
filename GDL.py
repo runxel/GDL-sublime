@@ -4,11 +4,12 @@ import os
 import sublime
 import sublime_plugin
 import sys
-import logging as log
+import logging
+
+log = logging.getLogger(__name__)
 
 PACKAGE_SETTINGS = "GDL.sublime-settings"
 DEFAULT_AC_PATH = "C:/Program Files/GRAPHISOFT/ARCHICAD 23"
-
 
 def save_all_files():
 	""" Saves all files open in Sublime.
@@ -42,6 +43,20 @@ def get_project_data(view, invoke):
 		sublime.error_message("Something went wrong.")
 		return
 
+def get_project_newroot(view):
+	""" Gets the data of the .sublime-project file.
+		Returns a relative path, if set.
+		(Useful, if you have many subfolders.)
+	"""
+	try:
+		project_data = view.window().project_data()
+		new_root_setting = project_data.get('root')
+	except:
+		new_root_setting = ""
+	
+	return new_root_setting
+
+
 # Future addition. Sadly not working as by now.		
 # class AutocompleteCaps(sublime_plugin.EventListener):
 # 	def on_query_completions(self, view, prefix, locations):
@@ -60,17 +75,25 @@ class Builder(sublime_plugin.WindowCommand):
 		if self.view.settings().get("auto_save", True):
 			save_all_files()
 
-		folders = self.window.folders()
-		if len(folders) <= 0:
+		self.nr_path = get_project_newroot(self.view)
+		log.debug(self.nr_path)
+		# see if there is a relative path set in the project settings
+		if self.nr_path != "":
+			nr_path_abs = os.path.join(self.window.folders()[0], self.nr_path)
+			self.folders = [directory for directory in os.listdir(nr_path_abs) if os.path.isdir(os.path.join(nr_path_abs, directory))]
+		else:
+			self.folders = self.window.folders()
+
+		if len(self.folders) <= 0:
 			sublime.error_message("GDL build command error: You must have a project open.")
 		else:
-			if len(folders) == 1:
+			if len(self.folders) == 1:
 				self.multipleFolders = False
-				self.project_folder = folders[0]
+				self.project_folder = self.folders[0]
 				self.on_done_proj()  # go on here
 			else:
 				self.multipleFolders = True
-				self.pick_project_folder(folders)
+				self.pick_project_folder(self.folders)
 
 	def check_system(self):
 		""" Returns the path to the LP_XML converter.
@@ -103,7 +126,8 @@ class Builder(sublime_plugin.WindowCommand):
 		self.show_quick_panel(folderNames, self.select_project)
 
 	def select_project(self, select):
-		folders = self.window.folders()
+		#folders = self.window.folders()
+		folders = self.folders
 		if select < 0:  # will be -1 if panel was cancelled
 			return
 		self.project_folder = folders[select]
@@ -192,16 +216,19 @@ class LibpartBuildCommand(Builder):
 	def find_hsf(self):
 		""" Finds all possible folders for converting to GSM. 
 		"""
-		self.folders = [fldr for fldr in os.listdir(self.project_folder) if os.path.isdir(os.path.join(self.project_folder, fldr))]
+		#self.folders = [fldr for fldr in os.listdir(self.project_folder) if os.path.isdir(os.path.join(self.project_folder, fldr))]
 
 		if len(self.folders) <= 0:
 			sublime.error_message("GDL build error: No HSF found.")
 
-		if len(self.folders) > 1:
-			self.show_quick_panel(self.folders, self.select_hsf)
-		else:
-			self.folder_to_convert = os.path.join(self.project_folder,self.folders[0])
-			self.on_done_file()  # go on here
+		# if len(self.folders) > 1:
+		# 	self.show_quick_panel(self.folders, self.select_hsf)
+		# else:
+		# 	self.folder_to_convert = os.path.join(self.project_folder,self.folders[0])
+		# 	self.on_done_file()  # go on here
+
+		self.folder_to_convert = self.project_folder
+		self.on_done_file()  # go on here
 
 	def select_hsf(self, select):
 		""" Selects on of the possible of folders of the find_hsf() def. 
