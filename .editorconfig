@@ -1,0 +1,14 @@
+# EditorConfig for https://github.com/runxel/GDL-sublime
+# see docs at https://EditorConfig.org
+
+root = true
+
+[*]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+
+[*.py]
+
+[syntax_test_gdl]
+indent_style = space
