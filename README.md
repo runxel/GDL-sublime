@@ -58,7 +58,7 @@ Copy _one_ of these into the file on the right and save:
 ![light color scheme](https://i.imgur.com/OQx2IF2.png)  
 
 #### Don't like the themes?
-You can edit the `.sublime-color-scheme` files directly. But remember to copy and rename the provided one. Otherwise an update would overwrite your changes.
+You can edit the `.sublime-color-scheme` files directly – they are nothing else than `.json` files basically. But remember to copy your own color scheme into the `User` folder! Otherwise an update would overwrite your changes. (Of course you then need to point Sublime Text to your new color scheme like above.)
 
 ### GoTo, Auto completion, Snippets
 The "Goto" feature of Sublime Text is pretty powerful. To gain full access you must use [Sublime projects](#workflow). If you e.g. quickly want to got to a subroutine place your cursor into the name and press <kbd>F12</kbd>. You will then jump directly to the definition.  
@@ -73,27 +73,65 @@ You will find all the shipped snippets in the `Snippets` folder.
 ## Workflow
 With the advent of ARCHICAD 23 we don't longer need third-party apps like [GDLnucleus](http://www.opengdl.org/Default.aspx?tabid=9748) for a Sublime Text driven workflow. The **LP_XMLConverter**, which is part of every Archicad installation, can now convert `.gsm` directly into subsequent `.gdl` scripts and vice-versa. This means an end to the abundant copy & pasting orgy of the past.  
 
-To use this feature you first need to set the path to where your ARCHICAD is installed. Open the package settings again and copy the respective item from the left to the right pane. Change the path accordingly.  
+To use this feature you first need to set the path to where your ARCHICAD is installed. Open the package settings again and copy the respective item from the left to the right pane. Change the path accordingly.
+
 Afterwards drag and drop a folder with your 'gsm' (I recommend different folders for different gsm's) into Sublime Text and then create a Sublime project via `Project > Save Project As…`. Other benefits are a better working 'goto', 'auto completion', and the possibility to fast switch between different coding sessions on various gsm's.  
 You can now use the the two conversion options in `Tools > GDL`. For a quick access both items are reachable via a right mouse click on the editor pane. There are also key bindings on each.  
 The default for `Convert to script (gsm → hsf/gdl)` is <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>H</kbd>. `Build GSM from HSF (hsf/gdl → gsm)` has <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>alt</kbd>+<kbd>G</kbd>. Of course these can be adjusted to your taste.  
 
 ### Places
-If you convert between HSF and GSM the default place will be next to each other. However you can define a _global default path_ where any GSMs should be deployed to. This is useful if you have a central library already linked in Archicad.  
+If you convert between HSF and GSM the default place will be next to each other. However you can define a _global default path_ (see [example](#example) below) where any GSMs should be deployed to. This is useful if you have a central library already linked in Archicad.  
 Of course you can overwrite this behavior by having a path on _project basis_. This can be set by opening the corresponding `.sublime-project` file and adding:
 
 ```json
-"cmdargs":
+{
+	"cmdargs":
     {
-        "proj_gsm_path": "C:/Users/runxel/Desktop",
-    },
+        "proj_gsm_path": "C:/Users/runxel/gsm-dev"
+    }
+}
 ```
 
-If you substitute the path with `"default"` you can mimic the standard behavior: the GSM will be built next to the HSF. This is useful if you have set a global path in the package settings. Remember: Project settings override global settings.
+If you substitute the path with `"default"` you can mimic the standard behavior: the GSM will be built next to the HSF. This is useful if you have set a global path in the package settings. Remember: **Project settings override global settings**.
 
 Note: There's no path checking implemented at the moment! You have to take care by yourself that you're allowed to write at the paths accordingly.
 
-![Project path setting](https://i.imgur.com/71LeiOW.png)
+What to do if you have nested structures? Let's take a look at the structure of this very repo:
+
+```
+<Project Root>
+ ├─ .editorconfig
+ ├─ README.md
+ ├─ docs\
+ └─ Objects\
+ 	├─ Object-1\
+	├─ Object-2\
+	└─ Object-3\
+	   ├─ Object-3\
+	   └─ Object-3.gsm
+```
+
+We want to declare a new 'root', a place where we store the HSFs.
+All you need to do is to put the following statement into your `.sublime-project` file:
+
+```json
+{
+	"root": "Objects"
+	// for deeper nesting use slashes: "Objects/deeper"
+}
+```
+
+<!-- ![Project path setting](https://i.imgur.com/71LeiOW.png) -->
+
+
+### Syntax Settings Example:
+```json
+{
+	"AC_path": "C:/Program Files/GRAPHISOFT/ARCHICAD 23",
+	"color_scheme": "Packages/GDL/GDL-dark.sublime-color-scheme",
+	"global_gsm_path": "D:/office/aclibrary"
+}
+```
 
 <!-- 
 &nbsp;  
