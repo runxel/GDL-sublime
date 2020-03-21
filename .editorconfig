@@ -12,3 +12,7 @@ indent_size = 4
 
 [syntax_test_gdl]
 indent_style = space
+
+[*.{sublime-syntax,yaml}]
+indent_style = space
+indent_size = 2
