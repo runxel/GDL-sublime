@@ -1,0 +1,30 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.2.0
+
+*************************
+
+• Parameters with special prefixes like
+  `i_` (for integer) or `b_` (for booleans)
+  are now highlighted like the optional
+  parameters (e.g. `ac_` or `gs_`)
+• There is a new option you can set in the
+  `.sublime-project` file:
+  If you have nested folders you can set a
+  new "root" (where your HSFs are) via
+  ```
+  {
+  	"root": "nested/folder"
+  }
+  ```
