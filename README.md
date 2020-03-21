@@ -114,7 +114,7 @@ What to do if you have nested structures? Let's take a look at the structure of 
 We want to declare a new 'root', a place where we store the HSFs.
 All you need to do is to put the following statement into your `.sublime-project` file:
 
-```json
+```jsonc
 {
 	"root": "Objects"
 	// for deeper nesting use slashes: "Objects/deeper"
