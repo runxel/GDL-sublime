@@ -33,6 +33,7 @@ contexts:
     - include: func
     - include: gdl-globals
     - include: optional
+    - include: easyparams
     - include: expression-common      # needs to be last bc of brackets
     - include: dotted-names
     - include: generic-names
@@ -403,10 +404,38 @@ contexts:
           - include: string
           - include: arrays
 
-############### opt Params #################
+############### Params #################
   optional:
     - match: (?i)\b([ABCDEFG]|ZZYZX|(ac|gs|ifc|ROOM|FM)_\w+)\b
       scope: keyword.optionalparameters.fixed.gdl
+
+  easyparams:
+    - match: (?i)\b((x|y|z)_\w+)\b
+      scope: meta.parameters.length.gdl
+    - match: (?i)\b((i|int)_\w+)\b
+      scope: meta.parameters.integer.gdl
+    - match: (?i)\b((f|float|real)_\w+)\b
+      scope: meta.parameters.float.gdl
+    - match: (?i)\b(ang_\w+)\b
+      scope: meta.parameters.angle.gdl
+    - match: (?i)\b((b|bool)_\w+)\b
+      scope: meta.parameters.bool.gdl
+    - match: (?i)\b(str_\w+)\b
+      scope: meta.parameters.string.gdl
+    - match: (?i)\b(fill_\w+)\b
+      scope: meta.parameters.fill.gdl
+    - match: (?i)\b(mat_\w+)\b
+      scope: meta.parameters.material.gdl
+    - match: (?i)\b(pen_\w+)\b
+      scope: meta.parameters.pen.gdl
+    - match: (?i)\b((lt|line)_\w+)\b
+      scope: meta.parameters.linetype.gdl
+    - match: (?i)\b(bm_\w+)\b
+      scope: meta.parameters.bmat.gdl
+    - match: (?i)\b(prof_\w+)\b
+      scope: meta.parameters.profile.gdl
+    - match: (?i)\b(dict_\w+)\b
+      scope: meta.parameters.dict.gdl
 
 ############### GDL globals #################
   gdl-globals:
