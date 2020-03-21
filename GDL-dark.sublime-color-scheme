@@ -3,7 +3,7 @@
 	"name": "GDL-dark",
 	/* .sublime-color-scheme Version for ST3 */
 	"author": "Lucas Becker",
-	/* runxel @ github.com */
+	/* runxel–>@github.com */
 	"variables":
 	{
 		"background": 	"#2A2827",
@@ -184,8 +184,8 @@
 			"foreground": "#dbca95"
 		},
 		{
-			"name": "Optional parameters",
-			"scope": "keyword.optionalparameters",
+			"name": "Optional and Special Parameters",
+			"scope": "keyword.optionalparameters, meta.parameters",
 			"foreground": "var(lightgreen)"
 		},
 		{
