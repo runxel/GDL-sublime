@@ -186,8 +186,8 @@
 			"foreground": "#dbca95"
 		},
 		{
-			"name": "Optional parameters",
-			"scope": "keyword.optionalparameters",
+			"name": "Optional and Special Parameters",
+			"scope": "keyword.optionalparameters, meta.parameters",
 			"foreground": "var(lightgreen)"
 		},
 		{
