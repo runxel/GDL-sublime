@@ -71,6 +71,8 @@ class Builder(sublime_plugin.WindowCommand):
 		self.AC_path = str(self.pckg_settings.get("AC_path", DEFAULT_AC_PATH))
 		self.converter = os.path.join(self.AC_path, self.lp_conv_path)
 
+		self.project_path_abs_root = self.window.folders()[0]
+
 		self.view = self.window.active_view()
 		if self.view.settings().get("auto_save", True):
 			save_all_files()
@@ -78,8 +80,8 @@ class Builder(sublime_plugin.WindowCommand):
 		self.nr_path = get_project_newroot(self.view)
 		log.debug(self.nr_path)
 		# see if there is a relative path set in the project settings
-		if self.nr_path != "":
-			nr_path_abs = os.path.join(self.window.folders()[0], self.nr_path)
+		if self.nr_path != None:  # empty path is of type 'None'
+			nr_path_abs = os.path.join(self.project_path_abs_root, self.nr_path)
 			self.folders = [directory for directory in os.listdir(nr_path_abs) if os.path.isdir(os.path.join(nr_path_abs, directory))]
 		else:
 			self.folders = self.window.folders()
@@ -109,6 +111,9 @@ class Builder(sublime_plugin.WindowCommand):
 			return
 
 	def normpath(self, path):
+		""" Normalize a pathname by collapsing redundant separators.
+			On Windows, it converts forward slashes to backward slashes.
+		"""
 		return '"{}"'.format(os.path.normpath(path))
 
 	def pick_project_folder(self, folders):
@@ -126,11 +131,10 @@ class Builder(sublime_plugin.WindowCommand):
 		self.show_quick_panel(folderNames, self.select_project)
 
 	def select_project(self, select):
-		#folders = self.window.folders()
 		folders = self.folders
 		if select < 0:  # will be -1 if panel was cancelled
 			return
-		self.project_folder = folders[select]
+		self.project_folder = os.path.join(self.nr_path, folders[select])
 		self.on_done_proj()  # go on here
 
 	def show_quick_panel(self, options, done):
@@ -155,6 +159,7 @@ class HsfBuildCommand(Builder):
 		super().run(self)
 
 	def on_done_proj(self):
+		# we're coming from super()
 		# own function because quick panel is async
 		self.find_gsm()
 
@@ -168,8 +173,7 @@ class HsfBuildCommand(Builder):
 
 		if len(self.files) <= 0:
 			sublime.error_message("GDL build error: No GSM found.")
-
-		if len(self.files) > 1:
+		elif len(self.files) > 1:
 			self.show_quick_panel(self.files, self.select_gsm)
 		else:
 			self.file_to_convert = self.files[0]
