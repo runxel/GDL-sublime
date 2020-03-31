@@ -1,0 +1,20 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.2.1
+
+*************************
+
+• Parameters are now also detected
+  inside of strings.
+  e.g. `UI_INFIELD "b_test"`
