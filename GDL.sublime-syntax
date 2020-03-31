@@ -106,6 +106,7 @@ contexts:
         - include: request-param
         - include: autotext
         - include: optional
+        - include: easyparams
     - match: "'|`"
       scope: punctuation.definition.string.begin.localized.gdl
       push:
