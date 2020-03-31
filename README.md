@@ -1,7 +1,13 @@
 # [GDL-sublime](https://github.com/runxel/GDL-sublime)
-A bundle to make GDL available in [Sublime Text](http://www.sublimetext.com/).
+
+<img align="right" src="img/gdlst-logo.png" width="200">
+
+> A bundle to make GDL available in [Sublime Text](http://www.sublimetext.com/).
 
 [![Version](https://img.shields.io/github/release/runxel/GDL-sublime.svg?style=flat-square)](https://github.com/runxel/GDL-sublime/releases/latest)
+[![Downloads](https://img.shields.io/packagecontrol/dt/GDL?logo=sublime%20text&style=flat-square)](https://packagecontrol.io/packages/GDL)
+
+---
 
 ![dark color scheme](https://i.imgur.com/OEurk9A.png)  
 
