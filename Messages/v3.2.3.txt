@@ -1,0 +1,21 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.2.3
+
+*************************
+
+• Converting to HSF didn't
+  worked properly with the
+  new "root" feature –
+  this is now fixed
