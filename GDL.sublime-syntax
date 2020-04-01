@@ -293,7 +293,7 @@ contexts:
     - match: (?i)(?<=^|\s)(CUT(PLANE(\{[2-4]\})?|POLY[A]?|FORM(\{2\})?|SHAPE|END)|WALL(HOLE|NICHE))(?=$|\s)
       scope: keyword.shape.3D.cut.gdl
 
-    - match: (?i)(?<=^|\s)((place|kill)group|(add|isect|sub)group(\{[23]\})?|sweepgroup(\{[2-5]\})?|isectlines|creategroupwithmaterial)(?=$|\s|\()
+    - match: (?i)(?<=^|\b)((place|kill)group|(add|isect|sub)group(\{[23]\})?|sweepgroup(\{[2-5]\})?|isectlines|creategroupwithmaterial)(?=$|\s|\()
       scope: keyword.shape.3D.seo.gdl
 
     - match: (?i)(?<=^|\s)(TEXT|RICHTEXT)(?=$|\s)
