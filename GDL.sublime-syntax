@@ -347,7 +347,7 @@ contexts:
       scope: keyword.nongeo.parameters.range.gdl
 
   nongeo:
-    - match: (?i)\b(VALUES(\{2\})?|STEP|(RETURNED_)?PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION)(?=$|\s)
+    - match: (?i)\b(VALUES(\{2\})?|STEP|(RETURNED_)?PARAMETERS|LOCK|HIDEPARAMETER|PARVALUE_DESCRIPTION|(PROFILE|FILL)TYPES_MASK)(?=$|\s)
       scope: keyword.nongeo.parameters.gdl
 
     - include: range

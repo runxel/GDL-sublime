@@ -265,6 +265,7 @@
 		{ "trigger": "print", "contents": "print ${1:expression}" },
 		"prism",
 		"prism_",
+		"profiletypes_mask",
 		{ "trigger": "project2", "contents": "project2 ${1:projection_code}, ${2:angle}, ${3:method}" },
 		{ "trigger": "project2{2}", "contents": "project2{2} ${1:projection_code}, ${2:angle}, ${3:method}" },
 		{ "trigger": "project2{3}", "contents": "project2{3} ${1:projection_code}, ${2:angle}, ${3:method}, ${4:parts}" },
