@@ -437,6 +437,10 @@ contexts:
       scope: meta.parameters.profile.gdl
     - match: (?i)\b(dict_\w+)\b
       scope: meta.parameters.dict.gdl
+    - match: (?i)\b(g_\w+)\b
+      scope: meta.parameters.flag.gdl
+    - match: (?i)\b(id(x)?_\w+)\b
+      scope: meta.parameters.index.gdl
 
 ############### GDL globals #################
   gdl-globals:
