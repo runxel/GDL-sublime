@@ -92,7 +92,7 @@ class Builder(sublime_plugin.WindowCommand):
 			if len(self.folders) == 1:
 				self.multipleFolders = False
 				self.project_folder = self.folders[0]
-				self.on_done_proj()  # go on here
+				self.delegator()
 			else:
 				self.multipleFolders = True
 				self.pick_project_folder(self.folders)
@@ -135,12 +135,22 @@ class Builder(sublime_plugin.WindowCommand):
 		if select < 0:  # will be -1 if panel was cancelled
 			return
 		self.project_folder = os.path.join(self.nr_path, folders[select])
-		self.on_done_proj()  # go on here
+		self.delegator()  # go on here
 
 	def show_quick_panel(self, options, done):
 		""" Shows the Sublime Text quick panel with the invoked options. """
 		# Sublime Text 3 requires a short timeout between quick panels
 		sublime.set_timeout(lambda: self.window.show_quick_panel(options, done), 10)
+
+	def delegator(self):
+		""" Delegates back to the specific calling class.
+			Also makes the `project_folder` path absolut.
+		"""
+		# make absolut path, since relative paths might introduce errors
+		self.project_folder = os.path.join(self.project_path_abs_root, self.project_folder)
+		
+		# this delegates back to the calling class.
+		self.on_done_proj()
 
 
 # 	@classmethod
@@ -159,12 +169,13 @@ class HsfBuildCommand(Builder):
 		super().run(self)
 
 	def on_done_proj(self):
-		# we're coming from super()
+		# we're coming from super().delegator()
 		# own function because quick panel is async
 		self.find_gsm()
 
 	def find_gsm(self):
 		self.files = []
+		log.debug(self.project_folder)
 		# r=root, d=directories, f=files
 		for r, d, f in os.walk(self.project_folder):
 			for file in f:
@@ -192,6 +203,7 @@ class HsfBuildCommand(Builder):
 	def run_hsf(self, ):
 		""" Invokes the LP_XML converter. 
 		"""
+		# normpath all to just be sure the CLI will take them without complain
 		self.converter = super().normpath(self.converter)
 		self.file_to_convert = super().normpath(self.file_to_convert)
 		self.project_folder = super().normpath(self.project_folder)
@@ -214,6 +226,7 @@ class LibpartBuildCommand(Builder):
 		super().run(self)
 
 	def on_done_proj(self):
+		# we're coming from super().delegator()
 		# own function because quick panel is async
 		self.find_hsf()
 
