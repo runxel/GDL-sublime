@@ -108,13 +108,15 @@ What to do if you have nested structures? Let's take a look at the structure of 
 <Project Root>
  ├─ .editorconfig
  ├─ README.md
- ├─ docs\
+ ├─ docs\..
+ ├─ images\..
  └─ Objects\
- 	├─ Object-1\
-	├─ Object-2\
-	└─ Object-3\
-	   ├─ Object-3\
-	   └─ Object-3.gsm
+ 	├─ Object-1\..
+	├─ Object-2\..
+	└─ Object-3\             ## be sure that the outer AND
+	   ├─ Object-3\          ## the inner folder AND also
+	   │  └─ (all scripts)
+	   └─ Object-3.gsm       ## the .gsm share exactly the same name!
 ```
 
 We want to declare a new 'root', a place where we store the HSFs.
