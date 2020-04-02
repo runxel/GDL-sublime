@@ -291,12 +291,12 @@ class LibpartBuildCommand(Builder):
 
 		cmd = [self.converter, "hsf2libpart", self.cmdargs, self.folder_to_convert, self.gsm_path] # cmd, source, dest
 		cmd = list(filter(None, cmd))  # filters out the empty cmdargs. otherwise Macs get hiccups. sigh.
-		cmd = " ".join(cmd)
-		# log.debug("GDL Command run: " + cmd)
-
 		# if you use `cmd` instead of `shell_cmd` you will get the infamous [Winerror 5]
 		# see: https://forum.sublimetext.com/t/winerror-5-access-is-denied/
 		# however, for `shell_cmd` to work we need to pass a string, not a list (!)
+		cmd = " ".join(cmd)
+
+		# log.debug("GDL Command run: " + cmd)
 		execCMD = {"shell_cmd": cmd}
 
 		self.window.run_command("exec", execCMD)
