@@ -135,6 +135,7 @@ class Builder(sublime_plugin.WindowCommand):
 		if select < 0:  # will be -1 if panel was cancelled
 			return
 		self.project_folder = os.path.join(self.nr_path, folders[select])
+		self.project_folder = folders[select]
 		self.delegator()  # go on here
 
 	def show_quick_panel(self, options, done):
@@ -146,8 +147,12 @@ class Builder(sublime_plugin.WindowCommand):
 		""" Delegates back to the specific calling class.
 			Also makes the `project_folder` path absolut.
 		"""
+		# join with new root
+		self.project_folder = os.path.join(self.nr_path, self.project_folder)
 		# make absolut path, since relative paths might introduce errors
 		self.project_folder = os.path.join(self.project_path_abs_root, self.project_folder)
+		
+		log.debug("project_folder: " + self.project_folder)
 		
 		# this delegates back to the calling class.
 		self.on_done_proj()
@@ -244,11 +249,16 @@ class LibpartBuildCommand(Builder):
 		# 	self.folder_to_convert = os.path.join(self.project_folder,self.folders[0])
 		# 	self.on_done_file()  # go on here
 
-		self.folder_to_convert = self.project_folder
+		# this assumes the user follows the scheme to have a subfolder of the same name
+		last_part_of_path = os.path.basename(os.path.normpath(self.project_folder))
+
+		self.folder_to_convert = os.path.join(self.project_folder, last_part_of_path)
 		self.on_done_file()  # go on here
 
 	def select_hsf(self, select):
-		""" Selects on of the possible of folders of the find_hsf() def. 
+		""" ! Deprecated !
+			Now done by super().select_project()
+			TODO: Remove.
 		"""
 		folders = self.folders
 		if select < 0:  # will be -1 if panel was cancelled
