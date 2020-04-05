@@ -651,13 +651,9 @@ contexts:
     scope: keyword.other.special-method.functions.gdl
 
 ################### Item Access ######################
-# originally this was labeld "Arrays"
-# but since we got dicts, not only arrays get the square brackets
   arrays:
-    - match: (?i)(?:(GLOB_(CUTPLANES_INFO|PROJECT_DATE)|WALL_POSITION|(ROOF|SHELLBASE)_SKINS_PARAMS|(LABEL|BEAM)_POSITION)|([a-z_0-9]+))(?=\[)
-      captures:
-        1: keyword.globals.general.gdl
-        2: entity.name.array.gdl
+    - include: gdl-global-param
+    - match: (?i)(?=\[)
       push:
         - match: \[
           scope: punctuation.section.array.begin.gdl
