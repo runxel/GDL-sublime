@@ -665,6 +665,7 @@ contexts:
           - include: func
           - include: operators
           - include: expression-common
+          - include: easyparams
           - include: string
 
   after-array:
@@ -678,6 +679,7 @@ contexts:
         - include: func
         - include: operators
         - include: expression-common
+        - include: easyparams
         - include: string
     - match: ''                 # if no second bracket pop out
       pop: true
