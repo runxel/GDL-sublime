@@ -3,4 +3,12 @@
 	{ "keys": ["ctrl+shift+h"], "command": "hsf_build" },
 	// Build GSM from HSF (hsf/gdl -> gsm)
 	{ "keys": ["ctrl+shift+alt+g"], "command": "libpart_build", "context":[{"key":"selector", "operator":"equal", "operand":"source.gdl"}] },
+	// autopair backticks for localized strings (``)
+	{ "keys": ["`"], "command": "insert_snippet", "args": {"contents": "`$0`"}, "context":
+		[
+			{ "key": "selector", "operator": "equal", "operand": "source.gdl"},
+			{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
+			{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true }
+		]
+	},
 ]

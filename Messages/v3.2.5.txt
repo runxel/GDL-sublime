@@ -1,0 +1,25 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.2.5
+
+*************************
+
+CHANGELOG:
+
+# changed
+• Global params (green) now get recognized when used as an array
+• Params weren't recognized when used in an array
+
+# added
+• Backticks (`) get auto matched now, if the ST setting is enabled by the user.
