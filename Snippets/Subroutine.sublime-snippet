@@ -3,7 +3,7 @@
 ! ---------------------------------------------------------------------- !
 ${1:"name" or number}:
 	${2:! do something}
-RETURN
+return
 
 ]]></content>
 	<tabTrigger>sub</tabTrigger>

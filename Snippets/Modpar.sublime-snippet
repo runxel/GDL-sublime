@@ -1,9 +1,8 @@
 <snippet>
 	<content><![CDATA[
-IF GLOB_MODPAR_NAME = "${1:A}" THEN
+if GLOB_MODPAR_NAME = "${1:A}" then
 	${2}
-ENDIF
-
+endif
 ]]></content>
 	<tabTrigger>modpar</tabTrigger>
 	<description>IF GLOB_MODPAR_NAME ...</description>
