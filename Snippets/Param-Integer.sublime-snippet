@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<Integer Name="${1:integer var name}">
+	<Description><![CDATA["{2:paramlist name}"]]${-1}></Description>
+	<Value>${3:0}</Value>
+</Integer>
+]]></content>
+	<tabTrigger>integer</tabTrigger>
+	<description>Integer (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
