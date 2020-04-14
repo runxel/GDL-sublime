@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<Length Name="${1:length_var}">
+	<Description><![CDATA["${2:param name}"]]${-1}></Description>
+	<Value>0</Value>
+</Length> 
+]]></content>
+	<tabTrigger>length</tabTrigger>
+	<description>Length (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
