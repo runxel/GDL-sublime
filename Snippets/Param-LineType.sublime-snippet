@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<LineType Name="${1:linetype var name}">
+	<Description><![CDATA["{2:paramlist name}"]]${-1}></Description>
+	<Value>${3:1}</Value>
+</LineType>
+]]></content>
+	<tabTrigger>linetype</tabTrigger>
+	<description>LineType (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
