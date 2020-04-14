@@ -86,7 +86,7 @@ You can now use the the two conversion options in `Tools > GDL`. For a quick acc
 The default for `Convert to script (gsm → hsf/gdl)` is <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>H</kbd>. `Build GSM from HSF (hsf/gdl → gsm)` has <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>alt</kbd>+<kbd>G</kbd>. Of course these can be adjusted to your taste.  
 
 ### Places
-If you convert between HSF and GSM the default place will be next to each other. However you can define a _global default path_ (see [example](#example) below) where any GSMs should be deployed to. This is useful if you have a central library already linked in Archicad.  
+If you convert between HSF and GSM the default place will be next to each other. However you can define a _global default path_ (see [example](#syntax-settings-example) below) where any GSMs should be deployed to. This is useful if you have a central library already linked in Archicad.  
 Of course you can overwrite this behavior by having a path on _project basis_. This can be set by opening the corresponding `.sublime-project` file and adding:
 
 ```json
