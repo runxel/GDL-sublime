@@ -102,10 +102,10 @@ class Builder(sublime_plugin.WindowCommand):
 		""" Returns the path to the LP_XML converter.
 		"""
 		if sys.platform.startswith('darwin'): # OSX
-			self.os_win = "false"
+			self.os_win = False
 			return "Contents/MacOS/LP_XMLConverter.app/Contents/MacOS/LP_XMLConverter"
 		elif sys.platform.startswith('win'):  # Windows
-			self.os_win = "true"
+			self.os_win = True
 			return "LP_XMLConverter.exe"
 		else:
 			sublime.error_message("GDL build error: Your OS is not supported.")
