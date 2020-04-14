@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<RealNum Name="${1:real var name}">
+	<Description><![CDATA["${2:paramlist name}"]]${-1}></Description>
+	<Value>${3:0}</Value>
+</RealNum>
+]]></content>
+	<tabTrigger>real</tabTrigger>
+	<description>Real (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
