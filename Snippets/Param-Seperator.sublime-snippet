@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+<Separator Name="${1:divider}">
+	<Description><![CDATA[""]]${-1}></Description>
+</Separator>
+]]></content>
+	<tabTrigger>seperator</tabTrigger>
+	<description>Seperator (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
