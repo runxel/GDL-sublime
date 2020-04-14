@@ -1,8 +1,8 @@
 <snippet>
 	<content><![CDATA[
-<Angle Name="${1:angel_var}">
-	<Description><![CDATA["${2:param name}"]]${-1}></Description>
-	<Value>0</Value>
+<Angle Name="${1:angel var name}">
+	<Description><![CDATA["${2:paramilst name}"]]${-1}></Description>
+	<Value>${3:0}</Value>
 </Angle>
 ]]></content>
 	<tabTrigger>angle</tabTrigger>
