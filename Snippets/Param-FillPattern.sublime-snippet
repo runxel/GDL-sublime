@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<FillPattern Name="${1:fillpattern var name}">
+	<Description><![CDATA["{2:paramlist name}"]]${-1}></Description>
+	<Value>${3:64}</Value>
+</FillPattern>
+]]></content>
+	<tabTrigger>fill</tabTrigger>
+	<description>FillPattern (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
