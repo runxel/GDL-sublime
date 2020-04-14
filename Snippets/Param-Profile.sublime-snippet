@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<Profile Name="${1:profile var name}">
+	<Description><![CDATA["param name"]]${-1}></Description>
+	<Value>${3:0}</Value>
+</Profile>
+]]></content>
+	<tabTrigger>profile</tabTrigger>
+	<description>Profile (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
