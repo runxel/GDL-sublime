@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<PenColor Name="${1:pen var name}">
+	<Description><![CDATA["{2:paramlist name}"]]${-1}></Description>
+	<Value>${3:1}</Value>
+</PenColor>
+]]></content>
+	<tabTrigger>pen</tabTrigger>
+	<description>Pen (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
