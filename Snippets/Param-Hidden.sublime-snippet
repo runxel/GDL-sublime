@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+<Flags>
+	<ParFlg_Hidden/>
+</Flags>
+]]></content>
+	<tabTrigger>hidden</tabTrigger>
+	<description>Item is hidden (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
