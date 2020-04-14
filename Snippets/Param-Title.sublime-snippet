@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+
+<!-- ${1:title}: PARAMETER BLOCK ===== PARAMETER BLOCK ===== PARAMETER BLOCK ===== PARAMETER BLOCK -->
+
+<Title Name="${1:title}">
+	<Description><![CDATA["${2:title name}"]]${-1}></Description>
+</Title>
+]]></content>
+	<tabTrigger>title</tabTrigger>
+	<description>Title Block (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
