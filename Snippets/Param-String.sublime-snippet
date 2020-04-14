@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<String Name="${1:string var name}">
+	<Description><![CDATA["{2:paramlist name}"]]${-1}></Description>
+	<Value><![CDATA["${3:string content}"]]${-1}></Value>
+</String>
+]]></content>
+	<tabTrigger>string</tabTrigger>
+	<description>String (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
