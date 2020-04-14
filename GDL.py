@@ -40,7 +40,7 @@ def get_project_data(view, invoke):
 			# dict is empty, which means user hasn't set any cmdargs
 			return ""
 	else:
-		sublime.error_message("Something went wrong.")
+		err()
 		return
 
 def get_project_newroot(view):
@@ -56,6 +56,11 @@ def get_project_newroot(view):
 		new_root_setting = ""
 	
 	return new_root_setting
+
+def err(text):
+	if text == None:
+		text = "Sorry. Something went wrong."
+	sublime.error_message(text)
 
 
 # Future addition. Sadly not working as by now.		
@@ -87,8 +92,8 @@ class Builder(sublime_plugin.WindowCommand):
 		else:
 			self.folders = self.window.folders()
 
-		if len(self.folders) <= 0:
-			sublime.error_message("GDL build command error: You must have a project open.")
+		if len(self.folders) <= 0:                     
+			err("GDL build command error: You must have a project open.")
 		else:
 			if len(self.folders) == 1:
 				self.multipleFolders = False
@@ -108,7 +113,7 @@ class Builder(sublime_plugin.WindowCommand):
 			self.os_win = True
 			return "LP_XMLConverter.exe"
 		else:
-			sublime.error_message("GDL build error: Your OS is not supported.")
+			err("GDL build error: Your OS is not supported.")
 			return
 
 	def normpath(self, path):
