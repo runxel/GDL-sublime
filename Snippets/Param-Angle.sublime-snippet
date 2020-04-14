@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<Angle Name="${1:angel_var}">
+	<Description><![CDATA["${2:param name}"]]${-1}></Description>
+	<Value>0</Value>
+</Angle>
+]]></content>
+	<tabTrigger>angle</tabTrigger>
+	<description>Angle (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
