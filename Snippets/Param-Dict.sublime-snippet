@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+<Dictionary Name="${1:dict_var}">
+	<Description><![CDATA["${2:param name}"]]${-1}></Description>
+	<Flags>
+		<ParFlg_Hidden/>
+	</Flags>
+	<Value/>
+</Dictionary>
+]]></content>
+	<tabTrigger>dict</tabTrigger>
+	<description>Dict (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
