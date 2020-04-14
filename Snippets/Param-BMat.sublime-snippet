@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<BuildingMaterial Name="${1:bmat var name}">
+	<Description><![CDATA["param name"]]${-1}></Description>
+	<Value>${3:0}</Value>
+</BuildingMaterial>
+]]></content>
+	<tabTrigger>bmat</tabTrigger>
+	<description>BMat (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
