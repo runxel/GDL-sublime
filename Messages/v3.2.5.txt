@@ -22,4 +22,13 @@ CHANGELOG:
 • Params weren't recognized when used in an array
 
 # added
-• Backticks (`) get auto matched now, if the ST setting is enabled by the user.
+• Backticks (`) get auto matched now, if the respective ST setting is enabled by the user.
+• Snippets for the parameter list in `libpartdata.xml` were added. [^1]
+
+# fixed
+• In certain circumstances the GSM Build command could fail.
+• Multiroot environments weren't utilized properly.
+
+
+---
+[^1] Thanks to this comment: https://forum.sublimetext.com/t/cannot-insert-cdata-into-a-snippet/5188/10?u=runxel
