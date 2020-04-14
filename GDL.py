@@ -46,7 +46,8 @@ def get_project_data(view, invoke):
 def get_project_newroot(view):
 	""" Gets the data of the .sublime-project file.
 		Returns a relative path, if set.
-		(Useful, if you have many subfolders.)
+		(Useful, if you have many subfolders and want to assign
+		a new root, where all the objects are in.)
 	"""
 	try:
 		project_data = view.window().project_data()
@@ -113,6 +114,7 @@ class Builder(sublime_plugin.WindowCommand):
 	def normpath(self, path):
 		""" Normalize a pathname by collapsing redundant separators.
 			On Windows, it converts forward slashes to backward slashes.
+			Returns the object as an quote encapsulated string.
 		"""
 		return '"{}"'.format(os.path.normpath(path))
 
@@ -167,10 +169,13 @@ class Builder(sublime_plugin.WindowCommand):
 # http://gdl.graphisoft.com/tips-and-tricks/how-to-use-the-lp_xmlconverter-tool
 # for detailed information
 class HsfBuildCommand(Builder):
-	""" Converts a GSM into human readable GDL scripts. """
+	""" Converts a GSM into human readable GDL scripts via the LP_XMLConverter. """
 
 	def run(self, *args, **kwargs):
-		""" Sublime Text will call this function. """
+		""" Sublime Text will call this function.
+			We will run the parent class "Builder" first.
+			That will give us all the parameters we need.
+		"""
 		super().run(self)
 
 	def on_done_proj(self):
