@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+<Boolean Name="${1:integer var name}">
+	<Description><![CDATA["{2:paramlist name}"]]${-1}></Description>
+	<Value>${3:0}</Value>
+</Boolean>
+]]></content>
+	<tabTrigger>bool</tabTrigger>
+	<description>Bool (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
