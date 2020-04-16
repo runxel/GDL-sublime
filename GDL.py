@@ -28,7 +28,7 @@ def get_project_data(view, invoke):
 	# invoke options: 'to-hsf' / 'to-gsm' / 'proj_gsm_path'
 	project_data = view.window().project_data()
 	if not project_data:
-		sublime.error_message("You must create a project first! (Project > Save Project As...)")
+		err("You must create a project first! (Project > Save Project As...)")
 		return
 
 	project_settings = project_data.get('cmdargs', {})
@@ -198,7 +198,7 @@ class HsfBuildCommand(Builder):
 					self.files.append(os.path.join(r, file))
 
 		if len(self.files) <= 0:
-			sublime.error_message("GDL build error: No GSM found.")
+			err("GDL build error: No GSM found.")
 		elif len(self.files) > 1:
 			self.show_quick_panel(self.files, self.select_gsm)
 		else:
