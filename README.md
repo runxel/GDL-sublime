@@ -1,12 +1,16 @@
+<p align="center">
+
 # [GDL-sublime](https://github.com/runxel/GDL-sublime)
 
-<img align="right" src="img/gdlst-logo.png" width="200">
+<img src="img/gdlst-logo.png" width="135">
 
 > A bundle to make GDL available in [Sublime Text](http://www.sublimetext.com/).
 
 [![Version](https://img.shields.io/github/release/runxel/GDL-sublime.svg?style=flat-square)](https://github.com/runxel/GDL-sublime/releases/latest)
 [![Downloads](https://img.shields.io/packagecontrol/dt/GDL?logo=sublime%20text&style=flat-square)](https://packagecontrol.io/packages/GDL)
 [![Discord](https://img.shields.io/discord/700328186642432040?color=738ad6&label=Join%20the%20Discord%20server&logo=discord&logoColor=ffffff)](https://discord.gg/6R4a5qQ)
+
+</p>
 
 ---
 
