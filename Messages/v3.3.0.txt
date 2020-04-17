@@ -11,23 +11,28 @@ has successfully updated
 
 *************************
 
-ＶＥＲＳＩＯＮ 		3.2.5
+ＶＥＲＳＩＯＮ 		3.3.0
 
 *************************
 
 CHANGELOG:
 
 # changed
-• Global params (green) now get recognized when used as an array
-• Params weren't recognized when used in an array
+• Global params (green) now get recognized when used as an array.
+• Params weren't recognized when used in an array.
+• The way GDL-S looks for HSF and GSMs is greatly improved.
 
 # added
+• New project settings: With `convert_on_save` set to true a GSM will automatically be built if you edited and saved a GDL file.
 • Backticks (`) get auto matched now, if the respective ST setting is enabled by the user.
 • Snippets for the parameter list in `libpartdata.xml` were added. [^1]
 
 # fixed
 • In certain circumstances the GSM Build command could fail.
-• Multiroot environments weren't utilized properly.
+• If the user had file extensions being ALLCAPS the conversion failed.
+
+# removed
+• Multiroot environments are error prone and support (which was instable before already) for it has been removed. It might return at a later point however.
 
 
 ---
