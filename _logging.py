@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 
 
 def _settings():
+	# current log level setting is stored in here
 	return sublime.load_settings("GDLDev.sublime-settings")
 
 
