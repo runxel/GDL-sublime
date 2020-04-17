@@ -43,65 +43,130 @@ def get_project_data(view, invoke):
 		err()
 		return
 
-def get_project_newroot(view):
+def get_project_subroot(view):
 	""" Gets the data of the .sublime-project file.
 		Returns a relative path, if set.
 		(Useful, if you have many subfolders and want to assign
 		a new root, where all the objects are in.)
 	"""
-	try:
-		project_data = view.window().project_data()
-		new_root_setting = project_data.get('root')
-	except:
-		new_root_setting = ""
-	
-	return new_root_setting
+	project_data = view.window().project_data()
+	sub_root_setting = project_data.get('root', "")
+	return sub_root_setting
 
 def err(text):
+	""" Gives us a ST error message. """
 	if text == None:
 		text = "Sorry. Something went wrong."
 	sublime.error_message(text)
 
+def is_dir(*args):
+	""" Takes arguments and determines if the resulting path is a directory. """
+	try:
+		is_dir = os.path.isdir(os.path.join(*args))
+	except:
+		is_dir = False
+	return is_dir
 
-# Future addition. Sadly not working as by now.		
-# class AutocompleteCaps(sublime_plugin.EventListener):
-# 	def on_query_completions(self, view, prefix, locations):
-# 		return suggestions
+def is_file(*args):
+	""" Takes arguments and determines if the resulting path is a file. """
+	try:
+		is_file = os.path.isfile(os.path.join(*args))
+	except:
+		is_file = False
+	return is_file
+
+def splitall(path):
+	""" Returns all parts of a path as a list. """
+	allparts = []
+	while 1:
+		parts = os.path.split(path)
+		if parts[0] == path:  # sentinel for absolute paths
+			allparts.insert(0, parts[0])
+			break
+		elif parts[1] == path: # sentinel for relative paths
+			allparts.insert(0, parts[1])
+			break
+		else:
+			path = parts[0]
+			allparts.insert(0, parts[1])
+	return allparts
 
 
+class GdlOnSave(sublime_plugin.EventListener):
+	""" Establishes an event listener, which gets active when the user saves a GDL file.
+		If the appropiate setting is set, a GSM will be built automatically.
+	"""
+	def on_post_save_async(self, view):
+		# check if the project has the setting
+		if view.window().project_data().get("convert_on_save", False):
+			# only get active when the user edited a GDL file
+			if view.match_selector(0, "source.gdl"):
+				view.window().run_command('libpart_build', {"on_post_save_state": True})
+
+
+############################################################################
 class Builder(sublime_plugin.WindowCommand):
-
 	def run(self, *args, **kwargs):
 		self.lp_conv_path = self.check_system()
 		self.pckg_settings = sublime.load_settings(PACKAGE_SETTINGS)
 		self.AC_path = str(self.pckg_settings.get("AC_path", DEFAULT_AC_PATH))
 		self.converter = os.path.join(self.AC_path, self.lp_conv_path)
 
-		self.project_path_abs_root = self.window.folders()[0]
-
 		self.view = self.window.active_view()
 		if self.view.settings().get("auto_save", True):
 			save_all_files()
 
-		self.nr_path = get_project_newroot(self.view)
-		log.debug(self.nr_path)
-		# see if there is a relative path set in the project settings
-		if self.nr_path != None:  # empty path is of type 'None'
-			nr_path_abs = os.path.join(self.project_path_abs_root, self.nr_path)
-			self.folders = [directory for directory in os.listdir(nr_path_abs) if os.path.isdir(os.path.join(nr_path_abs, directory))]
+		if self.on_post_save_state:
+			# if coming from the on_post_save event listener we can directly proceed without selection
+			self.delegator()
 		else:
-			self.folders = self.window.folders()
+			self.selection_process()
 
-		if len(self.folders) <= 0:                     
-			err("GDL build command error: You must have a project open.")
+	def selection_process(self):
+		# determine if there is a sub root folder being set in the project settings
+		self.sub_root_path = get_project_subroot(self.view)
+		if self.sub_root_path:  # empty str are falsy
+			self.has_subroot = True
+			_debug_subroot = self.sub_root_path
 		else:
-			if len(self.folders) == 1:
-				self.multipleFolders = False
-				self.project_folder = self.folders[0]
-				self.delegator()
-			else:
-				self.multipleFolders = True
-				self.pick_project_folder(self.folders)
+			self.has_subroot = False
+			_debug_subroot = "<not set>"
+		log.debug("Sub-Root Path is: {}".format(_debug_subroot))
+
+		if len(self.window.folders()) > 1:
+			err("You can't use the GDL-Sublime plugin as a menu command in a multi root environment.\n"
+				"Please try the 'convert_on_save' setting instead.\n"
+				"Alternatively you might be able to rearrange your folder structure to use the 'sub root' setting.")
+			return
+
+		if len(self.window.folders()) > 1 and self.sub_root_path:
+			# this means there are multiple folders linked into ST
+			# there would be an ambiguity for which of the folders the `root` feature should apply
+			err("You can not use the 'root' setting in a multiroot environment.\n"
+				"Maybe try the 'convert_on_save' setting.")
+			return
+		if len(self.window.folders()) > 1:
+			self.has_multi_root = True
+		else:
+			self.has_multi_root = False
+
+		self.project_abs_basepath = self.window.folders()
+
+		# get the list of folders which could be part of a conversion
+		self.folders = self.get_folders()
+		log.debug("Folders prior to selection: {}".format(self.folders))
+
+		if len(self.folders) <= 0:
+			err("GDL build command error: You must have a project open.\n"
+				"Also make sure all folders and files are named properly.\n"
+				"If in doubt consult the README.")
+		elif len(self.folders) == 1:
+			self.has_multiple_folders = False
+			self.working_dir = self.folders[0]
+			self.delegator()
+		else:
+			self.has_multiple_folders = True
+			self.pick_working_dir(self.folders)
 
 	def check_system(self):
 		""" Returns the path to the LP_XML converter.
@@ -116,33 +181,69 @@ class Builder(sublime_plugin.WindowCommand):
 			err("GDL build error: Your OS is not supported.")
 			return
 
-	def normpath(self, path):
-		""" Normalize a pathname by collapsing redundant separators.
-			On Windows, it converts forward slashes to backward slashes.
-			Returns the object as an quote encapsulated string.
+	def get_folders(self):
+		""" Retrieves all subfolders of the working directory and returns
+			a subset which includes all valid items as a list.
 		"""
-		return '"{}"'.format(os.path.normpath(path))
+		if self.has_subroot:  
+			abs_path_with_subroot = os.path.join(self.project_abs_basepath[0], self.sub_root_path)
+			# first let's check if user has linked to a object folder directly
+			# we can answer that by checking if there is an appropiate GSM or folder directly in the directory
+			rootbase = os.path.basename(os.path.normpath(abs_path_with_subroot))
+			if is_dir(abs_path_with_subroot, rootbase) or is_file(abs_path_with_subroot, rootbase +'.gsm'):
+				folders = [abs_path_with_subroot]
+			else:
+				folders = self.valid_subfolders(abs_path_with_subroot)
+		else:
+			# get all the current firstlevel subfolders
+			if self.has_multi_root:
+				folders = []
+				for folder in self.project_abs_basepath:
+					folders.append(self.valid_subfolders(folder))
 
-	def pick_project_folder(self, folders):
+			else: # no multiroot, no subroot
+				folders = self.valid_subfolders(self.project_abs_basepath[0])
+
+		return folders
+
+	def valid_subfolders(self, basepath):
+		""" Returns a list of all subfolders, checked for being not empty by looking for HSF/GSM inside. """
+		folders = [fldr for fldr in os.listdir(basepath) if (
+			is_dir(basepath, fldr) and (
+			is_dir(basepath, fldr, fldr) \
+			or is_file(basepath, fldr, fldr +'.gsm')))]
+		return folders
+
+	def pick_working_dir(self, folders):
 		""" Gets called if there are multiple folders in the project. 
 		"""
-		folderNames = []
-		for folder in folders:
-			index = folder.rfind('/') + 1
-			if index > 0:
-				folderNames.append(folder[index:])
-			else:
-				folderNames.append(folder)
+		if self.has_multi_root:
+			# list comprehension because multiroot has a nested structure
+			# i.e. [[one, two], [three, four]]
+			folderNames = [x for l in folders for x in l]
+		else:
+			folderNames = []
+			for folder in folders:
+				index = folder.rfind('/') + 1
+				if index > 0:
+					folderNames.append(folder[index:])
+				else:
+					folderNames.append(folder)
 
-		# self.sel_proj will be called once, with the index of the selected item
-		self.show_quick_panel(folderNames, self.select_project)
+		# self.select will be called once with the indices (mapped from the folders)
+		self.show_quick_panel(folderNames, self.select)
 
-	def select_project(self, select):
-		folders = self.folders
+	def select(self, select):
+		if self.has_multi_root:
+			# now we have to resolve the problem of the flat `select` index
+			# vs. the nested structure of a multi root
+			folders = [x for l in self.folders for x in l]
+		else:
+			folders = self.folders
+			
 		if select < 0:  # will be -1 if panel was cancelled
 			return
-		self.project_folder = os.path.join(self.nr_path, folders[select])
-		self.project_folder = folders[select]
+		self.working_dir = folders[select]
 		self.delegator()  # go on here
 
 	def show_quick_panel(self, options, done):
@@ -150,37 +251,48 @@ class Builder(sublime_plugin.WindowCommand):
 		# Sublime Text 3 requires a short timeout between quick panels
 		sublime.set_timeout(lambda: self.window.show_quick_panel(options, done), 10)
 
+	def normpath(self, path):
+		""" Normalize a pathname by collapsing redundant separators.
+			On Windows, it converts forward slashes to backward slashes.
+			Returns the object as an quote encapsulated string (as needed for the CLI).
+		"""
+		return '"{}"'.format(os.path.normpath(path))
+
 	def delegator(self):
 		""" Delegates back to the specific calling class.
-			Also makes the `project_folder` path absolut.
+			Also makes the `working_dir` path absolut.
 		"""
-		# join with new root
-		self.project_folder = os.path.join(self.nr_path, self.project_folder)
-		# make absolut path, since relative paths might introduce errors
-		self.project_folder = os.path.join(self.project_path_abs_root, self.project_folder)
+		try:
+			if not self.on_post_save_state:
+				if self.has_subroot:
+					# join with new root
+					self.working_dir = os.path.join(self.sub_root_path, self.working_dir)
+				# make absolut path, since relative paths might introduce errors
+				self.working_dir = os.path.join(self.project_abs_basepath[0], self.working_dir)
+			else: # we are coming from the on_post_save event listener
+				self.working_dir = os.path.join(*splitall(self.active_file_path)[:-2])
+		except Exception as e:
+			raise e
 		
-		log.debug("project_folder: " + self.project_folder)
+		log.debug("Working Dir: {}".format(self.working_dir))
 		
 		# this delegates back to the calling class.
 		self.on_done_proj()
 
 
-# 	@classmethod
-# 	def is_enabled(self):
-# 		return "/GDL/" in self.window.active_view().settings().get("syntax")
-
-		
-# go to
-# http://gdl.graphisoft.com/tips-and-tricks/how-to-use-the-lp_xmlconverter-tool
-# for detailed information
+############################################################################	
 class HsfBuildCommand(Builder):
 	""" Converts a GSM into human readable GDL scripts via the LP_XMLConverter. """
+	# go to
+	# http://gdl.graphisoft.com/tips-and-tricks/how-to-use-the-lp_xmlconverter-tool
+	# for detailed information
 
 	def run(self, *args, **kwargs):
 		""" Sublime Text will call this function.
 			We will run the parent class "Builder" first.
 			That will give us all the parameters we need.
 		"""
+		self.on_post_save_state = False
 		super().run(self)
 
 	def on_done_proj(self):
@@ -190,11 +302,14 @@ class HsfBuildCommand(Builder):
 
 	def find_gsm(self):
 		self.files = []
-		log.debug(self.project_folder)
+		log.debug(self.working_dir)
 		# r=root, d=directories, f=files
-		for r, d, f in os.walk(self.project_folder):
+		for r, d, f in os.walk(self.working_dir):
 			for file in f:
-				if '.gsm' in file:
+				# casefolding because the user might have all caps extension
+				# https://docs.python.org/3/library/stdtypes.html#str.casefold
+				folded = str.casefold(file)
+				if folded.endswith('.gsm'):
 					self.files.append(os.path.join(r, file))
 
 		if len(self.files) <= 0:
@@ -221,13 +336,13 @@ class HsfBuildCommand(Builder):
 		# normpath all to just be sure the CLI will take them without complain
 		self.converter = super().normpath(self.converter)
 		self.file_to_convert = super().normpath(self.file_to_convert)
-		self.project_folder = super().normpath(self.project_folder)
+		self.working_dir = super().normpath(self.working_dir)
 
-		cmd = [self.converter, "libpart2hsf", self.cmdargs, self.file_to_convert, self.project_folder] # cmd, source, dest
+		cmd = [self.converter, "libpart2hsf", self.cmdargs, self.file_to_convert, self.working_dir] # cmd, source, dest
 		cmd = list(filter(None, cmd))  # filters out the empty cmdargs. otherwise Macs get hiccups. sigh.
 		cmd = " ".join(cmd)
 
-		#log.debug("GDL Command run: " + " ".join(cmd))
+		#log.debug("GDL Command run: " + " ".join(cmd)) # gets logged automatically by ST
 		execCMD = {"shell_cmd": cmd}
 		
 		self.window.run_command("exec", execCMD)
@@ -238,6 +353,16 @@ class LibpartBuildCommand(Builder):
 
 	def run(self, *args, **kwargs):
 		""" Sublime Text will call this function. """
+		# if this function however is called from the on_post_save event listener
+		# then we want to bypass the selection part
+		self.active_file_path = sublime.active_window().active_view().file_name()
+		if 'on_post_save_state' in kwargs:
+			log.debug("This command is called on post save.")
+			log.debug("Current active file is: {}".format(self.active_file_path))
+			self.on_post_save_state = kwargs.get('on_post_save_state')
+		else:
+			self.on_post_save_state = False
+
 		super().run(self)
 
 	def on_done_proj(self):
@@ -248,32 +373,16 @@ class LibpartBuildCommand(Builder):
 	def find_hsf(self):
 		""" Finds all possible folders for converting to GSM. 
 		"""
-		#self.folders = [fldr for fldr in os.listdir(self.project_folder) if os.path.isdir(os.path.join(self.project_folder, fldr))]
+		if self.on_post_save_state:
+			self.folder_to_convert = self.working_dir
+		else:
+			if len(self.folders) <= 0:
+				err("GDL build error: No HSF found.")
 
-		if len(self.folders) <= 0:
-			sublime.error_message("GDL build error: No HSF found.")
+			# this assumes the user follows the scheme to have a subfolder of the same name
+			last_part_of_path = os.path.basename(os.path.normpath(self.working_dir))
 
-		# if len(self.folders) > 1:
-		# 	self.show_quick_panel(self.folders, self.select_hsf)
-		# else:
-		# 	self.folder_to_convert = os.path.join(self.project_folder,self.folders[0])
-		# 	self.on_done_file()  # go on here
-
-		# this assumes the user follows the scheme to have a subfolder of the same name
-		last_part_of_path = os.path.basename(os.path.normpath(self.project_folder))
-
-		self.folder_to_convert = os.path.join(self.project_folder, last_part_of_path)
-		self.on_done_file()  # go on here
-
-	def select_hsf(self, select):
-		""" ! Deprecated !
-			Now done by super().select_project()
-			TODO: Remove.
-		"""
-		folders = self.folders
-		if select < 0:  # will be -1 if panel was cancelled
-			return
-		self.folder_to_convert = os.path.join(self.project_folder, folders[select])
+			self.folder_to_convert = os.path.join(self.working_dir, last_part_of_path)
 		self.on_done_file()  # go on here
 
 	def on_done_file(self):
