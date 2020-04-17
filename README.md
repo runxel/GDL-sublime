@@ -6,10 +6,9 @@
 
 [![Version](https://img.shields.io/github/release/runxel/GDL-sublime.svg?style=flat-square)](https://github.com/runxel/GDL-sublime/releases/latest)
 [![Downloads](https://img.shields.io/packagecontrol/dt/GDL?logo=sublime%20text&style=flat-square)](https://packagecontrol.io/packages/GDL)
+[![Discord](https://img.shields.io/discord/700328186642432040?color=738ad6&label=Join%20the%20Discord%20server&logo=discord&logoColor=ffffff)](https://discord.gg/6R4a5qQ)
 
 ---
-
-![dark color scheme](https://i.imgur.com/OEurk9A.png)  
 
 # What is GDL?
 GDL means 'Geometric Description Language'. [ArchiCAD](http://www.graphisoft.com/) uses it to define a library part.
@@ -17,9 +16,9 @@ GDL means 'Geometric Description Language'. [ArchiCAD](http://www.graphisoft.com
 Many ArchiCAD users are making their own library parts, sell them or even publish them for free on sites like [BIMComponents](https://bimcomponents.com/), while others just want to modify the provided ones. But they are all tied to the – unfortunately horrible – built-in object editor which is stuck in the 80's or so. It doesn't even have line numbers!
 
 But salvation is here!  
-The purpose of this package is to give you the chance to comfortably write code in the best editor of the galaxy – [Sublime Text](https://www.sublimetext.com/).
+The purpose of this package is to give you the chance to comfortably write code in[Sublime Text](https://www.sublimetext.com/).
 
-This package provides the whole thing: from **syntax highlighting** (with a well aligned **color scheme**) to **auto completion**, **global goto**, **snippets**, and last but not least a **build system** for your scripts.
+This package provides the whole thing: from **syntax highlighting** (with a well aligned **color schemes**) to **auto completion**, **global goto**, **snippets**, and last but not least a **build system** for your scripts.
 
 ## Installation
 
@@ -55,13 +54,18 @@ Copy _one_ of these into the file on the right and save:
 }
 ```
 
+![dark color scheme](https://i.imgur.com/OEurk9A.png)  
+
+
 #### **Light:**
 ```json
 {  
 	"color_scheme": "Packages/GDL/GDL-light.sublime-color-scheme"  
 }
 ```
+
 ![light color scheme](https://i.imgur.com/OQx2IF2.png)  
+
 
 #### Don't like the themes?
 You can edit the `.sublime-color-scheme` files directly – they are nothing else than `.json` files basically. But remember to copy your own color scheme into the `User` folder! Otherwise an update would overwrite your changes. (Of course you then need to point Sublime Text to your new color scheme like above.)
@@ -81,9 +85,11 @@ With the advent of ARCHICAD 23 we don't longer need third-party apps like [GDLnu
 
 To use this feature you first need to set the path to where your ARCHICAD is installed. Open the package settings again and copy the respective item from the left to the right pane. Change the path accordingly.
 
-Afterwards drag and drop a folder with your 'gsm' (I recommend different folders for different gsm's) into Sublime Text and then create a Sublime project via `Project > Save Project As…`. Other benefits are a better working 'goto', 'auto completion', and the possibility to fast switch between different coding sessions on various gsm's.  
+Afterwards drag and drop a folder with your 'gsm' (I recommend different folders for different gsm's) into Sublime Text and then create a Sublime project via `Project > Save Project As…`. Other benefits are a better working 'goto', 'auto completion', and the possibility to fast switch between different coding sessions on various gsm's. All the files inside the folder you just dragged into Sublime Text will be visible in the sidebar, and can also easily be accessed via the quick open palette.  
+For all the possible ways to structure your folders see [below](#structure)
+
 You can now use the the two conversion options in `Tools > GDL`. For a quick access both items are reachable via a right mouse click on the editor pane. There are also key bindings on each.  
-The default for `Convert to script (gsm → hsf/gdl)` is <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>H</kbd>. `Build GSM from HSF (hsf/gdl → gsm)` has <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>alt</kbd>+<kbd>G</kbd>. Of course these can be adjusted to your taste.  
+The default for `Convert to script (gsm → hsf/gdl)` is <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>H</kbd>. `Build GSM from HSF (hsf/gdl → gsm)` has <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>alt</kbd>+<kbd>G</kbd> assigned OOTB. Of course these can be adjusted to your taste.  
 
 ### Places
 If you convert between HSF and GSM the default place will be next to each other. However you can define a _global default path_ (see [example](#syntax-settings-example) below) where any GSMs should be deployed to. This is useful if you have a central library already linked in Archicad.  
@@ -102,10 +108,21 @@ If you substitute the path with `"default"` you can mimic the standard behavior:
 
 Note: There's no path checking implemented at the moment! You have to take care by yourself that you're allowed to write at the paths accordingly.
 
-What to do if you have nested structures? Let's take a look at the structure of this very repo:
+#### Structure
+Let's have a look on how you can organize your folder structure!  
+<sub>(Please note: the names are just examples.)</sub>
 
+The basic structure looks like this:
 ```
-<Project Root>
+<Project Root Folder>
+ ├─ example object\..     # <- this is the HSF; the folder with the script parts
+ └─ example object.gsm
+```
+Simple, right?
+
+But what if you deploy a nested folder structure, like below? In this case you can make use of the 'sub root' feature, which let's you dig into a nested structure (can be arbitrarily deep, but keep in mind you might run in the hard 255 path character limit of Windows).
+```
+<Project Root Folder>
  ├─ .editorconfig
  ├─ README.md
  ├─ docs\..
@@ -118,19 +135,26 @@ What to do if you have nested structures? Let's take a look at the structure of 
 	   │  └─ (all scripts)
 	   └─ Object-3.gsm       ## the .gsm share exactly the same name!
 ```
-
-We want to declare a new 'root', a place where we store the HSFs.
+What you can do is to declare a new 'root'.  
 All you need to do is to put the following statement into your `.sublime-project` file:
-
 ```jsonc
 {
 	"root": "Objects"
-	// for deeper nesting use slashes: "Objects/deeper"
+	// for deeper nesting use forward slashes: "Objects/deeper"
+}
+```
+You could even point to one of the objects directly to circumvent the selection dialog.
+
+Another and very comfortable way is to tell GDL-Sublime it should convert the current GDL being edited everytime you save the GDL:  
+```jsonc
+{
+	"convert_on_save": true
 }
 ```
 
-<!-- ![Project path setting](https://i.imgur.com/71LeiOW.png) -->
+_Note: Multi root environments are not supported at the moment._
 
+<!-- ![Project path setting](https://i.imgur.com/71LeiOW.png) -->
 
 ### Syntax Settings Example:
 ```json
@@ -160,12 +184,13 @@ where `<args>` is to be replaced. If you don't need it, you can leave it empty. 
 &nbsp;  
 -->
 
-## Getting Started With Sublime Text
+## Getting started with Sublime Text
 New to Sublime? Then I can recommend this excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
 
 ## Support
-Does this plugin help you in your daily work, or just want to say thanks?  
-Please consider donating to sustain working on this plugin.
+Does this plugin help you in your daily work, or you just want to say thanks?  
+Countless hours went into the development of GDL-Sublime.  
+Please consider donating to sustain working on this plugin!
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y5VOOM)
 
