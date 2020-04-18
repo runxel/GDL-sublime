@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <Integer Name="${1:integer var name}">
-	<Description><![CDATA["{2:paramlist name}"]]${-1}></Description>
+	<Description><![CDATA["${2:param list name}"]]${-1}></Description>
 	<Value>${3:0}</Value>
 </Integer>
 ]]></content>

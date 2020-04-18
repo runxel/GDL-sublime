@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <FillPattern Name="${1:fillpattern var name}">
-	<Description><![CDATA["{2:paramlist name}"]]${-1}></Description>
+	<Description><![CDATA["${2:param list name}"]]${-1}></Description>
 	<Value>${3:64}</Value>
 </FillPattern>
 ]]></content>

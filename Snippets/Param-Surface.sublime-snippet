@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <Material Name="${1:surface var name}">
-	<Description><![CDATA["param name"]]${-1}></Description>
+	<Description><![CDATA["${2:param list name}"]]${-1}></Description>
 	<Value>${3:0}</Value>
 </Material>
 ]]></content>

@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <Angle Name="${1:angel var name}">
-	<Description><![CDATA["${2:paramilst name}"]]${-1}></Description>
+	<Description><![CDATA["${2:param list name}"]]${-1}></Description>
 	<Value>${3:0}</Value>
 </Angle>
 ]]></content>
