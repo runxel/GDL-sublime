@@ -202,7 +202,13 @@ class Builder(sublime_plugin.WindowCommand):
 					folders.append(self.valid_subfolders(folder))
 
 			else: # no multiroot, no subroot
-				folders = self.valid_subfolders(self.project_abs_basepath[0])
+				# check if this the project is just a plain structure with just one single object inside (either HSF or GSM)
+				basepath = self.project_abs_basepath[0]
+				basename = os.path.basename(os.path.normpath(basepath))
+				if is_dir(basepath, basename) or is_file(basepath, basename +'.gsm'):
+					folders = self.project_abs_basepath  # return list
+				else:
+					folders = self.valid_subfolders(basepath)
 
 		return folders
 

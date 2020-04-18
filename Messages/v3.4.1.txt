@@ -1,0 +1,23 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.4.1
+
+*************************
+
+CHANGELOG:
+
+There was some hiccup because the release numbers got jumbled around. My bad. This should be fixed now.
+
+# fixed
+• The plugin exited with an error message when the user had a plain structure with just one object in the folder. This is fixed.
