@@ -19,3 +19,6 @@ CHANGELOG:
 
 # fixed
 • Some Snippets didn't work as expected.
+
+# added
+• Snippet for an Array inside a Parameter

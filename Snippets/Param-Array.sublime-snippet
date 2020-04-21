@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+<ArrayValues FirstDimension="1" SecondDimension="0">
+	<AVal Row="1">${1:0}</AVal>
+</ArrayValues>
+]]></content>
+	<tabTrigger>array</tabTrigger>
+	<description>Array inside a Param (Paramlist)</description>
+	<scope>text.xml</scope>
+</snippet>
