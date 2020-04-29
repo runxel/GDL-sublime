@@ -7,17 +7,17 @@ assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Bug description**
+<!-- A clear and concise description of what the bug is. -->
 
 **To reproduce**
-Steps to reproduce the behavior...
+<!-- Steps to reproduce the behavior... -->
 
 **Expected behavior**
-A clear and concise description of what you expected to happen.
+<!-- A clear and concise description of what you expected to happen. -->
 
-**My system (please complete the following information):**
+**My system:**
  - OS: [e.g. MacOS]
 
 **Additional context**
-Add any other context about the problem here.
+<!-- Add any other context about the problem here, if relevant. -->
