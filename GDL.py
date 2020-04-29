@@ -157,8 +157,8 @@ class Builder(sublime_plugin.WindowCommand):
 		log.debug("Folders prior to selection: {}".format(self.folders))
 
 		if len(self.folders) <= 0:
-			err("GDL build command error: You must have a project open.\n"
-				"Also make sure all folders and files are named properly.\n"
+			err("GDL build command error: Please open a project, or.\n"
+				"make sure all folders and files are named properly.\n"
 				"If in doubt consult the README.")
 		elif len(self.folders) == 1:
 			self.has_multiple_folders = False

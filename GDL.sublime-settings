@@ -13,7 +13,7 @@
 	// example Win:
 	"AC_path": "C:/Program Files/GRAPHISOFT/ARCHICAD 23",
 	// example Mac:
-	//         "/Applications/GRAPHISOFT/AC23B3/ARCHICAD 23.app"
+	//         "/Applications/GRAPHISOFT/AC23/ARCHICAD 23.app"
 
 	// If you specify a path here all conversions from HSF to GSM
 	// will go into this place. This is helpful if you want to deploy
