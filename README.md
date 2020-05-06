@@ -169,6 +169,8 @@ _Note: Multi root environments are not supported at the moment._
 }
 ```
 
+The `AC_path` can be overwritten in your `.sublime-project` file.
+
 <!-- 
 &nbsp;  
 ![cmd args](https://i.imgur.com/HDiunZe.png)
