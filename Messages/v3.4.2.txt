@@ -11,7 +11,7 @@ has successfully updated
 
 *************************
 
-ＶＥＲＳＩＯＮ 		3.4.1
+ＶＥＲＳＩＯＮ 		3.4.2
 
 *************************
 
@@ -21,4 +21,6 @@ CHANGELOG:
 • Some Snippets didn't work as expected.
 
 # added
+• You can now set a custom "AC_path" per project inside your .sublime-project file. This will overwrite the central path from the sublime-settings. The custom Path is useful when you're doing work for different versions of Archicad.
+(Please remember: Only Archicad versions from 23 and up are able to write HSF)
 • Snippet for an Array inside a Parameter
