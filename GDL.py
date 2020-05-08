@@ -53,18 +53,22 @@ def get_project_subroot(view):
 	sub_root_setting = project_data.get('root', "")
 	return sub_root_setting
 
-def get_project_app_path(view):
-	""" Returns a path to a certain Archicad version, if set in the project file.
-		(Useful if one is developing for different Archicad versions and
+def get_ac_path(view, pckgset):
+	""" Returns a path to a certain Archicad version, either from project file or the global settings.
+		(Former is useful if one is developing for different Archicad versions and
 		they want to use the appropiate LP Converter version.)
 	"""
 	project_data = view.window().project_data()
-	app_path = project_data.get('AC_path', "")
-	return app_path
+	proj_ac_path = project_data.get('AC_path', "")
+	if not proj_ac_path:
+		ac_path = str(pckgset.get("AC_path", DEFAULT_AC_PATH))
+	else:
+		ac_path = proj_ac_path
+	return ac_path
 
 def err(text):
 	""" Gives us a ST error message. """
-	if text == None:
+	if not text:  # None or empty
 		text = "Sorry. Something went wrong."
 	sublime.error_message(text)
 
@@ -120,11 +124,7 @@ class Builder(sublime_plugin.WindowCommand):
 		self.pckg_settings = sublime.load_settings(PACKAGE_SETTINGS)
 		
 		# get the path to the LP_XML_Converter right
-		project_app_path = get_project_app_path(self.view)
-		if project_app_path == None:
-			self.AC_path = str(self.pckg_settings.get("AC_path", DEFAULT_AC_PATH))
-		else:
-			self.AC_path = project_app_path
+		self.AC_path = get_ac_path(self.view, self.pckg_settings)
 
 		self.lp_conv_path = self.check_system()
 		self.converter = os.path.join(self.AC_path, self.lp_conv_path)

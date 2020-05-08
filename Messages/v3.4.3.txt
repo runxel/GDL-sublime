@@ -1,0 +1,21 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.4.3
+
+*************************
+
+CHANGELOG:
+
+# fixed
+• The LP_XMLConverter wasn't found under certain circumstances in 3.4.2.
