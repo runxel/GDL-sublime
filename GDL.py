@@ -10,6 +10,7 @@ log = logging.getLogger(__name__)
 
 PACKAGE_SETTINGS = "GDL.sublime-settings"
 DEFAULT_AC_PATH = "C:/Program Files/GRAPHISOFT/ARCHICAD 23"
+DEFAULT_AC_PATH_MAC = "/Applications/GRAPHISOFT/AC23/ARCHICAD 23.app"
 
 def save_all_files():
 	""" Saves all files open in Sublime.
@@ -19,6 +20,21 @@ def save_all_files():
 		for view in window.views():
 			if view.file_name() and view.is_dirty():
 				view.run_command("save")
+
+def get_project_settings(view, request, *args):
+	""" Returns the requested parameters from the `.sublime-project` file.
+		If the the very parameter does not exist this method return an empty string.
+		TODO: migrate all other functions to this one
+	"""
+	project_data = view.window().project_data()
+
+	if not project_data:
+		err("You must create a project first! (Project > Save Project As...)")
+		return
+
+	project_settings = project_data.get(request, "")
+
+	return project_settings
 
 def get_project_data(view, invoke):
 	""" Gets the data of the .sublime-project file.
@@ -58,12 +74,13 @@ def get_ac_path(view, pckgset):
 		(Former is useful if one is developing for different Archicad versions and
 		they want to use the appropiate LP Converter version.)
 	"""
-	project_data = view.window().project_data()
-	proj_ac_path = project_data.get('AC_path', "")
+	proj_ac_path = get_project_settings(view, "AC_path")
+
 	if not proj_ac_path:
 		ac_path = str(pckgset.get("AC_path", DEFAULT_AC_PATH))
 	else:
 		ac_path = proj_ac_path
+		
 	return ac_path
 
 def err(text):
