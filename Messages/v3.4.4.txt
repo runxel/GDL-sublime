@@ -1,0 +1,21 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.4.4
+
+*************************
+
+CHANGELOG:
+
+# fixed
+• Building of GSM/HSF could fail silently on Macs, if no sublime-project was made
