@@ -164,6 +164,12 @@
 			"background": "color(#cc9ad8 alpha(0.7))"
 		},
 		{
+			"name": "Deprecated Globals",
+			"scope": "keyword.globals.deprecated.gdl",
+			"foreground": "#d7e7db",
+			"background": "color(#cc9ad8 alpha(0.7))"
+		},
+		{
 			"name": "Storage Function",
 			"scope": "storage.type.function",
 			"foreground": "#8ad341",
