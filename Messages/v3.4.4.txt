@@ -19,3 +19,11 @@ CHANGELOG:
 
 # fixed
 • Building of GSM/HSF could fail silently on Macs, if no sublime-project was made
+
+# added
+• More "request param strings" are getting recognized now.
+
+# changed
+• The color scheme was missing a color for deprecated globals and deprecated request params. Both are getting highlighted now.
+• Some completion rules got better descriptive variable names.
+• Typing `else` manually will now decrease the indent of the current line.
