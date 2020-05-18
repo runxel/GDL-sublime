@@ -8,7 +8,7 @@
 	<key>settings</key>
 	<dict>
 		<key>decreaseIndentPattern</key>
-		<string>(?i)(^\s*(End|Endif|Return|Next|Endwhile|Until|Endgroup))</string>
+		<string>(?i)(^\s*(End|Endif|Else|Return|Next|Endwhile|Until|Endgroup))</string>
 		<key>increaseIndentPattern</key>
 		<string>(?i)(^\s*(If)\b.*\sThen$)|(^\s*(Else)\s*$)|(^\s*(For|Do|While|Repeat|Group)\b.*$)|(([0-9]+|(")[a-z_]+(")):)</string>
 		<key>shellVariables</key>
