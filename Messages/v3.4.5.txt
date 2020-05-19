@@ -1,0 +1,28 @@
+
+ ██████╗ ██████╗ ██╗
+██╔════╝ ██╔══██╗██║
+██║  ███╗██║  ██║██║
+██║   ██║██║  ██║██║
+╚██████╔╝██████╔╝███████╗
+ ╚═════╝ ╚═════╝ ╚══════╝
+                         
+GDL Sublime Text package
+has successfully updated
+
+*************************
+
+ＶＥＲＳＩＯＮ 		3.4.5
+
+*************************
+
+CHANGELOG:
+
+# fixed
+• `ui_function` and `ui_link` didn't got highlighted
+• Single quotes ('') can now be used inside localized strings (``) 
+
+# added
+
+
+# changed
+ 
