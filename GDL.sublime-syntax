@@ -367,7 +367,7 @@ contexts:
     - match: (?i)\b(CUSTOM)\b
       scope: support.other.variable.parameters.custom.gdl
 
-    - match: (?i)\b(UI_(NEXT|PREV))\b
+    - match: (?i)\b(UI_(Next|Prev|Function|Link))\b
       scope: support.other.variable.ui.gdl
 
     - match: (?i)\b((REF\s+)?(COMPONENT|DESCRIPTOR)|BINARYPROP|DATABASE_SET|POSITION|REF_(COMPONENT|DESCRIPTOR)|(SURFACE|VOLUME)3D|DRAWING[2]?)\b
