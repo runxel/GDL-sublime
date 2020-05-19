@@ -108,12 +108,26 @@ contexts:
         - include: autotext
         - include: optional
         - include: easyparams
-    - match: "'|`"
+    - match: "'"
       scope: punctuation.definition.string.begin.localized.gdl
       push:
         - meta_include_prototype: false
         - meta_scope: string.quoted.single.gdl
-        - match: "'|`"
+        - match: "'"
+          scope: punctuation.definition.string.end.localized.gdl
+          pop: true
+        - include: escaped-byte
+        - include: string_placeholder
+        - include: request-param-deprecated
+        - include: request-param
+        - include: autotext
+        - include: optional
+    - match: "`"
+      scope: punctuation.definition.string.begin.localized.gdl
+      push:
+        - meta_include_prototype: false
+        - meta_scope: string.quoted.single.gdl
+        - match: "`"
           scope: punctuation.definition.string.end.localized.gdl
           pop: true
         - include: escaped-byte
