@@ -22,7 +22,7 @@ CHANGELOG:
 • Single quotes ('') can now be used inside localized strings (``) 
 
 # added
-
+• A few missing Globals. GDL-Sublime should now recognize all 835 possible Globals and Requests.
 
 # changed
  

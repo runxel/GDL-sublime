@@ -491,16 +491,24 @@ contexts:
       scope: keyword.globals.window.gdl
 
     - match: |-
-        (?ix)\b(LABEL_(POSITION|CUSTOM_ARROW|ARROW((HEAD)?_PEN|_LINETYPE)|FONT_(NAME|STYLE(2)?)|TEXT_(SIZE|(BG_)?PEN|ALIGN|LEADING|WIDTH_FACT|WRAP|CHARSPACE_FACT)
-          |WRAP_TEXT|CHARSPACE_FACT|FRAME_(ON|OFFSET)|ANCHOR_POS|ROTANGLE|ALWAYS_READABLE|ASSOC_ELEM_ORIENTATION))
-          \b
+        (?ix)\b(LABEL_
+          (Position|Custom_Arrow|Arrow((Head)?_Pen|_LINETYPE)
+          |Font_(Name|Style(2)?)
+          |Text_(Size|(BG_)?Pen|Align|Leading|Width_Fact|Wrap|Charspace_Fact)
+          |Wrap_Text|Charspace_Fact|Frame_(On|Offset)
+          |Anchor_Pos|Rotangle|Always_Readable
+          |Has_Pointer
+          |Assoc_Elem_(Orientation|Geometry)
+        ))\b
       scope: keyword.globals.label.gdl
 
     - match: |-
-        (?ix)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)(WALL_((INTGU)?ID|RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?
+        (?ix)(?<=^|\s|\+|\-|\^|\*|\*\*|\/|\=|<|>|<\=|>\=|<>|\#)
+          (WALL_((INTGU)?ID|RESOL|((START|END)_)?THICKNESS|INCL|((MIN|MAX)_)?HEIGHT|MAT_(A|B|EDGE)|LINETYPE|FILL(_PEN)?
           |(COMPS|BMAT)_NAME|SKINS_(PARAMS|NUMBER|BMAT_NAMES)|BMAT|(SECT|VIEW|FBGD)_PEN|DIRECTION|POSITION|(LENGTH|(GROSS_)?SURFACE)_[AB](_CON)?|CENTER_LENGTH|AREA|PERIMETER
           |EDGE_SURF|GROSS_VOLUME|VOLUME(_[AB])?(_CON)?|(DOORS|WINDS|HOLES|COLUMNS)_NR|(DOORS|WINDS)_SURF|HOLES_(SURF(_[AB])?|VOLUME)|(WINDS|DOORS)_WID|CROSSSECTION_TYPE
-          |SKIN_((MIN|MAX)_HEIGHT|THICKNESS)_(A|B)|(INSU|AIR)_THICKNESS|TEXTURE_WRAP))\b
+          |SKIN_((MIN|MAX)_HEIGHT|THICKNESS)_(A|B)|(INSU|AIR)_THICKNESS|Texture_Wrap
+          |Flipped))\b
       scope: keyword.globals.wall.gdl
 
     - match: |-
@@ -511,8 +519,18 @@ contexts:
       scope: keyword.globals.column.gdl
 
     - match: |-
-        (?ix)\b(BEAM_(THICKNESS|HEIGHT|REFLINE_OFFSET|PRIORITY|MAT_(RIGHT|LEFT|TOP|BOTTOM|END)|BMAT(_NAME)?|(OUTLINE|AXES)_LINETYPE|FILL(_PEN)?|(SECT|FBGD)_PEN
-          |DIRECTION|POSITION|LENGTH_(RIGHT|LEFT)|(RIGHT|LEFT|TOP|BOTTOM|END)_SURF|VOLUME(_CON)?|HOLE(S_(NR|SURF|VOLUME)|_EDGE_SURF)|CROSSSECTION_TYPE|PROFILE_NAME|SEGMENT_(INDEX|INFO)))
+        (?ix)\b(BEAM_(
+          Thickness|Height|Refline_Offset|Priority
+          |Mat_(Right|Left|Top|Bottom|End)
+          |Bmat(_Name)?|(Outline|Axes)_Linetype
+          |Fill(_Pen)?|(Sect|FBGD)_Pen
+          |Direction|Position|Length_(Right|Left)
+          |(Right|Left|Top|Bottom|End)_Surf
+          |Volume(_Con)?
+          |Hole(s_(Nr|Surf|Volume)|_Edge_Surf)
+          |Crosssection_Type|Profile_Name
+          |Segment_(Index|Info)
+          |Elevation_(Top|Bottom)))
           (?=$|\s)
       scope: keyword.globals.beam.gdl
 
@@ -529,13 +547,23 @@ contexts:
           \b
       scope: keyword.globals.roof.gdl
 
-    - match: (?i)\b(FILL_(LINETYPE|FILL(_PEN|_CATEGORY)?|PEN|BMAT_NAME|FBGD_PEN|SURF|PERIMETER|SEGMENT_NR|HOLES_(NR|AREA|PRM)))\b
+    - match: (?i)\b(FILL_(Linetype|Fill(_Pen|_Category)?|Pen|Bmat(_Name)?|FBGD_Pen|Surf|Perimeter|Segment_Nr|Holes_(Nr|Area|Prm)))\b
       scope: keyword.globals.fill.gdl
 
     - match: (?i)\b(MESH_((LINE)?TYPE|BASE_OFFSET|(USEREDGE|TRIEDGE|SECT|VIEW)_PEN|MAT_(TOP|EDGE|BOTT)|FILL(_PEN)?|BMAT(_NAME)?|FBGD_PEN|(TOP|EDGE|BOTTOM)_SURF|PERIMETER|VOLUME|SEGMENTS_NR|HOLES_(NR|AREA|PRM)))\b
       scope: keyword.globals.mesh.gdl
 
-    - match: (?i)\b(STAIR_(AREA|VOLUME|HEIGHT|WALKLINE_LENGTH|DEFAULT_(WIDTH|GOING_DEPTH|RISER_HEIGHT|TREAD_THICKNESS)|NR_OF_(RISERS|TREADS)(_IN_FLIGHTS)?|LANDING_NUMBER|STAIR_GRADIENT|RULE_(LIMITS|FLAGS)))\b
+    - match: |-
+        (?ix)\b(STAIR_(
+          Area|Volume|Height|Walkline_Length
+          |Default_(Width|Going_Depth|Riser_Height|Tread_Thickness)
+          |Nr_of_(Risers|treads)(_in_Flights)?
+          |Landing_Number|Stair_Gradient
+          |Rule_(Limits|Flags)
+          |(Start|End)_with_Riser
+          |(Tread|Riser|Nosing)_Exist
+          |Breakmark_Geometry
+          ))\b
       scope: keyword.globals.stair.general.gdl
 
     - match: (?i)\b(TREAD_((FRONT_)?AREA|VOLUME|STEP_INDEX|ELEVATION|GOING|THICKNESS|BMATS|(LOWER|UPPER)_RISER_(THICKNESS|HEIGHT|SLANT_ANGLE)|NOSING(_METHOD|_BY_SLANTING)?)|STAIR_TREAD_(GEOMETRY|FLAGS))\b
@@ -548,12 +576,24 @@ contexts:
       scope: keyword.globals.stair.structure.gdl
 
     - match: |-
-        (?ix)\b(STAIR2D_((FULL|LOWER|MIDDLE|UPPER)_((TPOLYGON|RPOLYLINE|WALKLINE)_(GEOM|FLAGS)|BOUNDARY_GEOM)|BREAKMARK_(GEOM|FLAGS|ANGLE)
-            |(EXT_(TPOLYGON|RPOLYLINE)|DRAIN_TPOLYGON|POLYLINES)_(GEOM|FLAGS)|STRUCT_ATTRIBUTES|LAYOUT_TYPES|DESCRIPTION_POSITION|CURRSTORY_LOCATION|VISIBILITY|CUSTOMDISPLAY))
-            \b
+        (?ix)\b(STAIR2D_(
+          (Full|Lower|Middle|Upper)_((TPolygon|RPolyline|Walkline)_(Geom|Flags)|Boundary_Geom)
+          |Full_SPoly(gon|line)_(Geom|Flags)
+          |Breakmark_(Geom|Flags|Angle)
+          |(Ext_(TPolygon|RPOlyline)|Drain_TPolygon|Polylines)_(Geom|Flags)
+          |(Struct|Monolith)_Attributes
+          |Layout_Types|Description_Position
+          |Currstory_Location|Visibility|Customdisplay
+          ))\b
       scope: keyword.globals.stair.2D.gdl
 
-    - match: (?i)\b(RAILING_(HEIGHT|(3D|HORIZONTAL_)LENGTH|VOLUME|NR_OF_(SEGMENTS|POSTS|BALUSTERS|PANELS|RAILS)))\b
+    - match: |-
+        (?ix)\b(
+          RAILING_(
+            Height|(3D|Horizontal_)Length|Volume
+            |Nr_of_(Segments|Posts|Balusters|Panels|Rails))
+          |RAIL_Disconnected_Cuts)
+          \b
       scope: keyword.globals.railing.general.gdl
 
     - match: |-
@@ -565,10 +605,24 @@ contexts:
     - match: (?i)\b(RAIL2D_((FULL|LOWER|MIDDLE|UPPER)_((POLY(LINE|GON)_(GEOM|FLAGS))|VISIBILITY)|CUSTOMDISPLAY)|RAILPOST2D_VISIBILITY)\b
       scope: keyword.globals.railing.2D.gdl
 
-    - match: (?i)\b((CWALL_(ID|(((CONTOUR|MAINAXIS|SECAXIS|CUSTOM)_)?FRAMES_)?LENGTH|SURF(_BOUNDARY)?|PANELS_(SURF(_([NSEW]|NE|NW|SE|SW))?|NR)|HEIGHT|SLANT_ANGLE|THICKNESS|PATTERN_ANGLE))|(CWJUNC|CWACC)_TYPE)\b
+    - match: |-
+        (?ix)\b(
+          (CWALL_(
+          ID
+          |(((Contour|Mainaxis|Secaxis|Custom)_)?Frames_)?Length
+          |Surf(_Boundary)?|Panels_(Surf(_([Nsew]|NE|NW|SE|SW))?|Nr)
+          |Height|Slant_Angle|Thickness|Pattern_Angle))
+          |(CWJunc|CWAcc)_Type
+          |CW_Boundary_Placement
+          )\b
       scope: keyword.globals.facade.general.gdl
 
-    - match: (?i)\b(CWFRAME_(TYPE|CLASS|POSITION|DIRECTION|WIDTH|DEPTH|LENGTH|MAT))\b
+    - match: |-
+        (?ix)\b(CWFRAME_(
+          Type|Class|Position|Direction
+          |Width|Depth|Length|Mat
+          |(Top|Bottom)_Cut(type|plane|polyline)
+          ))\b
       scope: keyword.globals.facade.profile.gdl
 
     - match: (?i)\b(CWPANEL_(TYPE|CLASS|(VERTICAL|HORIZONTAL)_DIRECTION|(NOMINAL_)?(WIDTH|HEIGHT)|THICKNESS|(GROSS_|NOMINAL_)?SURF|PERIMETER|MAT_(OUTER|INNER|CUT)|FUNCTION|ORIENTATION))\b
@@ -590,13 +644,20 @@ contexts:
     - match: (?i)\b(LIGHT_(ON|RED|GREEN|BLUE|INTENSITY))\b
       scope: keyword.globals.light.gdl
 
-    - match: (?i)\b(Gdl_WALLZ_(LENGTH|SURF|(DOORS|WINDS)_(SURF|WIDTH))|(FROM|TO)_GUID|SKYL_(MARKER_TXT|OPENING_(SURF|VOLUME|HEIGHT|WIDTH)|(HEADER|SILL)_HEIGHT|ROTANGLE))\b
+    - match: |-
+        (?ix)\b(
+          GDL_WallZ_(Length|Surf|(Doors|Winds)_(Surf|Width))
+          |(From|To)_Guid
+          |Skyl_(Marker_Txt|Opening_(Surf|Volume|Height|Width)|(Header|Sill)_Height|Rotangle)
+          |Marker_Head_(Rot_Mode|Angle)
+          |GLOB_Fill_Index_(Background|Solid)
+        )\b
       scope: keyword.globals.misc.gdl
 
-    - match: (?i)\b(GLOB_MVO_(STAIR_FLOOR_PLAN_(OPT|COMP)|RAILING_PLAN_COMP))\b
+    - match: (?i)\b(GLOB_MVO_(Stair_Floor_Plan_(Opt|Comp)|Railing_Plan_Comp|CW(Frame|Panel|Junct|Acc)_Detlevel))\b
       scope: keyword.globals.mvo.gdl
 
-    - match: (?i)\b((GLOB_((ISSUE|CHANGE)_SCHEME))|LAYOUT_((REVISION|CHANGE)_HISTORY|CURRENTVERSION_OPEN))\b
+    - match: (?i)\b((GLOB_((Issue|Change)_Scheme))|Layout_((Revision|Change)_History|Current(Version|Revision)_Open))\b
       scope: keyword.globals.layout.gdl
 
     - match: (?i)\b(GLOB_(PROJECT_((LONG|LAT|ALT)ITUDE|DATE)|NORTH_DIR))\b
@@ -607,23 +668,38 @@ contexts:
 
   request-param:
     - match: |-
-        (?ix)\b(((BLUE|RED|GREEN)_OF_(PEN|MATERIAL)|GDL_VERSION|MODEL_SIZE|PEN_OF_RGB|Program(_Info)?|SERIAL_NUMBER|ANCESTRY_INFO
-          |(ANGULAR_(LENGTH_)?|AREA_|RADIAL_|SILL_HEIGHT_)DIMENSION|(ASSOCEL|MATCHING)_PROPERTIES|ASSOCLP_(NAME|PARVALUE(_WITH_DESCRIPTION)?)
-          |CALC_(ANGLE|AREA|LENGTH|VOLUME)_UNIT|CLEAN_INTERSECTIONS|CUSTOM_AUTO_LABEL|DATETIME|DOOR_SHOW_DIM
-          |(ELEVATION|LEVEL|LINEAR)_DIMENSION|FONTNAMES_LIST|HEIGHT_OF_STYLE|HOME(_STORY|DB_INFO)|ID_OF_MAIN|Full_ID_of_parent
-          |Name_of_(FILL|LINE_TYPE|LISTED|MACRO|MAIN|MATERIAL|PLAN|PROGRAM|STYLE|Building_Material|Profile)
+        (?ix)\b(
+          (Blue|Red|Green)_of_(Pen|Material)
+          |RGB_Of_(Material|Pen)
+          |GDL_Version|Model_Size|Pen_of_RGB
+          |Program(_Info)?|(Serial|Configuration)_Number
+          |Ancestry_Info
+          |(Angular_(Length_)?|Area_|Radial_|Sill_Height_)Dimension
+          |(Assocel|Matching)_Properties
+          |Assoclp_(Name|Parvalue(_with_Description)?)
+          |Calc_(Angle|Area|Length|Volume)_Unit
+          |Clean_Intersections|Custom_Auto_Label
+          |Datetime
+          |(Elevation|Level|Linear)_Dimension
+          |Fontnames_List|Height_of_Style
+          |Home(_Story(_of_Opening)?|DB_Info)
+          |Story(_Info)?
+          |ID_of_Main|Full_ID_of_Parent
+          |Name_of_(Fill|Line_Type|Listed|Macro|Main|Material|Plan|Program|Style|Building_Material|Profile)
           |Class_of_Fill
-          |Reference_Level_Data|RGB_OF_(MATERIAL|PEN)|STORY(_INFO)?|(STYLE|TEXTBLOCK)_INFO
+          |Reference_Level_Data
+          |(Style|Textblock)_Info
           |Floor_Plan_Option|View_Rotangle
-          |Window_(DOOR_(DIMENSION|SHOW_DIM|zone_relev(_of_Owner)?)|SHOW_DIM)
-          |WORKING_(ANGLE|LENGTH)_UNIT|ZONE_(CATEGORY|COLUS_AREA|RELATIONS)
-          |(Building_)?Material_Info|COMPONENT_(PROJECTED_AREA|VOLUME)
-          |(Component_Ids|((Component_)?(Property_Values|Properties)))_Of_Parent)|Property_Name
+          |Window_(Door_(Dimension|Show_Dim|Zone_Relev(_of_Owner)?)|Show_Dim)
+          |Door_Show_Dim
+          |Zone_Relations_of_Owner
+          |Working_(Angle|Length)_Unit|Zone_(Category|Colus_Area|Relations)
+          |(Building_)?Material_Info|Component_(Projected_Area|Volume)
+          |(Component_Ids|((Component_)?(Property_Value(s)?|Properties)))_Of_Parent|Property_Name
           |(Profile_(Components|Default_(Boundingbox|Geometry)|Component_Info))
-          |Autotext_List|Sum_with_rounding
           |((Model|Layout)_(length|text_size)_unit)
+          |Autotext_List|Sum_with_rounding
           |Document_Feature
-          |Configuration_Number
           )\b
       scope: keyword.globals.request.gdl
 
