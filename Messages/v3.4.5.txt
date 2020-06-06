@@ -23,6 +23,7 @@ CHANGELOG:
 
 # added
 • A few missing Globals. GDL-Sublime should now recognize all 835 possible Globals and Requests.
+• `all` behind a `hideparameter` is now highlighted.
 
 # changed
- 
+• Arrays inside arrays are now allowed `foo[bar[1]]`

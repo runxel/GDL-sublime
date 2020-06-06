@@ -381,6 +381,9 @@ contexts:
     - match: (?i)\b(CUSTOM)\b
       scope: support.other.variable.parameters.custom.gdl
 
+    - match: (?i)(?<=hideparameter\s)(\s*all)\b
+      scope: support.other.variable.parameters.all.gdl
+
     - match: (?i)\b(UI_(Next|Prev|Function|Link))\b
       scope: support.other.variable.ui.gdl
 
@@ -774,6 +777,7 @@ contexts:
           - include: expression-common
           - include: easyparams
           - include: string
+          - include: arrays
 
   after-array:
     - match: \[
