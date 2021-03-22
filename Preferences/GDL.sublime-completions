@@ -36,11 +36,11 @@
 		"binaryprop",
 		{ "trigger": "bitset", "contents": "bitset(${1:x}, ${2:b})" },
 		{ "trigger": "bittest", "contents": "bittest(${1:x}, ${2:b})" },
-		"block",
+		{ "trigger": "block", "contents": "block ${1:width}, ${2:depth}, ${3:height}" },
 		{ "trigger": "body", "contents": "body ${1:status}" },
 		"bprism_",
 		"breakpoint",
-		{ "trigger": "brick", "contents": "brick ${1:a}, ${2:b}, ${3:c}" },
+		{ "trigger": "brick", "contents": "brick ${1:width}, ${2:depth}, ${3:height}" },
 		"bwall_",
 
 		/* C C C C C C C C C C C C C C C C C C C C C C C C C C C */
@@ -108,7 +108,7 @@
 
 		/* E E E E E E E E E E E E E E E E E E E E E E E E E E E */
 		{ "trigger": "edge", "contents": "edge ${1:vert1}, ${2:vert2}, ${3:pgon1}, ${4:pgon2}, ${5:status}" },
-		{ "trigger": "elbow", "contents": "elbow ${1:r1}, ${2:alpha}, ${3:r2}" },
+		{ "trigger": "elbow", "contents": "elbow ${1:radius_of_elbow}, ${2:angle}, ${3:radius_of_cross-section}" },
 		{ "trigger": "ellips", "contents": "ellips ${1:h}, ${2:r}" },
 		"else",
 		"end",
