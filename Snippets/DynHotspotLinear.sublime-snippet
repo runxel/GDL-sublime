@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+hotspot2 ${1:x}, ${2:y}, uID, ${3:affectedParam}, 1+128 : uID=uID+1 !base
+hotspot2 ${4:x}, ${5:y}, uID, ${3:affectedParam}, 2     : uID=uID+1 !move
+hotspot2 ${6:x}, ${7:y}, uID, ${3:affectedParam}, 3     : uID=uID+1 !ref
+]]></content>
+	<tabTrigger>linh</tabTrigger>
+	<description>Dynamic Linear 2D Hotspot</description>
+	<scope>source.gdl</scope>
+</snippet>
