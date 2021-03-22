@@ -190,9 +190,6 @@ where `<args>` is to be replaced. If you don't need it, you can leave it empty. 
 &nbsp;  
 -->
 
-## Getting started with Sublime Text
-New to Sublime? Then I can recommend this excellent and free video tutorial by nettuts: [Perfect Workflow in Sublime Text](http://net.tutsplus.com/articles/news/perfect-workflow-in-sublime-text-free-course/).
-
 ## Support
 Does this plugin help you in your daily work, or you just want to say thanks?  
 Countless hours went into the development of GDL-Sublime.  
